@@ -12,32 +12,79 @@
   </head>
   <body> 
       <header>
+        <nav>
 
+        </nav>
       </header>
 
       <main>
-        <p id="base">red</p>
-        <p id="layout">red</p>
-        <p id="modules">red</p>
-        <p id="state">red</p>
+        <section id="subforumView" class="view subforumView">
+
+        </section>
+
+        <section id="editUserView" class="view user editUserView">
+
+        </section>
+
+        <section id="loginUserView" class="view user loginUserView">
+
+        </section>
+
+        <section id="newUserView" class="view user newUserView">
+            <section id="newUserView">
+                <section id="newUser" class="tab-content">
+                    <h1>New User</h1>
+                    <form action="#" id="newUserForm">
+                        <fieldset>
+                            <label for="username">UserName: </label>
+                            <input type="text" id="username" name="username" placeholder="ex. crazyCoder" required>
+                        </fieldset>
+
+                        <button type="submit">Submit and return to the home page</button>
+                    </form>
+                </section>
+            </section>
+        </section>
+
+        <section id="userView" class="view user userView">
+
+        </section>
+
+        <section id="newThreadView" class="view thread newThreadView">
+
+        </section>
+
+        <section id="threadView" class="view thread threadView">
+
+        </section>
+
+
+        <section id="errorView" class="view errorView">
+            <section class="errorViewContainer">
+                <img src="images/404.jpg" alt="404 error">
+            </section>
+        </section>
       </main>
 
       <footer>
 
       </footer>
+      <script src="vendor/scripts/jquery.js"></script>
+      <script src="vendor/scripts/handlebars.js"></script>
+      <script src="vendor/scripts/page.js"></script>
+      <script src="scripts/models/comment.js"></script>
+      <script src="scripts/models/thread.js"></script>
+      <script src="scripts/models/user.js"></script>
+      <script src="scripts/views/user/editUserView.js"></script>
+      <script src="scripts/views/user/userView.js"></script>
+      <script src="scripts/views/user/loginuserView.js"></script>
+      <script src="scripts/views/user/newUserView.js"></script>
+      <script src="scripts/views/thread/threadView.js"></script>
+      <script src="scripts/views/thread/newThreadView.js"></script>
+      <script src="scripts/views/comment/commentView.js"></script>
+      <script src="scripts/views/comment/editCommentView.js"></script>
+      <script src="scripts/views/subforum/subforumView.js"></script>
+      <script src="scripts/views/errorView.js"></script>
+      <script src="scripts/controllers/routes.js"></script>
   </body>
-  <script src="vendor/scripts/jquery.js"></script>
-  <script src="vendor/scripts/handlebars.js"></script>
-  <script src="vendor/scripts/page.js"></script>
-  <script src="scripts/models/comment.js"></script>
-  <script src="scripts/models/thread.js"></script>
-  <script src="scripts/models/user.js"></script>
-  <script src="scripts/views/user/editUserView.js"></script>
-  <script src="scripts/views/user/userView.js"></script>
-  <script src="scripts/views/thread/threadView.js"></script>
-  <script src="scripts/views/thread/newThreadView.js"></script>
-  <script src="scripts/views/comment/commentView.js"></script>
-  <script src="scripts/views/comment/editCommentView.js"></script>
-  <script src="scripts/views/errorView.js"></script>
-  <script src="scripts/controllers/routes.js"></script>
 </html>
