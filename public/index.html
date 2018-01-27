@@ -1,11 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>D29Forum</title>
-    <!--deps-->
+    <meta charset="UTF-8">
+    <title>D29 FORUM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="vendor/styles/reset.css">
+    <link rel="stylesheet" href="styles/base/base.css">
+    <link rel="stylesheet" href="styles/layout/layout.css">
+    <link rel="stylesheet" href="styles/modules/modules.css">
+    <link rel="stylesheet" href="styles/state/state.css">
   </head>
-  <body>
-    Testing!
-    <!--content-->
+  <body> 
+      <header>
+
+      </header>
+
+      <main>
+        <p id="base">red</p>
+        <p id="layout">red</p>
+        <p id="modules">red</p>
+        <p id="state">red</p>
+      </main>
+
+      <footer>
+
+      </footer>
   </body>
+  <script src="vendor/scripts/jquery.js"></script>
+  <script src="vendor/scripts/handlebars.js"></script>
+  <script src="vendor/scripts/page.js"></script>
+  <script src="scripts/models/comment.js"></script>
+  <script src="scripts/models/thread.js"></script>
+  <script src="scripts/models/user.js"></script>
+  <script src="scripts/views/user/editUserView.js"></script>
+  <script src="scripts/views/user/userView.js"></script>
+  <script src="scripts/views/thread/threadView.js"></script>
+  <script src="scripts/views/thread/newThreadView.js"></script>
+  <script src="scripts/views/comment/commentView.js"></script>
+  <script src="scripts/views/comment/editCommentView.js"></script>
+  <script src="scripts/views/errorView.js"></script>
+  <script src="scripts/controllers/routes.js"></script>
 </html>
