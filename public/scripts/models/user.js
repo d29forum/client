@@ -12,11 +12,11 @@ const __API_URL__ = 'http://localhost:3737';
 
 (function(module) {
   const user = {};
-  let currentUserId = localStorage.currentUserId;
-  let currentUserName = localStorage.currentUserName;
+  let currentUserId = localStorage.currentUserId || '';
+  let currentUserName = localStorage.currentUserName || '';
 
   function User(obj) {
-    for (var prop in obj) this[prop] = obj[prop];
+    for (var prop in obj) obj[prop] ? this[prop] = obj[prop] : this[prop] = null;
   }
 
   // POST
@@ -72,33 +72,39 @@ const __API_URL__ = 'http://localhost:3737';
   }
   
   User.updateProfileTemplate = (ctx, next) => {
-    console.log(ctx.currentUser);
     $('#editUsername').val(ctx.currentUser[0].username);
     $('#editEmail').val(ctx.currentUser[0].email);
     $('#editFirst_name').val(ctx.currentUser[0].first_name);
     $('#editLast_name').val(ctx.currentUser[0].last_name);
     $('#editGravatar_hash').val(ctx.currentUser[0].gravatar_hash);
     $('#editInterests').val(ctx.currentUser[0].interests);
-    next();
   }
 
-  User.prototype.update = function(ctx, next, callback) {
-    console.log(ctx.params.username);
+  User.prototype.update = function() {
+    let user = new app.User({
+        username: $('#editUsername').val(),
+        email: $('#editEmail').val(),
+        first_name: $('#editFirst_name').val(),
+        last_name: $('#editLast_name').val(),
+        gravatar_hash: $('#editGravatar_hash').val(),
+        interests: $('#editInterests').val()
+    });
+
     $.ajax({
-      url: `${__API_URL__}/api/db/users/${ctx.params.username}`,
+      url: `${__API_URL__}/api/db/users/${currentUserName}`,
       method: 'PUT',
-      data: {first_name: this.first_name, last_name: this.last_name, email: this.email,
-        username: this.username, interests: this.interests, gravatar_hash: this.gravatar_hash,},
-      success: callback,
+      data: {first_name: user.first_name, last_name: user.last_name, email: user.email,
+        username: user.username, interests: user.interests, gravatar_hash:  user.gravatar_hash},
+      success: results => {
+        localStorage.currentUserName = results;
+        currentUserName = results;
+        page.show(`/user/${results}`);
+      },
       //error: app.errorView.init,
     });
-    next();
   }
 
-  User.prototype.delete = function(ctx, next) {
-    console.log('delete');
-    $('#userView').on('click', $('#deleteProfileButton'), function() {
-      console.log(currentUserName);
+  User.prototype.delete = function() {
       $.ajax({
         url: `${__API_URL__}/api/db/users/${currentUserName}`,
         method: 'DELETE',
@@ -108,8 +114,7 @@ const __API_URL__ = 'http://localhost:3737';
         }
         //error: app.errorView.init,
       })
-    });
-    next();
+
   }
 
   //Checks if user is logged In
@@ -131,5 +136,4 @@ const __API_URL__ = 'http://localhost:3737';
   }
 
   module.User = User;
-
 })(app);
