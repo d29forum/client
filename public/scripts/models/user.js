@@ -5,7 +5,7 @@ var app = app || {};
 const __API_URL__ = 'http://localhost:3737';
 
 //Staging API
-// const __API_URL__ = 'https://d29forum-sv-staging.herokuapp.com';
+//const __API_URL__ = 'https://d29forum-sv-staging.herokuapp.com';
 
 //Production API
 //const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
@@ -33,16 +33,16 @@ const __API_URL__ = 'http://localhost:3737';
 
   User.prototype.fetch = function(callback) {
     $.ajax({
-      url: `${__API_URL__}/api/db/users/${this.id}`,
+      url: `${__API_URL__}/api/db/users/${this.username}`,
       method: 'GET',
-      success: data => console.log(data),
+      success: callback,
       //error: app.errorView.init,
     });
   }
 
   User.prototype.login = function(callback) {
     $.ajax({
-      url: `${__API_URL__}/api/db/users/${this.id}/login`,
+      url: `${__API_URL__}/api/db/users/${this.username}/login`,
       method: 'PUT',
       data: {},
       success: callback,
@@ -52,7 +52,7 @@ const __API_URL__ = 'http://localhost:3737';
   
   User.prototype.update = function(callback) {
     $.ajax({
-      url: `${__API_URL__}/api/db/users/${this.id}`,
+      url: `${__API_URL__}/api/db/users/${this.username}`,
       method: 'PUT',
       data: {first_name: this.first_name, last_name: this.last_name, email: this.email,
         username: this.username, interests: this.interests, role: this.role, gravatar_hash: this.gravatar_hash,},
@@ -63,7 +63,7 @@ const __API_URL__ = 'http://localhost:3737';
 
   User.prototype.delete = function(callback) {
     $.ajax({
-      url: `${__API_URL__}/api/db/users/${this.id}`,
+      url: `${__API_URL__}/api/db/users/${this.username;}`,
       method: 'DELETE',
       success: callback,
       //error: app.errorView.init,
