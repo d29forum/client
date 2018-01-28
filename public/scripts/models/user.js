@@ -2,13 +2,13 @@
 var app = app || {};
 
 //Local API
-const __API_URL__ = 'http://localhost:3737';
+// const __API_URL__ = 'http://localhost:3737';
 
 //Staging API
 //const __API_URL__ = 'https://d29forum-sv-staging.herokuapp.com';
 
 //Production API
-//const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
+const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
 
 (function(module) {
   const user = {};
