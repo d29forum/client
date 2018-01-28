@@ -7,7 +7,6 @@ var app = app || {};
     threadView.init = function(ctx, next) {
         $('.view').addClass('hidden');
         $('.threadView').removeClass('hidden');
-        next();
     }
     
     module.threadView = threadView;
