@@ -7,8 +7,8 @@
         console.log('hi');
         $('.view').hide();
         $('.userView').show();
-        next();
+        // next();
     }
     
     module.userView = userView;
-})(window);
+})(app);

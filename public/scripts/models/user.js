@@ -2,29 +2,34 @@
 var app = app || {};
 
 //Local API
-//const __API_URL__ = 'http://localhost:3737';
+const __API_URL__ = 'http://localhost:3737';
 
 //Staging API
-const __API_URL__ = 'https://d29forum-sv-staging.herokuapp.com';
+// const __API_URL__ = 'https://d29forum-sv-staging.herokuapp.com';
 
 //Production API
 //const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
 
 (function(module) {
+  const user = {};
+
   function User(obj) {
     for (var prop in obj) this[prop] = obj[prop];
   }
 
-  User.prototype.insert = function(callback) {
+  User.prototype.insert = function() {
+    console.log('User.prototype.insert');
     $.ajax({
       url: `${__API_URL__}/api/db/users`,
       method: 'POST',
-      data: {first_name: this.first_name, last_name: this.last_name, email: this.email, username: this.username,
-        interests: this.interests, role: this.role, gravatar_hash: this.gravatar_hash,},
-      success: console.log('success!'),
-      //error: app.errorView.init,
-    });
-  }
+      data: {username: this.username},
+      success: () => {
+        localStorage.loggedInUser = this.username;
+        // localStorage.setItem('E', ETag);
+        window.location = '../';
+      }
+    })
+  };
 
   User.prototype.fetch = function(callback) {
     $.ajax({
@@ -69,4 +74,3 @@ const __API_URL__ = 'https://d29forum-sv-staging.herokuapp.com';
 
 })(app);
 
-var trogdor = new app.User({first_name: 'trogdor', last_name: 'dragoon', email: 'scaley@stuff.com', username: 'burninator3', interests: 'burninating the countryside', role: 'user', gravatar_hash: '0'});

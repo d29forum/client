@@ -11,4 +11,4 @@
     }
     
     module.threadView = threadView;
-})(window);
+})(app);

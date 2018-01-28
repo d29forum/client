@@ -7,8 +7,8 @@
         console.log('hi');
         $('.view').hide();
         $('.subforumView').show();
-        next();
+        // next();
     }
     
     module.subforumView = subforumView;
-})(window);
+})(app);

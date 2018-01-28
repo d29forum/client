@@ -11,4 +11,4 @@
     }
     
     module.errorView = errorView;
-})(window);
+})(app);

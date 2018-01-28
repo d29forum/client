@@ -8,20 +8,17 @@
         $('.view').hide();
         $('.newUserView').show();
         $('#newUserForm').on('submit', newUserView.submit);
-        next();
+        // next();
     }
     
     newUserView.submit = e => {
         e.preventDefault();
         let user = new app.User({
-            title: $('#title').val(),
-            author: $('#author').val(),
-            isbn: $('#isbn').val(),
-            image_url: $('#image_url').val(),
-            description: $('#description').val(),
+            username: $('#username').val(),
         });
-        user.insertRecord();
+        console.log(user);
+        user.insert();
     }
 
   module.newUserView = newUserView;
-})(window);
+})(app);

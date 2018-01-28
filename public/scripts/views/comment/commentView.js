@@ -11,4 +11,4 @@
     }
     
     module.commentView = commentView;
-})(window);
+})(app);

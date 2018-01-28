@@ -11,4 +11,4 @@
     }
     
     module.loginUserView = loginUserView;
-})(window);
+})(app);

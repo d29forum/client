@@ -11,4 +11,4 @@
     }
     
     module.editCommentView = editCommentView;
-})(window);
+})(app);

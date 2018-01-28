@@ -11,4 +11,4 @@
     }
     
     module.newThreadView = newThreadView;
-})(window);
+})(app);
