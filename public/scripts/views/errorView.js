@@ -4,8 +4,8 @@
     const errorView = {};
 
     errorView.init = function(ctx, next) {
-        $('.view').hide();
-        $('.errorView').show();
+        $('.view').addClass('hidden');
+        $('.errorView').removeClass('hidden');
         next();
     }
     

@@ -20,7 +20,20 @@
             <p class="interests"><span class="userProfileSectionHeader">Interests</span><br>{{interests}}</p>
     </script>
 
-    <script id="comment-template" type="text/x-handlebars-template"></script>
+    <script id="comment-template" type="text/x-handlebars-template">
+      <div class="comment-container">
+        <div>
+          <p>{{username}}</p>
+          <p>Join Date: {{user_created_on}}</p>
+          <p>Number of posts: {{num_comments}}</p>
+          <img src="www.gravatar.com/avatar/{{gravatar_hash}}">
+        </div>
+        <div>
+          <p>{{comment_created_on}}</p>
+          <p>{{content}}</p>
+        </div>
+      </div>
+    </script>
   </head>
   <body> 
       <header>
