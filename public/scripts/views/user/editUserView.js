@@ -4,9 +4,10 @@
     const editUserView = {};
 
     editUserView.init = function(ctx, next) {
-        console.log('hi');
         $('.view').hide();
         $('.editUserView').show();
+        $('#deleteProfileButton').on('click', app.User.prototype.delete);
+        $('#editButton').on('click', app.User.prototype.update);
         next();
     }
     

@@ -9,12 +9,26 @@
     <link rel="stylesheet" href="styles/layout/layout.css">
     <link rel="stylesheet" href="styles/modules/modules.css">
     <link rel="stylesheet" href="styles/state/state.css">
+
+    <script id="user-profile-template" type="text/x-handlebars-template">
+            <p class="userName"><span class="first_name">{{first_name}}</span> <span class="last_name">{{last_name}}</span></p>
+            <img class="gravatar_hash" src="{{gravatar_hash}}">
+            <p clas="role">{{role}}</p>
+            <p class="userStats"><span class="created_on">Member Since {{created_on}}</span> | <span class="num_comments">{{num_comments}} Posts</span></p>
+            <p class="username"><span class="userProfileSectionHeader">Username</span><br>{{username}}</p>
+            <p class="email"><span class="userProfileSectionHeader">Email</span><br>{{email}}</p>
+            <p class="interests"><span class="userProfileSectionHeader">Interests</span><br>{{interests}}</p>
+    </script>
+
   </head>
   <body> 
       <header>
         <nav>
-            <a id="login" href="/login">login</a>
-            <a id="signup" href="/signup">signup</a>
+            <a href="/">home</a>
+            <a id="login" class="notLoggedIn" href="/login">login</a>
+            <a id="signup" class="notLoggedIn" href="/signup">signup</a>
+            <a id="loggedInUser" class="loggedIn" href=""> </a>
+            <button id="logoutButton" class="loggedIn">Logout</button>
         </nav>
       </header>
 
@@ -24,6 +38,41 @@
         </section>
 
         <section id="editUserView" class="view user editUserView">
+            <form action="#" id="editProfileForm">
+                <fieldset>
+                        <label for="username">Username: </label>
+                        <input type="text" id="editUsername" name="username">
+                </fieldset>
+
+                <fieldset>
+                    <label for="Email">Email: </label>
+                    <textarea rows="10" id="editEmail" name="Email"></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <label for="first_name">First Name: </label>
+                    <input type="text" id="editFirst_name" name="first_name">
+                </fieldset>
+                
+                <fieldset>
+                    <label for="last_name">Last Name: </label>
+                    <input type="text" id="editLast_name" name="last_name">
+                </fieldset>
+                    
+                <fieldset>
+                    <label for="gravatar_hash">Gravatar: </label>
+                    <input type="text" id="editGravatar_hash" name="gravatar_hash">
+                </fieldset>
+
+                <fieldset>
+                    <label for="interests">Interests: </label>
+                    <input type="text" id="editInterests" name="interests">
+                </fieldset>
+
+                <button id="editButton" type="submit">update and return to the home page</button>
+            </form>
+
+            <button id="deleteProfileButton">Delete Profile</button>
 
         </section>
 
@@ -37,7 +86,7 @@
                 <form action="#" id="newUserForm">
                     <fieldset>
                         <label for="username">UserName: </label>
-                        <input type="text" id="username" name="username" placeholder="ex. crazyCoder" required>
+                        <input type="text" id="username" name="username" placeholder="ex. crazyCoder">
                     </fieldset>
 
                     <button type="submit">Submit and return to the home page</button>
@@ -46,7 +95,10 @@
         </section>
 
         <section id="userView" class="view user userView">
+            <section id="userProfile">
 
+            </section>
+            <a id="editProfileButton" href="">Edit Profile</a>
         </section>
 
         <section id="newThreadView" class="view thread newThreadView">
@@ -59,9 +111,9 @@
 
 
         <section id="errorView" class="view errorView">
-            <!-- <section class="errorViewContainer">
+            <section class="errorViewContainer">
                 <img src="images/404.jpg" alt="404 error">
-            </section> -->
+            </section>
         </section>
       </main>
 
