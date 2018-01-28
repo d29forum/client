@@ -63,7 +63,7 @@ const __API_URL__ = 'http://localhost:3737';
 
   User.prototype.delete = function(callback) {
     $.ajax({
-      url: `${__API_URL__}/api/db/users/${this.username;}`,
+      url: `${__API_URL__}/api/db/users/${this.username}`,
       method: 'DELETE',
       success: callback,
       //error: app.errorView.init,
