@@ -4,7 +4,6 @@
     const newUserView = {};
 
     newUserView.init = function(ctx, next) {
-        console.log('hi');
         $('.view').hide();
         $('.newUserView').show();
         $('#newUserForm').on('submit', newUserView.submit);
@@ -16,7 +15,6 @@
         let user = new app.User({
             username: $('#username').val(),
         });
-        console.log(user);
         user.insert();
     }
 
