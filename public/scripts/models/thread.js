@@ -2,7 +2,7 @@
 var app = app || {};
 
 (function(module) {
-  var Thread.comments = [];
+  Thread.comments = [];
   function Thread(obj) {
     for (let prop in obj) this[prop] = obj[prop];
   }
