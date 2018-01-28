@@ -4,8 +4,8 @@
     const loginUserView = {};
 
     loginUserView.init = function(ctx, next) {
-        $('.view').hide();
-        $('.loginUserView').show();
+        $('.view').addClass('hidden');
+        $('.loginUserView').removeClass('hidden');
         next();
     }
     

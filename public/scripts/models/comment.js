@@ -41,7 +41,7 @@ var app = app || {};
     });
   }
 
-  Comment.prototype.toHtml = () => {
+  Comment.prototype.toHtml = function() {
     let template = Handlebars.compile($('#comment-template').text());
     console.log(this);
     return template(this);

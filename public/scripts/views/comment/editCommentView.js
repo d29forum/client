@@ -5,8 +5,8 @@
 
     editCommentView.init = function(ctx, next) {
         console.log('hi');
-        $('.view').hide();
-        $('.editCommentView').show();
+        $('.view').addClass('hidden');
+        $('.editCommentView').removeClass('hidden');
         next();
     }
     

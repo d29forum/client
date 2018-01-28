@@ -4,8 +4,8 @@
     const userView = {};
 
     userView.init = function(ctx, next) {
-        $('.view').hide();
-        $('.userView').show();
+        $('.view').addClass('hidden');
+        $('.userView').removeClass('hidden');
         next();
     }
     
