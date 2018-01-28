@@ -19,6 +19,7 @@ const __API_URL__ = 'http://localhost:3737';
     for (var prop in obj) this[prop] = obj[prop];
   }
 
+  // POST
   User.prototype.insert = function() {
     $.ajax({
       url: `${__API_URL__}/api/db/users`,
@@ -38,18 +39,16 @@ const __API_URL__ = 'http://localhost:3737';
     return template(this);
   }
 
-  // 3rd - maps book from constructor to tamplate and appends it to html
+  // 3rd - maps user from constructor to tamplate and appends it to html
   User.renderCurrent = (ctx, next) => {
       $('#userProfile').empty();
-      console.log(ctx.currentUser);
       ctx.currentUser.map(user => $('#userProfile').append(user.toHtml()));
-      $('#editProfileButton').attr('href', `/book/${ctx.params.username}/edit`)
+      $('#editProfileButton').attr('href', `/user/${ctx.params.username}/edit`)
       // next();
   }
 
-  // 2ND - takes the individual result and maps it to  the new Book constructor
+  // 2ND - takes the individual result and maps it to  the new User constructor
   User.loadCurrent = (ctx, next) => {
-      console.log(ctx.results);
       ctx.currentUser = ctx.results.map(userObject => new User(userObject));
       next();
   }
@@ -58,7 +57,6 @@ const __API_URL__ = 'http://localhost:3737';
     $.get(`${__API_URL__}/api/db/users/${ctx.params.username}`)
       .then(results => {
         ctx.results = results;
-        console.log(ctx.results);
         next();
       });
   }
@@ -73,36 +71,62 @@ const __API_URL__ = 'http://localhost:3737';
     });
   }
   
-  User.prototype.update = function(callback) {
+  User.updateProfileTemplate = (ctx, next) => {
+    console.log(ctx.currentUser);
+    $('#editUsername').val(ctx.currentUser[0].username);
+    $('#editEmail').val(ctx.currentUser[0].email);
+    $('#editFirst_name').val(ctx.currentUser[0].first_name);
+    $('#editLast_name').val(ctx.currentUser[0].last_name);
+    $('#editGravatar_hash').val(ctx.currentUser[0].gravatar_hash);
+    $('#editInterests').val(ctx.currentUser[0].interests);
+    next();
+  }
+
+  User.prototype.update = function(ctx, next, callback) {
+    console.log(ctx.params.username);
     $.ajax({
-      url: `${__API_URL__}/api/db/users/${this.username}`,
+      url: `${__API_URL__}/api/db/users/${ctx.params.username}`,
       method: 'PUT',
       data: {first_name: this.first_name, last_name: this.last_name, email: this.email,
-        username: this.username, interests: this.interests, role: this.role, gravatar_hash: this.gravatar_hash,},
+        username: this.username, interests: this.interests, gravatar_hash: this.gravatar_hash,},
       success: callback,
       //error: app.errorView.init,
     });
+    next();
   }
 
-  User.prototype.delete = function(callback) {
-    $.ajax({
-      url: `${__API_URL__}/api/db/users/${this.username}`,
-      method: 'DELETE',
-      success: callback,
-      //error: app.errorView.init,
+  User.prototype.delete = function(ctx, next) {
+    console.log('delete');
+    $('#userView').on('click', $('#deleteProfileButton'), function() {
+      console.log(currentUserName);
+      $.ajax({
+        url: `${__API_URL__}/api/db/users/${currentUserName}`,
+        method: 'DELETE',
+        success: () => {
+          localStorage.clear();
+          window.location = '/';
+        }
+        //error: app.errorView.init,
+      })
     });
+    next();
   }
 
+  //Checks if user is logged In
   User.currentUserCheck = function(ctx, next) {
     if(currentUserId) {
       $('.notLoggedIn').addClass('hidden');
-      $('.loggedIn').attr('href', `/user/${currentUserName}`).text(currentUserName).removeClass('hidden');
+      $('#loggedInUser').attr('href', `/user/${currentUserName}`).text(currentUserName);
+      $('.loggedIn').removeClass('hidden');
+      $('#logoutButton').on('click', () => {
+        localStorage.clear();
+        window.location = '/'
+      });
     }
     else {
       $('.notLoggedIn').removeClass('hidden');
       $('.loggedIn').addClass('hidden');
     }
-    console.log('ctx.params.username');
     next();
   }
 

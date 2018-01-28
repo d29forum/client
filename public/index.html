@@ -27,7 +27,8 @@
             <a href="/">home</a>
             <a id="login" class="notLoggedIn" href="/login">login</a>
             <a id="signup" class="notLoggedIn" href="/signup">signup</a>
-            <a id="loggedInUser" class="loggedIn" href=`/user/${localStorage.loggedInUser}`> </a>
+            <a id="loggedInUser" class="loggedIn" href=""> </a>
+            <button id="logoutButton" class="loggedIn">Logout</button>
         </nav>
       </header>
 
@@ -37,7 +38,39 @@
         </section>
 
         <section id="editUserView" class="view user editUserView">
+            <form action="#" id="editProfileForm">
+                <fieldset>
+                        <label for="username">Username: </label>
+                        <input type="text" id="editUsername" name="username">
+                </fieldset>
 
+                <fieldset>
+                    <label for="Email">Email: </label>
+                    <textarea rows="10" id="editEmail" name="Email" required></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <label for="first_name">First Name: </label>
+                    <input type="text" id="editFirst_name" name="first_name" required>
+                </fieldset>
+                
+                <fieldset>
+                    <label for="last_name">Last Name: </label>
+                    <input type="text" id="editLast_name" name="last_name" required>
+                </fieldset>
+                    
+                <fieldset>
+                    <label for="gravatar_hash">Gravatar: </label>
+                    <input type="text" id="editGravatar_hash" name="gravatar_hash">
+                </fieldset>
+
+                <fieldset>
+                    <label for="interests">Interests: </label>
+                    <input type="text" id="editInterests" name="interests">
+                </fieldset>
+
+                <button id="editButton" type="submit">update and return to the home page</button>
+            </form>
         </section>
 
         <section id="loginUserView" class="view user loginUserView">
@@ -63,6 +96,7 @@
 
             </section>
             <a id="editProfileButton" href="">Edit Profile</a>
+            <button id="deleteProfileButton">Delete Profile</button>
         </section>
 
         <section id="newThreadView" class="view thread newThreadView">
