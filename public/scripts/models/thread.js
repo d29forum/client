@@ -29,4 +29,5 @@ var app = app || {};
     next();
   }
 
+  module.Thread = Thread;
 })(app);
