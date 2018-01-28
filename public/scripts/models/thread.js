@@ -7,6 +7,17 @@ var app = app || {};
     for (let prop in obj) this[prop] = obj[prop];
   }
 
+  Thread.prototype.insert = function(ctx,next) {
+    $.ajax({
+      url: `${__API_URL__}/api/db/thread`,
+      method: 'POST',
+      success: results => {
+        ctx.results = results;
+        next();
+      }
+    });
+  }
+
   Thread.prototype.fetchComments = function(ctx,next) {
     $.ajax({
       url: `${__API_URL__}/api/db/thread/${this.id}`,
@@ -27,6 +38,17 @@ var app = app || {};
     let $threadView = $('.threadView');
     Thread.comments.forEach(comment => $threadView.append(comment.toHtml()));
     next();
+  }
+
+  Thread.prototype.delete = function(ctx,next) {
+    $.ajax({
+      url: `${__API_URL__}/api/db/thread/${this.id}`,
+      method: 'DELETE',
+      success: results => {
+        ctx.results = results;
+        next();
+      }
+    });
   }
 
   module.Thread = Thread;
