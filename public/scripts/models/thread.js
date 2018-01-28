@@ -11,6 +11,7 @@ var app = app || {};
     $.ajax({
       url: `${__API_URL__}/api/db/thread`,
       method: 'POST',
+      data: {title: this.title, creator: this.creator, subforum_parent: this.subforum_parent, last_comment: this.last_comment},
       success: results => {
         ctx.results = results;
         next();
@@ -38,6 +39,18 @@ var app = app || {};
     let $threadView = $('.threadView');
     Thread.comments.forEach(comment => $threadView.append(comment.toHtml()));
     next();
+  }
+
+  Thread.prototype.update = function(ctx,next) {
+    $.ajax({
+      url: `${__API_URL__}/api/db/threads/${this.id}`,
+      method: 'PUT',
+      data: {title: this.title, subforum_parent: this.subforum_parent},
+      success: results => {
+        ctx.results = results;
+        next();
+      }
+    });
   }
 
   Thread.prototype.delete = function(ctx,next) {
