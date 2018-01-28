@@ -21,7 +21,7 @@ var app = app || {};
 
   Thread.prototype.fetchComments = function(ctx,next) {
     $.ajax({
-      url: `${__API_URL__}/api/db/thread/${this.id}`,
+      url: `${__API_URL__}/api/db/thread/${ctx.params.id}`,
       method: 'GET',
       success: results => {
         ctx.results = results;

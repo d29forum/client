@@ -43,6 +43,7 @@ var app = app || {};
 
   Comment.prototype.toHtml = () => {
     let template = Handlebars.compile($('#comment-template').text());
+    console.log(this);
     return template(this);
   }
 
