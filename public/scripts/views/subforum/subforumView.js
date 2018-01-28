@@ -4,7 +4,6 @@
     const subforumView = {};
 
     subforumView.init = function(ctx, next) {
-        console.log('hi');
         $('.view').hide();
         $('.subforumView').show();
         // next();

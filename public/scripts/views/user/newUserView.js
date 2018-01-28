@@ -16,7 +16,6 @@
         let user = new app.User({
             username: $('#username').val(),
         });
-        console.log(user);
         user.insert();
     }
 
