@@ -21,7 +21,7 @@
     </script>
 
     <script id="comment-template" type="text/x-handlebars-template">
-      <div class="comment-container">
+      <div data-comment-id="{{comment_id}}" class="comment-container {{username}}">
         <div>
           <p>{{username}}</p>
           <p>Join Date: {{user_created_on}}</p>
@@ -29,8 +29,13 @@
           <img src="www.gravatar.com/avatar/{{gravatar_hash}}">
         </div>
         <div>
-          <p>{{comment_created_on}}</p>
-          <p>{{content}}</p>
+          <p><span>posted on: {{comment_created_on}}</span><span class="editCommentButton hidden">edit</span></p>
+          <p class="comment-content">{{content}}</p>
+          <div class="editCommentView hidden">
+            <textarea class="editCommentTextArea">{{content}}</textarea>
+            <div class="saveCommentButton">Save</div>
+            <div class="deleteCommentButton">Delete</div>
+          </div>
         </div>
       </div>
     </script>
@@ -120,7 +125,12 @@
         </section>
 
         <section id="threadView" class="view thread threadView">
-
+          <div class="commentContainer"></div>
+          <div class="addCommentContainer">
+            <p>Contribute to the discussion!</p>
+            <textarea class="addCommentTextArea"></textarea>
+            <div class="addCommentButton">Add Comment</div>
+          </div>
         </section>
 
 

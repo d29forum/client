@@ -6,44 +6,34 @@ var app = app || {};
     for (var prop in obj) this[prop] = obj[prop];
   }
 
-  Comment.prototype.insert = function(ctx,next) {
+  Comment.prototype.insert = function(callback) {
     $.ajax({
       url: `${__API_URL__}/api/db/comments`,
       method: 'POST',
       data: {content: this.content, creator: this.creator, thread_parent: this.thread_parent, subforum_parent: this.subforum_parent},
-    })
-    .then(results => {
-      ctx.results = results;
-      next();
+      success: callback,
     });
   }
 
-  Comment.prototype.update = function(ctx,next) {
+  Comment.prototype.update = function(callback) {
     $.ajax({
-      url: `${__API_URL__}/api/db/comments/${this.id}`,
+      url: `${__API_URL__}/api/db/comments/${this.comment_id}`,
       method: 'PUT',
       data: {content: this.content},
-    })
-    .then(results => {
-      ctx.results = results;
-      next();
+      success: callback,
     });
   }
 
-  Comment.prototype.delete = function(ctx,next) {
+  Comment.prototype.delete = function(callback) {
     $.ajax({
-      url: `${__API_URL__}/api/db/comments/${this.id}`,
+      url: `${__API_URL__}/api/db/comments/${this.comment_id}`,
       method: 'DELETE',
+      success: callback,
     })
-    .then(results => {
-      ctx.results = results;
-      next();
-    });
   }
 
   Comment.prototype.toHtml = function() {
     let template = Handlebars.compile($('#comment-template').text());
-    console.log(this);
     return template(this);
   }
 
