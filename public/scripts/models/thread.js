@@ -50,6 +50,11 @@ var app = app || {};
     }    
   }
 
+  Thread.prototype.toHtml = function() {
+    let template = Handlebars.compile($('#thread-template').text());
+    return template(this);
+  }
+
   Thread.prototype.update = function(ctx,next) {
     $.ajax({
       url: `${__API_URL__}/api/db/threads/${this.id}`,
