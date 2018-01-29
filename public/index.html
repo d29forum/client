@@ -12,7 +12,7 @@
 
     <script id="user-profile-template" type="text/x-handlebars-template">
             <p class="userName"><span class="first_name">{{first_name}}</span> <span class="last_name">{{last_name}}</span></p>
-            <img class="gravatar_hash" src="{{gravatar_hash}}">
+            <img class="gravatar_hash" src="https://www.gravatar.com/avatar/{{gravatar_hash}}">
             <p clas="role">{{role}}</p>
             <p class="userStats"><span class="created_on">Member Since {{created_on}}</span> | <span class="num_comments">{{num_comments}} Posts</span></p>
             <p class="username"><span class="userProfileSectionHeader">Username</span><br>{{username}}</p>
@@ -42,12 +42,12 @@
 
     <script id="thread-template" type="text/x-handlebars-template">
       <div data-thread-id="{{thread_id}}" class="thread">
-        <span>{{title}}</span>
-        <span>{{thread_creator}}</span>
+        <span class="thread-title">{{title}}</span>
+        <span class="username">{{thread_creator}}</span>
         <span>{{view_count}}</span>
         <span>{{comment_count}}</span>
         <span>
-          <p>{{last_comment_username}}</p>
+          <p class="username">{{last_commenter}}</p>
           <p>{{last_comment_created_on}}</p>
         </span>
       </div>
@@ -66,8 +66,17 @@
       </header>
 
       <main>
-        <section id="subforumView" class="view subforumView">
+        <section id="forumView" class="view forumView">
           <header></header>
+          <div class="subforaContainer"></div>
+        </section>
+
+
+        <section id="subforumView" class="view subforumView">
+          <header>
+            <p class="subforum-title"></p>
+            <p class="newThreadButton">New Topic</p>
+          </header>
           <div class="threadsContainer"></div>
         </section>
 
@@ -203,6 +212,7 @@
       <script src="scripts/views/comment/commentView.js"></script>
       <script src="scripts/views/comment/editCommentView.js"></script>
       <script src="scripts/views/subforum/subforumView.js"></script>
+      <script src="scripts/views/forum/forumView.js"></script>
       <script src="scripts/views/errorView.js"></script>
       <script src="scripts/controllers/routes.js"></script>
       <script src="scripts/app.js"></script>

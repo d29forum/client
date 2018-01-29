@@ -98,35 +98,25 @@ const __API_URL__ = 'http://localhost:3737';
     $('#editInterests').val(ctx.currentUser[0].interests);
   }
 
+// CALCULATE GRAVITAR HASH
+
+  User.prototype.calcGavitarHash = function (ctx) {
+    ctx = ctx.toLowerCase();
+    ctx = ctx.trim();
+    var hash = md5(ctx);
+    return(hash);
+  }
+
   User.prototype.update = function() {
 
-//MAKE CALL TO HELPER FUNCTION THAT GRABS THE EMAIL VALUE (k)
-
-  // var emailValue = function () {
-  //   $.ajax({
-  //     url: `${__API_URL__}/api/db/users/${currentUserName}`,
-  //     method: 'GET',
-  //     data: {email: user.email},
-  //     success: results => {
-  //       localStorage.currentUserName = results;
-  //       currentUserName = results;
-  //       page.show(`/user/${results}`);
-  //     },
-  //   });
-  // };
-
-//AND PASSES TO FUNCTION USER.PROTOTYPE.CALCULATE.GRAV_HASH (k)
-
-
-//RETURN (k)
-
+    var gravitarHash = User.prototype.calcGavitarHash( $('#editEmail').val())
 
     let user = new app.User({
         username: $('#editUsername').val(),
         email: $('#editEmail').val(),
         first_name: $('#editFirst_name').val(),
         last_name: $('#editLast_name').val(),
-        gravatar_hash: $('#editGravatar_hash').val(), //RETURN GRAVITAR HASH VALUE HERE INSTEAD OF #EDITGRAVITAR_HASH
+        gravatar_hash: gravitarHash, 
         interests: $('#editInterests').val()
     });
 
