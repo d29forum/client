@@ -20,8 +20,9 @@ var app = app || {};
   }
 
   Thread.prototype.fetchComments = function(ctx,next) {
+    console.log(ctx.params.thread_id);
     $.ajax({
-      url: `${__API_URL__}/api/db/thread/${ctx.params.id}`,
+      url: `${__API_URL__}/api/db/thread/${ctx.params.thread_id}`,
       method: 'GET',
       success: results => {
         ctx.results = results;
@@ -37,8 +38,16 @@ var app = app || {};
 
   Thread.prototype.render = function(ctx,next) {
     let $threadView = $('.threadView');
-    Thread.comments.forEach(comment => $threadView.append(comment.toHtml()));
-    next();
+    Thread.comments.sort((a,b) => a.comment_id - b.comment_id);
+    Thread.comments.forEach(comment => $('.threadView .commentContainer').append(comment.toHtml()));
+   
+    if (localStorage.currentUserId) {
+      $(`.${localStorage.currentUserName} .editCommentButton`).removeClass('hidden').on('click', function() {
+        Thread.comments.forEach(comment => {
+          if (comment.comment_id === $(this).parent().parent().parent().data('comment-id')) app.editCommentView.init(comment);
+        });
+      });
+    }    
   }
 
   Thread.prototype.update = function(ctx,next) {
