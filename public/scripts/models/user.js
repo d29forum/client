@@ -80,10 +80,13 @@ const __API_URL__ = 'http://localhost:3737';
     });
   }
 
-  User.userIdNotFound = function(user) {
+  User.userIdNotFound = function(usersname) {
     $('.modal').toggleClass('is-visible');
     $('#userNameEntered').text(user);
-    $('#modalCreateUserButton').on('click')
+    $('#modalCreateUserButton').on('click', ()=> {
+      let user = new app.User({username: usersname});
+      user.insert();
+    })
   }
   
   User.updateProfileTemplate = (ctx, next) => {
