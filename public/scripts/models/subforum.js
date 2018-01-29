@@ -21,9 +21,10 @@ var app = app || {};
 
   Subforum.prototype.fetchThreads = function(ctx,next) {
     $.ajax({
-      url: `${__API_URL__}/api/db/subfora/${this.id}`,
+      url: `${__API_URL__}/api/db/subfora/${ctx.params.subforum_id}`,
       method: 'GET',
       success: results => {
+        console.log(results);
         ctx.results = results;
         next();
       }
@@ -31,14 +32,12 @@ var app = app || {};
   }
 
   Subforum.prototype.loadThreads = function(ctx,next) {
-    Subforum.threads = ctx.results.map(thread => new app.Thread(threads));
+    Subforum.threads = ctx.results.map(thread => new app.Thread(thread));
     next();
   }
 
   Subforum.prototype.render = function(ctx,next) {
-    let $subforumView = $('.subforumView');
-    Subforum.threads.forEach(threads => $subforumView.append(thread.toHtml()));
-    next();
+    Subforum.threads.forEach(thread => $('.threadsContainer').append(thread.toHtml()));
   }
 
   Subforum.prototype.update = function(ctx,next) {

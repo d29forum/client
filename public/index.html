@@ -26,7 +26,7 @@
           <p>{{username}}</p>
           <p>Join Date: {{user_created_on}}</p>
           <p>Number of posts: {{num_comments}}</p>
-          <img src="www.gravatar.com/avatar/{{gravatar_hash}}">
+          <img src="https://www.gravatar.com/avatar/{{gravatar_hash}}">
         </div>
         <div>
           <p><span>posted on: {{comment_created_on}}</span><span class="editCommentButton hidden">edit</span></p>
@@ -37,6 +37,19 @@
             <div class="deleteCommentButton">Delete</div>
           </div>
         </div>
+      </div>
+    </script>
+
+    <script id="thread-template" type="text/x-handlebars-template">
+      <div data-thread-id="{{thread_id}}" class="thread">
+        <span>{{title}}</span>
+        <span>{{thread_creator}}</span>
+        <span>{{view_count}}</span>
+        <span>{{comment_count}}</span>
+        <span>
+          <p>{{last_comment_username}}</p>
+          <p>{{last_comment_created_on}}</p>
+        </span>
       </div>
     </script>
   </head>
@@ -53,7 +66,8 @@
 
       <main>
         <section id="subforumView" class="view subforumView">
-
+          <header></header>
+          <div class="threadsContainer"></div>
         </section>
 
         <section id="editUserView" class="view user editUserView">
@@ -125,6 +139,7 @@
         </section>
 
         <section id="threadView" class="view thread threadView">
+          <header></header>
           <div class="commentContainer"></div>
           <div class="addCommentContainer">
             <p>Contribute to the discussion!</p>
