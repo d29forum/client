@@ -38,6 +38,13 @@ var app = app || {};
 
   Subforum.prototype.render = function(ctx,next) {
     Subforum.threads.forEach(thread => $('.threadsContainer').append(thread.toHtml()));
+
+    $('.thread').on('click','.thread-title', function() {
+      page.show(`/subfora/${ctx.params.subforum_id}/threads/${$(this).parent().data('thread-id')}`)
+    });
+    $('.thread').on('click','.username', function() {
+      page.show(`/user/${$(this).text()}`)
+    });
   }
 
   Subforum.prototype.update = function(ctx,next) {

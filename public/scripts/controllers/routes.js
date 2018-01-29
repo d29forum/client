@@ -1,6 +1,6 @@
 'use strict';
 
-page('/', app.User.currentUserCheck, app.subforumView.init);
+page('/', app.User.currentUserCheck, app.forumView.init);
 page('/login', app.User.currentUserCheck, app.loginUserView.init);
 page('/signup', app.User.currentUserCheck, app.newUserView.init);
 page('/user/:username/edit', app.User.currentUserCheck, app.editUserView.init, app.User.prototype.fetch, app.User.loadCurrent, app.User.updateProfileTemplate);
