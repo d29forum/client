@@ -4,9 +4,8 @@
     const newThreadView = {};
 
     newThreadView.init = function(ctx, next) {
-        console.log('hi');
-        $('.view').hide();
-        $('.newThreadView').show();
+        $('.view').addClass('hidden');
+        $('.newThreadView').removeClass('hidden');
         next();
     }
     

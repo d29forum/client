@@ -4,8 +4,8 @@
     const editUserView = {};
 
     editUserView.init = function(ctx, next) {
-        $('.view').hide();
-        $('.editUserView').show();
+        $('.view').addClass('hidden');
+        $('.editUserView').removeClass('hidden');
         $('#deleteProfileButton').on('click', app.User.prototype.delete);
         $('#editButton').on('click', app.User.prototype.update);
         next();

@@ -4,8 +4,9 @@
     const subforumView = {};
 
     subforumView.init = function(ctx, next) {
-        $('.view').hide();
-        $('.subforumView').show();
+        $('.view').addClass('hidden').find('*').off();
+        $('.threadsContainer').empty();
+        $('.subforumView').removeClass('hidden');
         // next();
     }
     
