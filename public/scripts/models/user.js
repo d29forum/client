@@ -81,12 +81,34 @@ const __API_URL__ = 'http://localhost:3737';
   }
 
   User.prototype.update = function() {
+
+//MAKE CALL TO HELPER FUNCTION THAT GRABS THE EMAIL VALUE (k)
+
+  // var emailValue = function () {
+  //   $.ajax({
+  //     url: `${__API_URL__}/api/db/users/${currentUserName}`,
+  //     method: 'GET',
+  //     data: {email: user.email},
+  //     success: results => {
+  //       localStorage.currentUserName = results;
+  //       currentUserName = results;
+  //       page.show(`/user/${results}`);
+  //     },
+  //   });
+  // };
+
+//AND PASSES TO FUNCTION USER.PROTOTYPE.CALCULATE.GRAV_HASH (k)
+
+
+//RETURN (k)
+
+
     let user = new app.User({
         username: $('#editUsername').val(),
         email: $('#editEmail').val(),
         first_name: $('#editFirst_name').val(),
         last_name: $('#editLast_name').val(),
-        gravatar_hash: $('#editGravatar_hash').val(),
+        gravatar_hash: $('#editGravatar_hash').val(), //RETURN GRAVITAR HASH VALUE HERE INSTEAD OF #EDITGRAVITAR_HASH
         interests: $('#editInterests').val()
     });
 
