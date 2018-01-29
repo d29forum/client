@@ -7,7 +7,7 @@
         $('.view').addClass('hidden').find('*').off();
         $('.threadsContainer').empty();
         $('.subforumView').removeClass('hidden');
-        next();
+        // next();
     }
     
     module.subforumView = subforumView;
