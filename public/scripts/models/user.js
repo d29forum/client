@@ -119,6 +119,7 @@ const __API_URL__ = 'http://localhost:3737';
 
   //Checks if user is logged In
   User.currentUserCheck = function(ctx, next) {
+    console.log('currentuser check');
     if(currentUserId) {
       $('.notLoggedIn').addClass('hidden');
       $('#loggedInUser').attr('href', `/user/${currentUserName}`).text(currentUserName);
