@@ -61,12 +61,21 @@ const __API_URL__ = 'http://localhost:3737';
       });
   }
 
-  User.prototype.login = function(callback) {
+  User.login = function(user) {
     $.ajax({
-      url: `${__API_URL__}/api/db/users/${this.username}/login`,
-      method: 'PUT',
-      data: {},
-      success: callback,
+      url: `${__API_URL__}/api/db/users/${user.username}`,
+      method: 'GET',
+      success:(results => {
+        console.log(results);
+        if(!results[0]) {
+          alert('No user Account exists for the username');
+        }
+        else if (results[0].username == user.username){
+          localStorage.currentUserId = results[0].id;
+          localStorage.currentUserName = results[0].username;
+          window.location = '../';
+        }
+      })
       //error: app.errorView.init,
     });
   }
