@@ -82,6 +82,8 @@ const __API_URL__ = 'http://localhost:3737';
 
   User.userIdNotFound = function(user) {
     $('.modal').toggleClass('is-visible');
+    $('#userNameEntered').text(user);
+    $('#modalCreateUserButton').on('click')
   }
   
   User.updateProfileTemplate = (ctx, next) => {
