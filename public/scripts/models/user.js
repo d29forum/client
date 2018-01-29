@@ -68,7 +68,7 @@ const __API_URL__ = 'http://localhost:3737';
       success:(results => {
         console.log(results);
         if(!results[0]) {
-          alert('No user Account exists for the username');
+          User.userIdNotFound(user.username);
         }
         else if (results[0].username == user.username){
           localStorage.currentUserId = results[0].id;
@@ -78,6 +78,10 @@ const __API_URL__ = 'http://localhost:3737';
       })
       //error: app.errorView.init,
     });
+  }
+
+  User.userIdNotFound = function(user) {
+    $('.modal').toggleClass('is-visible');
   }
   
   User.updateProfileTemplate = (ctx, next) => {
