@@ -9,7 +9,7 @@
         $('.subforumView').removeClass('hidden');
         $('.newThreadButton').on('click', ()=> {
           page.show(`/subfora/${ctx.params.subforum_id}/threads/new`);
-        }
+        });
         next();
     }
     
