@@ -10,6 +10,41 @@
     <link rel="stylesheet" href="styles/modules/modules.css">
     <link rel="stylesheet" href="styles/state/state.css">
 
+    <script id="forum-template" type="text/x-handlebars-template">
+      <section class="forumTableRow">
+          <div class="subforumInfo">
+            <a href="/subfora/{{subforaid}}">
+              <span class="subforaTitle">{{title}}</span></br>
+              <span class="subforaSubtitle">{{subtitle}}</span>
+            </a>
+          </div>
+          <p class="commentCount">{{comment_count}}</p>
+          <p class="threadCount">{{thread_count}}</p>
+          <p class="lastComment">
+              <div class="createdOn">{{created_on}}</div>
+              <div class="username">by <a href="/user/{{username}}">{{username}}</a> 
+                <a href="/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}/#{{commentid}}">view latest post</a>
+              </div>
+          </p>
+      </section>
+    </script>
+          <!-- <tr class="forumTableRow">
+          <td class="board-info">
+            <a href=`"/subfora/{{subforaid}}"`>
+              <p class="subforaTitle">{{title}}</p>
+              <p class="subforaSubtitle">{{subtitle}}</p>
+            </a>
+          </td>
+          <td class="commentCount">{{comment_count}}</td>
+          <td class="threadCount">{{thread_count}}</td>
+          <td class="lastComment">
+              <div class="createdOn">{{created_on}}</div>
+              <div class="username">by <a href="/user/{{username}}">{{username}}</a> 
+                <a href=`"/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}/#{{commentid}}"`>view latest post</a>
+              </div>
+          </td>
+      </tr> -->
+
     <script id="user-profile-template" type="text/x-handlebars-template">
             <p class="userName"><span class="first_name">{{first_name}}</span> <span class="last_name">{{last_name}}</span></p>
             <img class="gravatar_hash" src="https://www.gravatar.com/avatar/{{gravatar_hash}}">
@@ -67,8 +102,29 @@
 
       <main>
         <section id="forumView" class="view forumView">
-          <header></header>
-          <div class="subforaContainer"></div>
+          <header>
+              <p>table title</p>
+              <p>
+                <span class="tcForum">Forum</span>
+                <span class="tcTopics">Comments</span>
+                <span class="txThreads">Threads</span>
+                <span class="tcLatestPost">Latest post</span>
+              </p>
+          </header>
+          <div id="subforaContainer" class="subforaContainer">
+            <!-- <tbody id="forumTable">
+            <tr>
+              <th colspan="5"><p>table title</p></th>
+            </tr>
+            <tr>
+              <th class="tcForum">Forum</th>
+              <th class="tcTopics">Comments</th>
+              <th class="txThreads">Threads</th>
+              <th class="tcLatestPost">Latest post</th>
+            </tr>
+            </tbody> -->
+
+          </div>
         </section>
 
 
@@ -208,6 +264,7 @@
       <script src="scripts/models/comment.js"></script>
       <script src="scripts/models/thread.js"></script>
       <script src="scripts/models/subforum.js"></script>
+      <script src="scripts/models/forum.js"></script>
       <script src="scripts/views/user/editUserView.js"></script>
       <script src="scripts/views/user/userView.js"></script>
       <script src="scripts/views/user/loginUserView.js"></script>
