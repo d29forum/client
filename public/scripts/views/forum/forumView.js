@@ -7,6 +7,7 @@ var app = app || {};
     forumView.init = function(ctx, next) {
         $('.view').addClass('hidden');
         $('.forumView').removeClass('hidden');
+        next();
     }
     
     module.forumView = forumView;
