@@ -38,7 +38,7 @@ var app = app || {};
     let $threadView = $('.threadView');
     $('.threadView header').empty();
     $('.threadView header').append(`<span>${ctx.results[0].subforum_title}</span><span>${ctx.results[0].thread_title}</span>`).on('click', 'span:first-child', () => page.show(`/subfora/${ctx.params.subforum_id}`));
-    Thread.comments.sort((a,b) => a.comment_id - b.comment_id);
+    Thread.comments.sort((a,b) => a.comment_id - b.comment_id)
     Thread.comments.forEach(comment => $('.threadView .commentContainer').append(comment.toHtml()));
    
     if (localStorage.currentUserId) {

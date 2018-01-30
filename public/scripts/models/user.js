@@ -69,8 +69,8 @@ const __API_URL__ = 'http://localhost:3737';
       method: 'GET',
       success: results => {
           localStorage.currentUserId = results[0].id;
-          localStorage.currentUserName = results[0].username;
-          localStorage.deferredRoute ? page.show(localStorage.deferredRoute) : page.show('../');
+          var setLS = callback => {localStorage.currentUserName = results[0].username; callback();};
+          setLS(() => localStorage.deferredRoute ? page.show(localStorage.deferredRoute) : page.show('../'));
       },
       error: err => {
         (err === 'User does not exist!') ?
