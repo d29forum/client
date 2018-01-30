@@ -116,3 +116,78 @@
     vertical-align: middle;
     fill: currentcolor;
   }
+
+  /* login in page */
+
+  .login-position {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 350px;
+      height: 420px;
+      padding: 80px 40px;
+      box-sizing: border-box;
+      background: rgba(0,0,0,.5);
+  }
+
+  .pro-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: absolute;
+      top: calc(-100px/2);
+      left: calc(50% - 50px);
+  }
+
+  #box-position {
+      margin: 0;
+      padding: 0,0,20px;
+      color: yellow;
+      text-align: center;
+  }
+
+  .login-position p {
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+      color: gray;
+  }
+
+  .login-position input {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .login-position input[type="text"] {
+      border: none;
+      border-bottom: 1px solid green;
+      background: transparent;
+      outline: none;
+      height: 40px;
+      color: red;
+      font-size: 16px;
+  }
+
+  .login-position input[type="submit"] {
+      border: none;
+      outline: none;
+      height: 40px;
+      color: #fff;
+      font-size: 16px;
+      background: orange;
+      cursor: pointer;
+      border-radius: 20px;
+  }
+
+  .login-position input[type="submit"]:hover {
+      background: #efed40;
+      color: #262626;
+  }
+
+  /* .login-position a {
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+  } */
