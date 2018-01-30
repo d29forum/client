@@ -5,7 +5,7 @@ var app = app || {};
     const forumView = {};
 
     forumView.init = function(ctx, next) {
-        $('.view').addClass('hidden');
+        $('.view').addClass('hidden').find('*').off();
         $('.forumView').removeClass('hidden');
         next();
     }
