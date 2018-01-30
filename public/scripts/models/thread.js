@@ -13,7 +13,6 @@ var app = app || {};
       method: 'POST',
       data: {title: this.title, creator: this.creator, subforum_parent: this.subforum_parent, content: this.content},
       success: results => {
-        console.log(results);
         page.show(`/subfora/${this.subforum_parent}/threads/${results[0].thread_id}`);
       },
     });
@@ -37,7 +36,8 @@ var app = app || {};
 
   Thread.prototype.render = function(ctx,next) {
     let $threadView = $('.threadView');
-    $('.threadView header').html(`<span>${ctx.results[0].subforum_title}</span>`).on('click', () => page.show(`/subfora/${ctx.params.subforum_id}`));
+    $('.threadView header').append(`<span>${ctx.results[0].subforum_title}</span><span>${ctx.results[0].thread_title}</span>`).on('click', 'span:first-child', () => page.show(`/subfora/${ctx.params.subforum_id}`));
+    //$('.threadView header').append(`<span>${ctx.results[0].thread_title}</span>`);
     Thread.comments.sort((a,b) => a.comment_id - b.comment_id);
     Thread.comments.forEach(comment => $('.threadView .commentContainer').append(comment.toHtml()));
    
@@ -48,6 +48,11 @@ var app = app || {};
         });
       });
     }    
+
+    if (localStorage.insertedPost) {
+      delete localStorage.insertedPost;
+      window.scrollTo(0, document.body.scrollHeight);
+    }
   }
 
   Thread.prototype.toHtml = function() {
