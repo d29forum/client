@@ -62,22 +62,42 @@ const __API_URL__ = 'http://localhost:3737';
       });
   }
 
+  // User.login = function(user) {
+  //   console.log(user);
+  //   $.ajax({
+  //     url: `${__API_URL__}/api/db/users/${user.username}`,
+  //     method: 'GET',
+  //     success:(results => {
+  //       console.log(results);
+  //       if(!results[0]) {
+  //         User.userIdNotFound(user.username);
+  //       }
+  //       else if (results[0].username == user.username){
+  //         localStorage.currentUserId = results[0].id;
+  //         localStorage.currentUserName = results[0].username;
+  //         window.location = '../';
+  //       }
+  //     })
+  //     //error: app.errorView.init,
+  //   });
+  // }
   User.login = function(user) {
     console.log(user);
     $.ajax({
-      url: `${__API_URL__}/api/db/users/${user.username}`,
-      method: 'GET',
+      url: `${__API_URL__}/api/db/users/${user.username}/login`,
+      method: 'PUT',
       success:(results => {
         console.log(results);
-        if(!results[0]) {
-          User.userIdNotFound(user.username);
-        }
-        else if (results[0].username == user.username){
-          localStorage.currentUserId = results[0].id;
-          localStorage.currentUserName = results[0].username;
-          window.location = '../';
-        }
-      })
+        console.log(res.status);
+        // if(!results[0]) {
+        //   User.userIdNotFound(user.username);
+        // }
+        // else if (results[0].username == user.username){
+        //   localStorage.currentUserId = results[0].id;
+        //   localStorage.currentUserName = results[0].username;
+        //   window.location = '../';
+        // }
+      }),
       //error: app.errorView.init,
     });
   }
