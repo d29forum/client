@@ -4,8 +4,9 @@
     const loginUserView = {};
 
     loginUserView.init = function(ctx, next) {
-        $('.view').hide();
-        $('.loginUserView').show();
+        if (localStorage.waitingComment) page.show(localStorage.waitingThread);
+        $('.view').addClass('hidden');
+        $('.loginUserView').removeClass('hidden');
         next();
     }
     
