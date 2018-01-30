@@ -37,7 +37,7 @@ var app = app || {};
   }
 
   Subforum.prototype.render = function(ctx,next) {
-    Subforum.threads.sort((a,b) => b.thread_id - a.thread_id);
+    Subforum.threads.sort((a,b) => b.last_comment - a.last_comment);
 
     Subforum.threads.forEach(thread => $('.threadsContainer').append(thread.toHtml()));
 
