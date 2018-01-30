@@ -1,18 +1,19 @@
 'use strict';
 
 var app = app || {};
+
   (function(module) {
     Forum.subfora = [];
     function Forum(obj) {
       for (let prop in obj) this[prop] = obj[prop];
-    }
+    };
 
 //FETCH
 
 Forum.prototype.fetchSubfora = function (ctx, next) {
   $.ajax({
     url: `${__API_URL__}/api/db/subfora`,
-    method: 'POST',
+    method: 'GET',
     data: {title: this.title,
            subtitle: this.subtitle,
            thread_count: this.thread_count,
@@ -29,12 +30,16 @@ Forum.prototype.fetchSubfora = function (ctx, next) {
 
 //LOAD
 
+Forum.prototype.loadSubfora = function (ctx, next) {
+  Forum.subfora = ctx.results;
+  console.log('Forum.subfora', Forum.subfora);
 
+}
 
 //RENDER
 
 
 
 
-  module.forum = forum;
+  module.Forum = Forum;
 })(app);
