@@ -20,7 +20,6 @@ var app = app || {};
   }
 
   Thread.prototype.fetchComments = function(ctx,next) {
-    console.log(ctx.params.thread_id);
     $.ajax({
       url: `${__API_URL__}/api/db/thread/${ctx.params.thread_id}`,
       method: 'GET',
@@ -38,6 +37,7 @@ var app = app || {};
 
   Thread.prototype.render = function(ctx,next) {
     let $threadView = $('.threadView');
+    $('.threadView header').html(`<span>${ctx.results[0].subforum_title}</span>`).on('click', () => page.show(`/subfora/${ctx.params.subforum_id}`));
     Thread.comments.sort((a,b) => a.comment_id - b.comment_id);
     Thread.comments.forEach(comment => $('.threadView .commentContainer').append(comment.toHtml()));
    
