@@ -67,18 +67,16 @@ const __API_URL__ = 'http://localhost:3737';
     $.ajax({
       url: `${__API_URL__}/api/db/users/${user.username}`,
       method: 'GET',
-      success:(results => {
-        console.log(results);
-        if(!results[0]) {
-          User.userIdNotFound(user.username);
-        }
-        else if (results[0].username == user.username){
+      success: results => {
           localStorage.currentUserId = results[0].id;
           localStorage.currentUserName = results[0].username;
           window.location = '../';
-        }
-      })
-      //error: app.errorView.init,
+      },
+      error: err => {
+        (err === 'User does not exist!') ?
+          User.userIdNotFound(user.username) :
+          errorView.init(results);
+      }
     });
   }
 
