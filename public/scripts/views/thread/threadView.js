@@ -8,23 +8,18 @@ var app = app || {};
         $('.view').addClass('hidden').find('*').off();
         $('.threadView').removeClass('hidden');
         $('.commentContainer').empty();
-        if (localStorage.waitingComment) {
-          $('.addCommentTextArea').val(localStorage.waitingComment);
-          delete localStorage.waitingComment;
-          delete localStorage.waitingThread;
+        if (localStorage.deferredRoute) {
+          delete localStorage.deferredRoute;
+        } else {
+          $('.addCommentTextArea').val('');
         }
         $('.addCommentButton').on('click', () => {
           if (localStorage.currentUserId) {
             let comment = new app.Comment({content: $('.addCommentTextArea').val(), creator: localStorage.currentUserId, thread_parent: ctx.params.thread_id, subforum_parent: ctx.params.subforum_id,});
-            comment.insert(() => {
-              localStorage.insertedPost = 'insertedPost';
-              $('.addCommentTextArea').val('');
-              page.show(`/subfora/${ctx.params.subforum_id}/threads/${ctx.params.thread_id}`);
-            });
+            comment.insert(() => page.show(`/subfora/${ctx.params.subforum_id}/threads/${ctx.params.thread_id}`));
           }
           else {
-            localStorage.waitingComment = $('.addCommentTextArea').val();
-            localStorage.waitingThread = `/subfora/${ctx.params.subforum_id}/threads/${ctx.params.thread_id}`;
+            localStorage.deferredRoute = `/subfora/${ctx.params.subforum_id}/threads/${ctx.params.thread_id}`;
             page.show('/login');
           }
         });
