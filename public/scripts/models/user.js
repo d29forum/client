@@ -29,7 +29,7 @@ const __API_URL__ = 'http://localhost:3737';
         console.log(results);
         localStorage.currentUserId = results[0].id;
         localStorage.currentUserName = this.username;
-        window.location = '../'
+        page.show('../');
       }
     })
   };
@@ -70,7 +70,7 @@ const __API_URL__ = 'http://localhost:3737';
       success: results => {
           localStorage.currentUserId = results[0].id;
           localStorage.currentUserName = results[0].username;
-          window.location = '../';
+          localStorage.deferredRoute ? page.show(localStorage.deferredRoute) : page.show('../');
       },
       error: err => {
         (err === 'User does not exist!') ?
@@ -140,7 +140,7 @@ const __API_URL__ = 'http://localhost:3737';
         method: 'DELETE',
         success: () => {
           localStorage.clear();
-          window.location = '/';
+          page.show('/');
         }
         //error: app.errorView.init,
       })
@@ -155,8 +155,10 @@ const __API_URL__ = 'http://localhost:3737';
       $('#loggedInUser').attr('href', `/user/${currentUserName}`).text(currentUserName);
       $('.loggedIn').removeClass('hidden');
       $('#logoutButton').on('click', () => {
+        currentUserId = null;
+        currentUserName = null;
         localStorage.clear();
-        window.location = '/'
+        page.show('/');
       });
     }
     else {
