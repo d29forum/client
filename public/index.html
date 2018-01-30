@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="styles/layout/layout.css">
     <link rel="stylesheet" href="styles/modules/modules.css">
     <link rel="stylesheet" href="styles/state/state.css">
-    <!-- <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" /> -->
-
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <script src="https://use.fontawesome.com/9fa5931d9f.js"></script>
     <script id="user-profile-template" type="text/x-handlebars-template">
             <p class="userName"><span class="first_name">{{first_name}}</span> <span class="last_name">{{last_name}}</span></p>
             <img class="gravatar_hash" src="{{gravatar_hash}}">
@@ -113,18 +113,26 @@
 
         <section id="loginUserView" class="view user loginUserView">
           <section id="userLogin" class="tab-content">
-          <div id="next-loginbox"></div>
-          <div class="login-position">  
+          <div class="container">
+          <div class="imgBx">
+              <img src="images/powerful.jpg">
+          </div>
+          <div class="loginBox">
+            
             <img src="images/professional.jpg" class="pro-pic">
             <h1 id="box-position">User Login</h1>
             <form action="#" id="userLoginForm">
                 <fieldset>
                     <label for="usernameLogin">UserName: </label>
-                    <input type="text" id="usernameLogin" name="usernameLogin" placeholder="ex. crazyCoder">
+                    <div class="inputBox">
+                      <input type="text" id="usernameLogin" name="usernameLogin" placeholder="ex. crazyCoder">
+                      <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                    </div>
                 </fieldset>
 
                 <button type="submit">Login</button>
             </form>
+          </div>
           </div> 
           <div id="clear-box"></div>
           </section>

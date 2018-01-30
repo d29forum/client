@@ -119,7 +119,98 @@
 
   /* login in page */
 
-  .login-position {
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 420px;
+    border-radius: 5px;
+    border: 10px solid rgba(255,255,255,.2);
+    box-shadow: 10px 10px 15px rgba(0,0,0,.5);
+}
+
+.imgBx {
+    width: 350px;
+    height: 420px;
+    overflow: hidden;
+    float: left;
+}
+
+.imgBx img {
+    width: 100%;
+    height: 100%;
+}
+
+.loginBox {
+    float: right;
+    width: 350px;
+    height: 420px;
+    box-sizing: border-box;
+    padding: 80px 40px;
+    background: rgba(255,255,255,0.8);
+}
+
+#box-position {
+    margin: 0;
+    padding: 0 0 20px;
+    color: #262626;
+}
+
+.loginBox input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.loginBox input[type="text"] {
+    border: none;
+    border-bottom: 2px solid #262626;
+    outline: none;
+    height: 40px;
+    color: #262626;
+    background: transparent;
+    font-size: 16px;
+    padding-left: 40px;
+    box-sizing: border-box;
+}
+
+::placeholder {
+    color: rgba(0,0,0,.5);
+}
+
+.inputBox {
+    position: relative;
+}
+
+.inputBox span {
+    position: absolute;
+    top: 10px;
+    color: #226622;
+}
+
+.loginBox input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    font-size: 16px;
+    background: #ed292a;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.pro-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: calc(-100px/2);
+    left: calc(50% - 50px);
+}
+
+  /* .container {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -140,7 +231,7 @@
       top: calc(-100px/2);
       left: calc(50% - 50px);
   }
-
+ 
   #box-position {
       margin: 0;
       padding: 0,0,20px;
@@ -184,7 +275,7 @@
   .login-position input[type="submit"]:hover {
       background: #efed40;
       color: #262626;
-  }
+  } */
 
   /* .login-position a {
       color: #fff;
