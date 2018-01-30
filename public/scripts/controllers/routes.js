@@ -8,6 +8,7 @@ page('/user/:username', app.User.currentUserCheck, app.userView.init, app.User.p
 page('/subfora/:subforum_id', app.subforumView.init, app.Subforum.prototype.fetchThreads, app.Subforum.prototype.loadThreads, app.Subforum.prototype.render);
 page('/subfora/:subforum_id/threads/new', app.User.currentUserCheck, app.newThreadView.init);
 page('/subfora/:subforum_id/threads/:thread_id', app.threadView.init, app.Thread.prototype.fetchComments, app.Thread.prototype.loadComments, app.Thread.prototype.render);
+page('/error', app.User.currentUserCheck, app.errorView.init);
 page('/*', app.User.currentUserCheck, app.errorView.init);
 page('/*/*', app.User.currentUserCheck, app.errorView.init);
 page('/*/*/*', app.User.currentUserCheck, app.errorView.init);
