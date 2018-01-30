@@ -16,7 +16,7 @@
         let user = {
             username: e.target.usernameLogin.value,
         };
-        console.log(user);
+        // console.log(user);
         app.User.login(user);
     }
     
