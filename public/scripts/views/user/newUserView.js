@@ -4,8 +4,8 @@
     const newUserView = {};
 
     newUserView.init = function(ctx, next) {
-        $('.view').hide();
-        $('.newUserView').show();
+        $('.view').addClass('hidden').find('*').off();
+        $('.newUserView').removeClass('hidden');
         $('#newUserForm').on('submit', newUserView.submit);
         // next();
     }

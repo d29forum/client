@@ -2,13 +2,13 @@
 var app = app || {};
 
 //Local API
-// const __API_URL__ = 'http://localhost:3737';
+const __API_URL__ = 'http://localhost:3737';
 
 //Staging API
 //const __API_URL__ = 'https://d29forum-sv-staging.herokuapp.com';
 
 //Production API
-const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
+//const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
 
 (function(module) {
   const user = {};
@@ -26,6 +26,7 @@ const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
       method: 'POST',
       data: {username: this.username},
       success: results => {
+        console.log(results);
         localStorage.currentUserId = results[0].id;
         localStorage.currentUserName = this.username;
         window.location = '../'
@@ -61,14 +62,33 @@ const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
       });
   }
 
-  User.prototype.login = function(callback) {
+  User.login = function(user) {
+    console.log(user);
     $.ajax({
-      url: `${__API_URL__}/api/db/users/${this.username}/login`,
-      method: 'PUT',
-      data: {},
-      success: callback,
+      url: `${__API_URL__}/api/db/users/${user.username}`,
+      method: 'GET',
+      success:(results => {
+        console.log(results);
+        if(!results[0]) {
+          User.userIdNotFound(user.username);
+        }
+        else if (results[0].username == user.username){
+          localStorage.currentUserId = results[0].id;
+          localStorage.currentUserName = results[0].username;
+          window.location = '../';
+        }
+      })
       //error: app.errorView.init,
     });
+  }
+
+  User.userIdNotFound = function(usersname) {
+    $('.modal').toggleClass('is-visible');
+    $('#userNameEntered').text(user);
+    $('#modalCreateUserButton').on('click', ()=> {
+      let user = new app.User({username: usersname});
+      user.insert();
+    })
   }
   
   User.updateProfileTemplate = (ctx, next) => {
@@ -80,13 +100,25 @@ const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
     $('#editInterests').val(ctx.currentUser[0].interests);
   }
 
+// CALCULATE GRAVITAR HASH
+
+  User.prototype.calcGavitarHash = function (ctx) {
+    ctx = ctx.toLowerCase();
+    ctx = ctx.trim();
+    var hash = md5(ctx);
+    return(hash);
+  }
+
   User.prototype.update = function() {
+
+    var gravitarHash = User.prototype.calcGavitarHash( $('#editEmail').val())
+
     let user = new app.User({
         username: $('#editUsername').val(),
         email: $('#editEmail').val(),
         first_name: $('#editFirst_name').val(),
         last_name: $('#editLast_name').val(),
-        gravatar_hash: $('#editGravatar_hash').val(),
+        gravatar_hash: gravitarHash, 
         interests: $('#editInterests').val()
     });
 
@@ -119,6 +151,7 @@ const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
 
   //Checks if user is logged In
   User.currentUserCheck = function(ctx, next) {
+    console.log('currentuser check');
     if(currentUserId) {
       $('.notLoggedIn').addClass('hidden');
       $('#loggedInUser').attr('href', `/user/${currentUserName}`).text(currentUserName);

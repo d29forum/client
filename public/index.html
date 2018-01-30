@@ -12,7 +12,7 @@
 
     <script id="user-profile-template" type="text/x-handlebars-template">
             <p class="userName"><span class="first_name">{{first_name}}</span> <span class="last_name">{{last_name}}</span></p>
-            <img class="gravatar_hash" src="{{gravatar_hash}}">
+            <img class="gravatar_hash" src="https://www.gravatar.com/avatar/{{gravatar_hash}}">
             <p clas="role">{{role}}</p>
             <p class="userStats"><span class="created_on">Member Since {{created_on}}</span> | <span class="num_comments">{{num_comments}} Posts</span></p>
             <p class="username"><span class="userProfileSectionHeader">Username</span><br>{{username}}</p>
@@ -20,8 +20,41 @@
             <p class="interests"><span class="userProfileSectionHeader">Interests</span><br>{{interests}}</p>
     </script>
 
+    <script id="comment-template" type="text/x-handlebars-template">
+      <div data-comment-id="{{comment_id}}" class="comment-container {{username}}">
+        <div>
+          <p>{{username}}</p>
+          <p>Join Date: {{user_created_on}}</p>
+          <p>Number of posts: {{num_comments}}</p>
+          <img src="https://www.gravatar.com/avatar/{{gravatar_hash}}">
+        </div>
+        <div>
+          <p><span>posted on: {{comment_created_on}}</span><span class="editCommentButton hidden">edit</span></p>
+          <p class="comment-content">{{content}}</p>
+          <div class="editCommentView hidden">
+            <textarea class="editCommentTextArea">{{content}}</textarea>
+            <div class="saveCommentButton">Save</div>
+            <div class="deleteCommentButton">Delete</div>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script id="thread-template" type="text/x-handlebars-template">
+      <div data-thread-id="{{thread_id}}" class="thread">
+        <span class="thread-title">{{title}}</span>
+        <span class="username">{{thread_creator}}</span>
+        <span>{{view_count}}</span>
+        <span>{{comment_count}}</span>
+        <span>
+          <p class="username">{{last_commenter}}</p>
+          <p>{{last_comment_created_on}}</p>
+        </span>
+      </div>
+    </script>
   </head>
   <body> 
+      <svg display="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="768" height="800" viewBox="0 0 768 800"><defs><g id="icon-close"><path class="path1" d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z"></path></g></defs></svg>
       <header>
         <nav>
             <a href="/">home</a>
@@ -33,8 +66,18 @@
       </header>
 
       <main>
-        <section id="subforumView" class="view subforumView">
+        <section id="forumView" class="view forumView">
+          <header></header>
+          <div class="subforaContainer"></div>
+        </section>
 
+
+        <section id="subforumView" class="view subforumView">
+          <header>
+            <p class="subforum-title"></p>
+            <p class="newThreadButton">New Topic</p>
+          </header>
+          <div class="threadsContainer"></div>
         </section>
 
         <section id="editUserView" class="view user editUserView">
@@ -77,7 +120,17 @@
         </section>
 
         <section id="loginUserView" class="view user loginUserView">
+          <section id="userLogin" class="tab-content">
+            <h1>User Login</h1>
+            <form action="#" id="userLoginForm">
+                <fieldset>
+                    <label for="usernameLogin">UserName: </label>
+                    <input type="text" id="usernameLogin" name="usernameLogin" placeholder="ex. crazyCoder">
+                </fieldset>
 
+                <button type="submit">Login</button>
+            </form>
+          </section>
         </section>
 
         <section id="newUserView" class="view user newUserView">
@@ -102,27 +155,55 @@
         </section>
 
         <section id="newThreadView" class="view thread newThreadView">
-
+          <header>
+            <p>New Thread</p>
+          </header>
+          <input type="text" class="newThreadTitle" placeholder="Topic Title"></input>
+          <textarea class="newThreadContent"></textarea>
+          <button class="addThreadButton">Add Topic</button>
         </section>
 
         <section id="threadView" class="view thread threadView">
-
+          <header></header>
+          <div class="commentContainer"></div>
+          <div class="addCommentContainer">
+            <p>Contribute to the discussion!</p>
+            <textarea class="addCommentTextArea"></textarea>
+            <div class="addCommentButton">Add Comment</div>
+          </div>
         </section>
 
 
-        <section id="errorView" class="view errorView">
-            <section class="errorViewContainer">
-                <img src="images/404.jpg" alt="404 error">
-            </section>
+        <section id="errorView" class="view errorView errorViewContainer">
+            <img src="images/404.jpg" alt="404 error">
         </section>
       </main>
 
       <footer>
 
       </footer>
+      <div class="modal">
+        <div class="modal-overlay modal-toggle"></div>
+        <div class="modal-wrapper modal-transition">
+          <div class="modal-header">
+            <button class="modal-close modal-toggle"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
+            <h2 class="modal-heading">Username not found</h2>
+          </div>
+          
+          <div class="modal-body">
+            <div class="modal-content">
+              <p>If you would like to create an account for <span id="userNameEntered"></span>please click the create user button. Or you can click retry to enter a username again.</p>
+              <button id="modalCreateUserButton">Create User</button>
+              <button class="modal-toggle">Retry</button>
+            </div>
+          </div>
+        </div>
+       </div>
+
       <script src="vendor/scripts/jquery.js"></script>
       <script src="vendor/scripts/handlebars.js"></script>
       <script src="vendor/scripts/page.js"></script>
+      <script src="vendor/scripts/md5.js"></script>
       <script src="scripts/models/user.js"></script>
       <script src="scripts/models/comment.js"></script>
       <script src="scripts/models/thread.js"></script>
@@ -136,7 +217,9 @@
       <script src="scripts/views/comment/commentView.js"></script>
       <script src="scripts/views/comment/editCommentView.js"></script>
       <script src="scripts/views/subforum/subforumView.js"></script>
+      <script src="scripts/views/forum/forumView.js"></script>
       <script src="scripts/views/errorView.js"></script>
       <script src="scripts/controllers/routes.js"></script>
+      <script src="scripts/app.js"></script>
   </body>
-</html>
+</html>  
