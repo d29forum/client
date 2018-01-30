@@ -17,6 +17,7 @@ var app = app || {};
           if (localStorage.currentUserId) {
             let comment = new app.Comment({content: $('.addCommentTextArea').val(), creator: localStorage.currentUserId, thread_parent: ctx.params.thread_id, subforum_parent: ctx.params.subforum_id,});
             comment.insert(() => {
+              localStorage.insertedPost = 'insertedPost';
               $('.addCommentTextArea').val('');
               page.show(`/subfora/${ctx.params.subforum_id}/threads/${ctx.params.thread_id}`);
             });

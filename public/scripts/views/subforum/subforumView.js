@@ -7,7 +7,10 @@
         $('.view').addClass('hidden').find('*').off();
         $('.threadsContainer').empty();
         $('.subforumView').removeClass('hidden');
-        // next();
+        $('.newThreadButton').on('click', ()=> {
+          page.show(`/subfora/${ctx.params.subforum_id}/threads/new`);
+        });
+        next();
     }
     
     module.subforumView = subforumView;

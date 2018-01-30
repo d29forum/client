@@ -7,20 +7,18 @@ var app = app || {};
     for (let prop in obj) this[prop] = obj[prop];
   }
 
-  Thread.prototype.insert = function(ctx,next) {
+  Thread.prototype.insert = function(callback) {
     $.ajax({
-      url: `${__API_URL__}/api/db/thread`,
+      url: `${__API_URL__}/api/db/threads`,
       method: 'POST',
-      data: {title: this.title, creator: this.creator, subforum_parent: this.subforum_parent, last_comment: this.last_comment},
+      data: {title: this.title, creator: this.creator, subforum_parent: this.subforum_parent, content: this.content},
       success: results => {
-        ctx.results = results;
-        next();
-      }
+        page.show(`/subfora/${this.subforum_parent}/threads/${results[0].thread_id}`);
+      },
     });
   }
 
   Thread.prototype.fetchComments = function(ctx,next) {
-    console.log(ctx.params.thread_id);
     $.ajax({
       url: `${__API_URL__}/api/db/thread/${ctx.params.thread_id}`,
       method: 'GET',
@@ -38,6 +36,8 @@ var app = app || {};
 
   Thread.prototype.render = function(ctx,next) {
     let $threadView = $('.threadView');
+    $('.threadView header').append(`<span>${ctx.results[0].subforum_title}</span><span>${ctx.results[0].thread_title}</span>`).on('click', 'span:first-child', () => page.show(`/subfora/${ctx.params.subforum_id}`));
+    //$('.threadView header').append(`<span>${ctx.results[0].thread_title}</span>`);
     Thread.comments.sort((a,b) => a.comment_id - b.comment_id);
     Thread.comments.forEach(comment => $('.threadView .commentContainer').append(comment.toHtml()));
    
@@ -48,6 +48,11 @@ var app = app || {};
         });
       });
     }    
+
+    if (localStorage.insertedPost) {
+      delete localStorage.insertedPost;
+      window.scrollTo(0, document.body.scrollHeight);
+    }
   }
 
   Thread.prototype.toHtml = function() {
@@ -55,26 +60,20 @@ var app = app || {};
     return template(this);
   }
 
-  Thread.prototype.update = function(ctx,next) {
+  Thread.prototype.update = function(callback) {
     $.ajax({
       url: `${__API_URL__}/api/db/threads/${this.id}`,
       method: 'PUT',
       data: {title: this.title, subforum_parent: this.subforum_parent},
-      success: results => {
-        ctx.results = results;
-        next();
-      }
+      success: callback, 
     });
   }
 
-  Thread.prototype.delete = function(ctx,next) {
+  Thread.prototype.delete = function(callback) {
     $.ajax({
       url: `${__API_URL__}/api/db/thread/${this.id}`,
       method: 'DELETE',
-      success: results => {
-        ctx.results = results;
-        next();
-      }
+      success: callback,
     });
   }
 
