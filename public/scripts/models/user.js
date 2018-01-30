@@ -26,6 +26,7 @@ const __API_URL__ = 'http://localhost:3737';
       method: 'POST',
       data: {username: this.username},
       success: results => {
+        console.log(results);
         localStorage.currentUserId = results[0].id;
         localStorage.currentUserName = this.username;
         window.location = '../'
@@ -62,6 +63,7 @@ const __API_URL__ = 'http://localhost:3737';
   }
 
   User.login = function(user) {
+    console.log(user);
     $.ajax({
       url: `${__API_URL__}/api/db/users/${user.username}`,
       method: 'GET',
