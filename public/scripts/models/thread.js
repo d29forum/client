@@ -7,15 +7,15 @@ var app = app || {};
     for (let prop in obj) this[prop] = obj[prop];
   }
 
-  Thread.prototype.insert = function(ctx,next) {
+  Thread.prototype.insert = function(callback) {
     $.ajax({
-      url: `${__API_URL__}/api/db/thread`,
+      url: `${__API_URL__}/api/db/threads`,
       method: 'POST',
-      data: {title: this.title, creator: this.creator, subforum_parent: this.subforum_parent, last_comment: this.last_comment},
+      data: {title: this.title, creator: this.creator, subforum_parent: this.subforum_parent, content: this.content},
       success: results => {
-        ctx.results = results;
-        next();
-      }
+        console.log(results);
+        page.show(`/subfora/${this.subforum_parent}/threads/${results[0].thread_id}`);
+      },
     });
   }
 
@@ -55,26 +55,20 @@ var app = app || {};
     return template(this);
   }
 
-  Thread.prototype.update = function(ctx,next) {
+  Thread.prototype.update = function(callback) {
     $.ajax({
       url: `${__API_URL__}/api/db/threads/${this.id}`,
       method: 'PUT',
       data: {title: this.title, subforum_parent: this.subforum_parent},
-      success: results => {
-        ctx.results = results;
-        next();
-      }
+      success: callback, 
     });
   }
 
-  Thread.prototype.delete = function(ctx,next) {
+  Thread.prototype.delete = function(callback) {
     $.ajax({
       url: `${__API_URL__}/api/db/thread/${this.id}`,
       method: 'DELETE',
-      success: results => {
-        ctx.results = results;
-        next();
-      }
+      success: callback,
     });
   }
 
