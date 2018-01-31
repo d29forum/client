@@ -76,11 +76,13 @@ const __API_URL__ = 'http://localhost:3737';
         (err === 'User does not exist!') ?
           User.userIdNotFound(user.username) :
           errorView.init(results);
+          console.log(err);
       }
     });
   }
 
   User.userIdNotFound = function(usersname) {
+    console.log(username);
     $('.modal').toggleClass('is-visible');
     $('#userNameEntered').text(user);
     $('#modalCreateUserButton').on('click', ()=> {
