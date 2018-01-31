@@ -63,12 +63,12 @@
     </script>
 
     <script id="comment-template" type="text/x-handlebars-template">
-      <div data-comment-id="{{comment_id}}" class="comment-container {{username}}">
+      <div data-comment-id="{{comment_id}}" id="comment-{{comment_id}}" class="comment-container {{username}}">
         <div>
-          <p>{{username}}</p>
+          <a href="/user/{{username}}">{{username}}</p>
           <p>Join Date: {{user_created_on}}</p>
           <p>Number of posts: {{num_comments}}</p>
-          <img src="https://www.gravatar.com/avatar/{{gravatar_hash}}">
+          <a href="/user/{{username}}"><img src="https://www.gravatar.com/avatar/{{gravatar_hash}}"></a>
         </div>
         <div>
           <p><span>posted on: {{comment_created_on}}</span><span class="editCommentButton hidden">edit</span></p>
@@ -85,12 +85,12 @@
     <script id="thread-template" type="text/x-handlebars-template">
       <div data-thread-id="{{thread_id}}" class="thread">
         <span class="thread-title">{{title}}</span>
-        <span class="username">{{thread_creator}}</span>
+        <a href="/user/{{thread_creator}}" class="username">{{thread_creator}}</a>
         <span>{{view_count}}</span>
         <span>{{comment_count}}</span>
         <span>
-          <p class="username">{{last_commenter}}</p>
-          <p>{{last_comment_created_on}}</p>
+          <a href="/user/{{last_commenter}}" class="username">{{last_commenter}}</a>
+          <a href="/subfora/{{subforum_id}}/threads/{{thread_id}}#comment-{{comment_id}}">{{last_comment_created_on}}</p>
         </span>
       </div>
     </script>
@@ -312,6 +312,7 @@
       <script src="vendor/scripts/handlebars.js"></script>
       <script src="vendor/scripts/page.js"></script>
       <script src="vendor/scripts/md5.js"></script>
+      <script src="scripts/helpers.js"></script>
       <script src="scripts/models/user.js"></script>
       <script src="scripts/models/comment.js"></script>
       <script src="scripts/models/thread.js"></script>
