@@ -1,6 +1,6 @@
-* {
+/* * {
   outline: rgb(177, 177, 177) solid 0.5px;
-}
+} */
 
 body {
   /* background-color: rgb(255, 249, 231); */
@@ -9,10 +9,6 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #777;
 }
-
-/* .body-content {
-
-} */
 
 a {
   color: inherit;
