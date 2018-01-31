@@ -41,10 +41,13 @@ section {
   background-color: #fff;
 }
 
+.bread-crumbs {
+  margin: 50px auto;
+}
+
 .bread-crumbs span {
   color: rgb(255, 216, 62);
   font-size: 1.5em;
-  
 }
 
 #login-background {

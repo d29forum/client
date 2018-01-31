@@ -282,3 +282,13 @@
       font-size: 14px;
       font-weight: bold;
   } */
+
+.newThreadButton {
+  width: 125px;
+  height: 30px;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: rgb(208,107,0);
+  color: rgb(255, 216, 62);
+  font-family: 'Saira', sans-serif;
+}
