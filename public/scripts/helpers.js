@@ -13,7 +13,7 @@ var app = app || {};
     var dateString = timestamp.split('-');
     timestamp = [dateString[1], dateString[2], dateString[0]];
     var monthIndex = monthNum.indexOf(timestamp[0]);
-    return `${months[monthIndex]}-${timestamp[1]}-${timestamp[2]}`;
+    return `${months[monthIndex]} ${timestamp[1]}, ${timestamp[2]}`;
   } 
 
   module.Helper = Helper;
