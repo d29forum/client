@@ -4,7 +4,7 @@
     const userView = {};
 
     userView.init = function(ctx, next) {
-        $('.view').addClass('hidden');
+        $('.view').addClass('hidden').find('*').off();
         $('.userView').removeClass('hidden');
         next();
     }
