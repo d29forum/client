@@ -36,9 +36,9 @@ var app = app || {};
 
   Thread.prototype.render = function(ctx,next) {
     let $threadView = $('.threadView');
+    $('.threadView header').empty();
     $('.threadView header').append(`<span>${ctx.results[0].subforum_title}</span><span>${ctx.results[0].thread_title}</span>`).on('click', 'span:first-child', () => page.show(`/subfora/${ctx.params.subforum_id}`));
-    //$('.threadView header').append(`<span>${ctx.results[0].thread_title}</span>`);
-    Thread.comments.sort((a,b) => a.comment_id - b.comment_id);
+    Thread.comments.sort((a,b) => a.comment_id - b.comment_id)
     Thread.comments.forEach(comment => $('.threadView .commentContainer').append(comment.toHtml()));
    
     if (localStorage.currentUserId) {
@@ -49,8 +49,8 @@ var app = app || {};
       });
     }    
 
-    if (localStorage.insertedPost) {
-      delete localStorage.insertedPost;
+    if (localStorage.addedPost || $('.addCommentTextArea').val()) {
+      localStorage.addedPost = false;
       window.scrollTo(0, document.body.scrollHeight);
     }
   }

@@ -26,13 +26,26 @@ const __API_URL__ = 'http://localhost:3737';
       method: 'POST',
       data: {username: this.username},
       success: results => {
-        console.log(results);
-        localStorage.currentUserId = results[0].id;
-        localStorage.currentUserName = this.username;
-        window.location = '../'
+        // console.log(results);
+        if (results[0].username == user.username){
+          localStorage.currentUserId = results[0].id;
+          localStorage.currentUserName = this.username;
+          page.show('../');
+        }
+      },
+      error: err => {
+        // console.log(err.responseText);
+        (err.responseText === '23505') ?
+        User.usernameAlreadyExists(user.username) :
+        page.show('/error');
       }
     })
   };
+
+  User.usernameAlreadyExists = function(usersname) {
+    $('#modal2').toggleClass('is-visible');
+    $('#userNameEntered').text(username);
+  }
 
   // handlebars template for user profile
   User.prototype.toHtml = function() {
@@ -63,27 +76,29 @@ const __API_URL__ = 'http://localhost:3737';
   }
 
   User.login = function(user) {
-    console.log(user);
+    // console.log(user);
     $.ajax({
       url: `${__API_URL__}/api/db/users/${user.username}`,
       method: 'GET',
-      success:(results => {
-        console.log(results);
-        if(!results[0]) {
-          User.userIdNotFound(user.username);
-        }
-        else if (results[0].username == user.username){
-          localStorage.currentUserId = results[0].id;
-          localStorage.currentUserName = results[0].username;
-          window.location = '../';
-        }
-      })
-      //error: app.errorView.init,
+      success: results => {
+          var setLS = callback => {
+            localStorage.currentUserId = results[0].id;
+            localStorage.currentUserName = results[0].username;
+            callback();
+          };
+          setLS(() => localStorage.deferredRoute ? page.show(localStorage.deferredRoute) : page.show('../'));
+      },
+      error: err => {
+        console.log(err.responseText);
+        (err.responseText === 'User does not exist') ?
+        User.usernameAlreadyExists(user.username) :
+        errorView.init(err.responseText);
+      }
     });
   }
 
   User.userIdNotFound = function(usersname) {
-    $('.modal').toggleClass('is-visible');
+    $('#modal1').toggleClass('is-visible');
     $('#userNameEntered').text(user);
     $('#modalCreateUserButton').on('click', ()=> {
       let user = new app.User({username: usersname});
@@ -142,7 +157,7 @@ const __API_URL__ = 'http://localhost:3737';
         method: 'DELETE',
         success: () => {
           localStorage.clear();
-          window.location = '/';
+          page.show('/');
         }
         //error: app.errorView.init,
       })
@@ -151,14 +166,15 @@ const __API_URL__ = 'http://localhost:3737';
 
   //Checks if user is logged In
   User.currentUserCheck = function(ctx, next) {
-    console.log('currentuser check');
-    if(currentUserId) {
+    if(localStorage.currentUserId) {
       $('.notLoggedIn').addClass('hidden');
-      $('#loggedInUser').attr('href', `/user/${currentUserName}`).text(currentUserName);
+      $('#loggedInUser').attr('href', `/user/${localStorage.currentUserName}`).text(localStorage.currentUserName);
       $('.loggedIn').removeClass('hidden');
       $('#logoutButton').on('click', () => {
+        currentUserId = null;
+        currentUserName = null;
         localStorage.clear();
-        window.location = '/'
+        page.show('/');
       });
     }
     else {

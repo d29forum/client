@@ -37,9 +37,13 @@ var app = app || {};
   }
 
   Subforum.prototype.render = function(ctx,next) {
-    Subforum.threads.sort((a,b) => b.last_comment - a.last_comment);
-
-    Subforum.threads.forEach(thread => $('.threadsContainer').append(thread.toHtml()));
+    $('.subforumView header .subforum-title').empty();
+    $('.subforumView header .subforum-title').text(ctx.results[0].subforum_title);
+    var sfsort = callback => {
+      Subforum.threads.sort((a,b) => b.last_comment - a.last_comment);
+      callback();
+    }
+    sfsort(() => Subforum.threads.forEach(thread => $('.threadsContainer').append(thread.toHtml())));
 
     $('.thread').on('click','.thread-title', function() {
       page.show(`/subfora/${ctx.params.subforum_id}/threads/${$(this).parent().data('thread-id')}`)
