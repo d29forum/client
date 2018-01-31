@@ -19,6 +19,10 @@ var app = app || {};
   Forum.renderCurrent = (ctx, next) => {
       $('#subforaContainer').empty();
       Forum.all.sort((a,b) => a.subforaid - b.subforaid);
+      Forum.all.map(subforum => {
+        // console.log(subforum.created_on);
+        subforum.created_on = app.Helper.parseDate(subforum.created_on);
+      })
       //forumsort(() => {
         Forum.all.map(forum => $('#subforaContainer').append(forum.toForumTemplateHtml()))
       //});
