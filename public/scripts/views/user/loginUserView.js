@@ -4,11 +4,10 @@
     const loginUserView = {};
 
     loginUserView.init = function(ctx, next) {
-        if (localStorage.waitingComment) {page.show(localStorage.waitingThread);}
+        if (localStorage.waitingComment) page.show(localStorage.waitingThread)
         $('.view').addClass('hidden').find('*').off();
         $('.loginUserView').removeClass('hidden');
         $('#userLoginForm').on('submit', loginUserView.submit);
-        // next();
     }
 
     loginUserView.submit = e => {

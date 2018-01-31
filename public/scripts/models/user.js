@@ -26,6 +26,7 @@ const __API_URL__ = 'http://localhost:3737';
       method: 'POST',
       data: {username: this.username},
       success: results => {
+<<<<<<< HEAD
         // console.log(results);
         if (results[0].username == user.username){
           localStorage.currentUserId = results[0].id;
@@ -38,6 +39,12 @@ const __API_URL__ = 'http://localhost:3737';
         (err.responseText === '23505') ?
         User.usernameAlreadyExists(user.username) :
         page.show('/error');
+=======
+        console.log(results);
+        localStorage.currentUserId = results[0].id;
+        localStorage.currentUserName = this.username;
+        page.show('../');
+>>>>>>> 3f30c45f9b7c5d671312daa5aa85c0936f182ffe
       }
     })
   };
@@ -80,18 +87,25 @@ const __API_URL__ = 'http://localhost:3737';
     $.ajax({
       url: `${__API_URL__}/api/db/users/${user.username}`,
       method: 'GET',
+<<<<<<< HEAD
       success:(results => {
         // console.log(results);
         if(!results[0]) {
           User.userIdNotFound(user.username);
         }
         else if (results[0].username == user.username){
+=======
+      success: results => {
+>>>>>>> 3f30c45f9b7c5d671312daa5aa85c0936f182ffe
           localStorage.currentUserId = results[0].id;
-          localStorage.currentUserName = results[0].username;
-          window.location = '../';
-        }
-      })
-      //error: app.errorView.init,
+          var setLS = callback => {localStorage.currentUserName = results[0].username; callback();};
+          setLS(() => localStorage.deferredRoute ? page.show(localStorage.deferredRoute) : page.show('../'));
+      },
+      error: err => {
+        (err === 'User does not exist!') ?
+          User.userIdNotFound(user.username) :
+          errorView.init(results);
+      }
     });
   }
 
@@ -155,7 +169,7 @@ const __API_URL__ = 'http://localhost:3737';
         method: 'DELETE',
         success: () => {
           localStorage.clear();
-          window.location = '/';
+          page.show('/');
         }
         //error: app.errorView.init,
       })
@@ -170,8 +184,10 @@ const __API_URL__ = 'http://localhost:3737';
       $('#loggedInUser').attr('href', `/user/${currentUserName}`).text(currentUserName);
       $('.loggedIn').removeClass('hidden');
       $('#logoutButton').on('click', () => {
+        currentUserId = null;
+        currentUserName = null;
         localStorage.clear();
-        window.location = '/'
+        page.show('/');
       });
     }
     else {
