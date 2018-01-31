@@ -73,7 +73,7 @@
         </div>
         <div>
           <p class="comment-posted-on"><span>posted on: {{comment_created_on}}</span><span class="editCommentButton hidden">edit</span></p>
-          <p class="comment-content">{{content}}</p>
+          <p class="comment-content"><pre>{{content}}</pre></p>
           <div class="editCommentView hidden">
             <textarea class="editCommentTextArea">{{content}}</textarea>
             <div class="saveCommentButton">Save</div>
@@ -140,7 +140,6 @@
 
 
         <section id="subforumView" class="view subforumView">
-          <h3 class="bread-crumbs">D29 FORUM LIST <span>></span> SUBFORUM VIEW <span>></span></h3>
           <header>
 
             <span class="subforum-title"></span>
@@ -247,16 +246,13 @@
         </section>
 
         <section id="newThreadView" class="view thread newThreadView">
-          <header>
-            <p>New Thread</p>
-          </header>
+          <header></header>
           <input type="text" class="newThreadTitle" placeholder="Topic Title"></input>
           <textarea class="newThreadContent"></textarea>
           <button class="addThreadButton">Add Topic</button>
         </section>
 
         <section id="threadView" class="view thread threadView">
-            <h3 class="bread-crumbs">D29 FORUM LIST <span>></span> SUBFORUM VIEW <span>></span> THREAD VIEW <span>></span></h3>
           <header></header>
           <div class="commentContainer"></div>
           <div class="addCommentContainer">
