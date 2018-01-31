@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="styles/layout/sub-forum-view.css">
     <link rel="stylesheet" href="styles/layout/thread-view.css">
     <link rel="stylesheet" href="styles/modules/modules.css">
+    <link rel="stylesheet" href="styles/modules/comments.css">
     <link rel="stylesheet" href="styles/state/state.css">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <script src="https://use.fontawesome.com/9fa5931d9f.js"></script>
@@ -65,13 +66,13 @@
     <script id="comment-template" type="text/x-handlebars-template">
       <div data-comment-id="{{comment_id}}" id="comment-{{comment_id}}" class="comment-container {{username}}">
         <div>
-          <a href="/user/{{username}}">{{username}}</p>
-          <p>Join Date: {{user_created_on}}</p>
-          <p>Number of posts: {{num_comments}}</p>
+          <a href="/user/{{username}}">{{username}}</a>
           <a href="/user/{{username}}"><img src="https://www.gravatar.com/avatar/{{gravatar_hash}}"></a>
+          <p>Joined: {{user_created_on}}</p>
+          <p>Posts: {{num_comments}}</p>
         </div>
         <div>
-          <p><span>posted on: {{comment_created_on}}</span><span class="editCommentButton hidden">edit</span></p>
+          <p class="comment-posted-on"><span>posted on: {{comment_created_on}}</span><span class="editCommentButton hidden">edit</span></p>
           <p class="comment-content">{{content}}</p>
           <div class="editCommentView hidden">
             <textarea class="editCommentTextArea">{{content}}</textarea>
@@ -84,7 +85,7 @@
 
     <script id="thread-template" type="text/x-handlebars-template">
       <div data-thread-id="{{thread_id}}" class="thread">
-        <span class="thread-title">{{title}}</span>
+        <a href="/subfora/{{subforum_id}}/threads/{{thread_id}}" class="thread-title">{{title}}</a>
         <a href="/user/{{thread_creator}}" class="username">{{thread_creator}}</a>
         <span>{{view_count}}</span>
         <span>{{comment_count}}</span>
@@ -265,7 +266,7 @@
           </div>
         </section>
 
-        <section id="errorView" class="view errorView errorViewContainer">
+        <section id="errorView" class="view errorView errorViewContainer hidden">
             <img src="images/404.jpg" alt="404 error">
         </section>
       </main>
