@@ -37,8 +37,8 @@ var app = app || {};
   }
 
   Subforum.prototype.render = function(ctx,next) {
-    $('.subforumView header').empty();
-    $('.subforumView header').prepend(`<span>${ctx.results[0].subforum_title}</span>`);
+    $('.subforumView header .subforum-title').empty();
+    $('.subforumView header .subforum-title').text(ctx.results[0].subforum_title);
     var sfsort = callback => {
       Subforum.threads.sort((a,b) => b.last_comment - a.last_comment);
       callback();

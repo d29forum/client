@@ -17,9 +17,11 @@ var app = app || {};
 
   // 3rd - maps user from constructor to tamplate and appends it to html
   Forum.renderCurrent = (ctx, next) => {
-      // console.log('render');
       $('#subforaContainer').empty();
-      Forum.all.map(forum => $('#subforaContainer').append(forum.toForumTemplateHtml()));
+      Forum.all.sort((a,b) => a.subforaid - b.subforaid);
+      //forumsort(() => {
+        Forum.all.map(forum => $('#subforaContainer').append(forum.toForumTemplateHtml()))
+      //});
       // $('#editProfileButton').attr('href', `/user/${ctx.params.username}/edit`)
       // next();
   }

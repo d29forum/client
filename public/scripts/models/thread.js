@@ -49,7 +49,7 @@ var app = app || {};
       });
     }    
 
-    if (localStorage.insertedPost) {
+    if (localStorage.insertedPost || $('.addCommentTextArea').val()) {
       delete localStorage.insertedPost;
       window.scrollTo(0, document.body.scrollHeight);
     }
