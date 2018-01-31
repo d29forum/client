@@ -88,10 +88,16 @@ const __API_URL__ = 'http://localhost:3737';
           };
           setLS(() => localStorage.deferredRoute ? page.show(localStorage.deferredRoute) : page.show('../'));
       },
+      // error: err => {
+      //   (err === 'User does not exist!') ?
+      //     User.userIdNotFound(user.username) :
+      //     errorView.init(results);
+      // }
       error: err => {
-        (err === 'User does not exist!') ?
-          User.userIdNotFound(user.username) :
-          errorView.init(results);
+        console.log(err.responseText);
+        // (err.responseText === '23505') ?
+        // User.usernameAlreadyExists(user.username) :
+        // page.show('/error');
       }
     });
   }
