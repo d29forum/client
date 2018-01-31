@@ -259,11 +259,11 @@
       <footer>
 
       </footer>
-      <div class="modal">
-        <div class="modal-overlay modal-toggle"></div>
+      <div id="modal1" class="modal">
+        <div class="modal-overlay modal-toggle1"></div>
         <div class="modal-wrapper modal-transition">
           <div class="modal-header">
-            <button class="modal-close modal-toggle"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
+            <button class="modal-close modal-toggle1"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
             <h2 class="modal-heading">Username not found</h2>
           </div>
           
@@ -271,7 +271,24 @@
             <div class="modal-content">
               <p>If you would like to create an account for <span id="userNameEntered"></span>please click the create user button. Or you can click retry to enter a username again.</p>
               <button id="modalCreateUserButton">Create User</button>
-              <button class="modal-toggle">Retry</button>
+              <button class="modal-toggle1">Retry</button>
+            </div>
+          </div>
+        </div>
+       </div>
+
+       <div id="modal2" class="modal">
+        <div class="modal-overlay modal-toggle2"></div>
+        <div class="modal-wrapper modal-transition">
+          <div class="modal-header">
+            <button class="modal-close modal-toggle2"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
+            <h2 class="modal-heading">Username already Exists</h2>
+          </div>
+          
+          <div class="modal-body">
+            <div class="modal-content">
+              <p>Username <span id="userNameEntered"></span>is already taken. Please try again.</p>
+              <button class="modal-toggle2">Retry</button>
             </div>
           </div>
         </div>

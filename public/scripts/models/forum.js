@@ -11,13 +11,13 @@ var app = app || {};
   // handlebars template for user profile
   Forum.prototype.toForumTemplateHtml = function() {
     var template = Handlebars.compile($('#forum-template').text());
-    console.log(template(this));
+    // console.log(template(this));
     return template(this);
   }
 
   // 3rd - maps user from constructor to tamplate and appends it to html
   Forum.renderCurrent = (ctx, next) => {
-      console.log('render');
+      // console.log('render');
       $('#subforaContainer').empty();
       Forum.all.map(forum => $('#subforaContainer').append(forum.toForumTemplateHtml()));
       // $('#editProfileButton').attr('href', `/user/${ctx.params.username}/edit`)
@@ -27,7 +27,7 @@ var app = app || {};
   // 2ND - takes the individual result and maps it to  the new User constructor
   Forum.loadCurrent = (ctx, next) => {
       Forum.all = ctx.results.map(forumObj => new Forum(forumObj));
-      console.log(Forum.all);
+      // console.log(Forum.all);
       next();
   }
 
@@ -36,7 +36,7 @@ var app = app || {};
       url: `${__API_URL__}/api/db/forum`,
       method: 'GET',
       success: results => {
-        console.log(results);
+        // console.log(results);
         ctx.results = results;
         next();
       }
