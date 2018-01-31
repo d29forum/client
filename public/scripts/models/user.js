@@ -68,8 +68,11 @@ const __API_URL__ = 'http://localhost:3737';
       url: `${__API_URL__}/api/db/users/${user.username}`,
       method: 'GET',
       success: results => {
-          localStorage.currentUserId = results[0].id;
-          var setLS = callback => {localStorage.currentUserName = results[0].username; callback();};
+          var setLS = callback => {
+            localStorage.currentUserId = results[0].id;
+            localStorage.currentUserName = results[0].username;
+            callback();
+          };
           setLS(() => localStorage.deferredRoute ? page.show(localStorage.deferredRoute) : page.show('../'));
       },
       error: err => {
@@ -150,9 +153,9 @@ const __API_URL__ = 'http://localhost:3737';
   //Checks if user is logged In
   User.currentUserCheck = function(ctx, next) {
     console.log('currentuser check');
-    if(currentUserId) {
+    if(localStorage.currentUserId) {
       $('.notLoggedIn').addClass('hidden');
-      $('#loggedInUser').attr('href', `/user/${currentUserName}`).text(currentUserName);
+      $('#loggedInUser').attr('href', `/user/${localStorage.currentUserName}`).text(localStorage.currentUserName);
       $('.loggedIn').removeClass('hidden');
       $('#logoutButton').on('click', () => {
         currentUserId = null;
