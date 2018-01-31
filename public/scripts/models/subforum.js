@@ -38,7 +38,10 @@ var app = app || {};
 
   Subforum.prototype.render = function(ctx,next) {
     $('.subforumView header .subforum-title').empty();
-    $('.subforumView header .subforum-title').append(`<a href="/">D29Forum</a> > <span>${ctx.results[0].subforum_title}</span>`);
+    $('.subforumView header .subforum-title').append(`<h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span>${ctx.results[0].subforum_title.toUpperCase()}</h3>`);
+    $('.newThreadButton').on('click', ()=> {
+      page.show(`/subfora/${ctx.results[0].subforum_title}/threads/new`);
+    });
     var sfsort = callback => {
       Subforum.threads.sort((a,b) => b.last_comment - a.last_comment);
       callback();

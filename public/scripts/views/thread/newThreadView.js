@@ -11,6 +11,8 @@
           $('.newThreadTitle').empty();
           $('.newThreadContent').empty();
         }
+        $('.newThreadView header').empty();
+        $('.newThreadView header').append(`<h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span>${ctx.params.subforum_title.toUpperCase()}<span> > </span>NEW TOPIC</h3>`);
         $('.newThreadView').removeClass('hidden');
 
         $('.addThreadButton').on('click', () => {

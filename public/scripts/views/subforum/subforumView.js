@@ -7,9 +7,9 @@
         $('.view').addClass('hidden').find('*').off();
         $('.threadsContainer').empty();
         $('.subforumView').removeClass('hidden');
-        $('.newThreadButton').on('click', ()=> {
-          page.show(`/subfora/${ctx.params.subforum_id}/threads/new`);
-        });
+//        $('.newThreadButton').on('click', ()=> {
+//          page.show(`/subfora/${ctx.params.subforum_id}/threads/new`);
+//        });
         next();
     }
     
