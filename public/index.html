@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="styles/base/base.css">
     <link rel="stylesheet" href="styles/layout/layout.css">
     <link rel="stylesheet" href="styles/layout/forum-view.css">
+    <link rel="stylesheet" href="styles/layout/sub-forum-view.css">
+    <link rel="stylesheet" href="styles/layout/thread-view.css">
     <link rel="stylesheet" href="styles/modules/modules.css">
     <link rel="stylesheet" href="styles/state/state.css">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -23,8 +25,8 @@
               <span class="subforaTitle">{{title}}</span></br>
             </a>
           </div>
-          <p class="commentCount">{{comment_count}}</p>
           <p class="threadCount">{{thread_count}}</p>
+          <p class="commentCount">{{comment_count}}</p>
           <p class="lastComment">
               <div class="createdOn">{{created_on}}</div>
               <div class="username">by <a href="/user/{{username}}">{{username}}</a> 
@@ -61,12 +63,12 @@
     </script>
 
     <script id="comment-template" type="text/x-handlebars-template">
-      <div data-comment-id="{{comment_id}}" class="comment-container {{username}}">
+      <div data-comment-id="{{comment_id}}" id="comment-{{comment_id}}" class="comment-container {{username}}">
         <div>
-          <p>{{username}}</p>
+          <a href="/user/{{username}}">{{username}}</p>
           <p>Join Date: {{user_created_on}}</p>
           <p>Number of posts: {{num_comments}}</p>
-          <img src="https://www.gravatar.com/avatar/{{gravatar_hash}}">
+          <a href="/user/{{username}}"><img src="https://www.gravatar.com/avatar/{{gravatar_hash}}"></a>
         </div>
         <div>
           <p><span>posted on: {{comment_created_on}}</span><span class="editCommentButton hidden">edit</span></p>
@@ -83,12 +85,12 @@
     <script id="thread-template" type="text/x-handlebars-template">
       <div data-thread-id="{{thread_id}}" class="thread">
         <span class="thread-title">{{title}}</span>
-        <span class="username">{{thread_creator}}</span>
+        <a href="/user/{{thread_creator}}" class="username">{{thread_creator}}</a>
         <span>{{view_count}}</span>
         <span>{{comment_count}}</span>
         <span>
-          <p class="username">{{last_commenter}}</p>
-          <p>{{last_comment_created_on}}</p>
+          <a href="/user/{{last_commenter}}" class="username">{{last_commenter}}</a>
+          <a href="/subfora/{{subforum_id}}/threads/{{thread_id}}#comment-{{comment_id}}">{{last_comment_created_on}}</p>
         </span>
       </div>
     </script>
@@ -97,7 +99,7 @@
     <div class="body-content"></div> 
       <svg display="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="768" height="800" viewBox="0 0 768 800"><defs><g id="icon-close"><path class="path1" d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z"></path></g></defs></svg>
       <header>
-          <img src="images/obama.jpg" alt="background login pic" id="login-background">
+          <!-- <img src="images/obama.jpg" alt="background login pic" id="login-background"> -->
         <nav>
             <a href="/">home</a>
             <a id="login" class="notLoggedIn" href="/login">login</a>
@@ -139,8 +141,20 @@
         <section id="subforumView" class="view subforumView">
           <h3 class="bread-crumbs">D29 FORUM LIST <span>></span> SUBFORUM VIEW <span>></span></h3>
           <header>
-            <p class="newThreadButton">New Topic</p>
+
+            <span class="subforum-title"></span>
+            <span class="newThreadButton">New Topic</span>
+
           </header>
+          <div class="forum-view-headers">
+              <ul>
+                <li class="sub-forum-view-li1"><span> TOPIC</span></li>
+                <li class="sub-forum-view-li2"><span> CREATOR</span></li>
+                <li class="sub-forum-view-li3"><span> VIEWS</span></li>
+                <li class="sub-forum-view-li4"><span> COMMENTS</span></li>
+                <li class="sub-forum-view-li4"><span> LAST POST</span></li>
+            </ul>
+            </div>
           <div class="threadsContainer"></div>
         </section>
 
@@ -241,6 +255,7 @@
         </section>
 
         <section id="threadView" class="view thread threadView">
+            <h3 class="bread-crumbs">D29 FORUM LIST <span>></span> SUBFORUM VIEW <span>></span> THREAD VIEW <span>></span></h3>
           <header></header>
           <div class="commentContainer"></div>
           <div class="addCommentContainer">
@@ -250,7 +265,6 @@
           </div>
         </section>
 
-
         <section id="errorView" class="view errorView errorViewContainer">
             <img src="images/404.jpg" alt="404 error">
         </section>
@@ -259,11 +273,11 @@
       <footer>
 
       </footer>
-      <div class="modal">
-        <div class="modal-overlay modal-toggle"></div>
+      <div id="modal1" class="modal">
+        <div class="modal-overlay modal-toggle1"></div>
         <div class="modal-wrapper modal-transition">
           <div class="modal-header">
-            <button class="modal-close modal-toggle"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
+            <button class="modal-close modal-toggle1"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
             <h2 class="modal-heading">Username not found</h2>
           </div>
           
@@ -271,7 +285,24 @@
             <div class="modal-content">
               <p>If you would like to create an account for <span id="userNameEntered"></span>please click the create user button. Or you can click retry to enter a username again.</p>
               <button id="modalCreateUserButton">Create User</button>
-              <button class="modal-toggle">Retry</button>
+              <button class="modal-toggle1">Retry</button>
+            </div>
+          </div>
+        </div>
+       </div>
+
+       <div id="modal2" class="modal">
+        <div class="modal-overlay modal-toggle2"></div>
+        <div class="modal-wrapper modal-transition">
+          <div class="modal-header">
+            <button class="modal-close modal-toggle2"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
+            <h2 class="modal-heading">Username already Exists</h2>
+          </div>
+          
+          <div class="modal-body">
+            <div class="modal-content">
+              <p>Username <span id="userNameEntered"></span>is already taken. Please try again.</p>
+              <button class="modal-toggle2">Retry</button>
             </div>
           </div>
         </div>
@@ -281,6 +312,7 @@
       <script src="vendor/scripts/handlebars.js"></script>
       <script src="vendor/scripts/page.js"></script>
       <script src="vendor/scripts/md5.js"></script>
+      <script src="scripts/helpers.js"></script>
       <script src="scripts/models/user.js"></script>
       <script src="scripts/models/comment.js"></script>
       <script src="scripts/models/thread.js"></script>
