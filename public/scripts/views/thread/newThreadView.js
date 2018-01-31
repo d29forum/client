@@ -12,7 +12,7 @@
           $('.newThreadContent').empty();
         }
         $('.newThreadView header').empty();
-        $('.newThreadView header').append(`<h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span>${ctx.params.subforum_title.toUpperCase()}<span> > </span>NEW TOPIC</h3>`);
+        $('.newThreadView header').append(`<h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span><a href="${window.location}">${ctx.params.subforum_title.toUpperCase()}</a><span> > </span><a href="${window.location}">NEW TOPIC</a></h3>`);
         $('.newThreadView').removeClass('hidden');
 
         $('.addThreadButton').on('click', () => {

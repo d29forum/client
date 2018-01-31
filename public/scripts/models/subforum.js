@@ -38,7 +38,7 @@ var app = app || {};
 
   Subforum.prototype.render = function(ctx,next) {
     $('.subforumView header .subforum-title').empty();
-    $('.subforumView header .subforum-title').append(`<h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span>${ctx.results[0].subforum_title.toUpperCase()}</h3>`);
+    $('.subforumView header .subforum-title').append(`<h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span><a href="${window.location}">${ctx.results[0].subforum_title.toUpperCase()}</a></h3>`);
     $('.newThreadButton').on('click', ()=> {
       page.show(`/subfora/${ctx.results[0].subforum_title}/threads/new`);
     });
