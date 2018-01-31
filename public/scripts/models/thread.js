@@ -39,8 +39,11 @@ var app = app || {};
     $('.threadView header').empty();
     $('.threadView header').append(`<h3 class="breadcrumbs"><a href="/">D29 FORUM</a><span> > </span><a href="/subfora/${ctx.params.subforum_id}">${ctx.results[0].subforum_title.toUpperCase()}</a><span> > </span>${ctx.results[0].thread_title.toUpperCase()}</h3>`);
     Thread.comments.sort((a,b) => a.comment_id - b.comment_id)
-    Thread.comments.forEach(comment => comment.user_created_on = app.Helper.parseDate(comment.user_created_on));
-    Thread.comments.forEach(comment => $('.threadView .commentContainer').append(comment.toHtml()));
+    Thread.comments.forEach(comment => {
+      comment.user_created_on = app.Helper.parseDate(comment.user_created_on)
+      comment.comment_created_on = `${app.Helper.parseDate(comment.comment_created_on)} ${app.Helper.parseTime(comment.comment_created_on)}`;
+      $('.threadView .commentContainer').append(comment.toHtml());
+    });
    
     if (localStorage.currentUserId) {
       $(`.${localStorage.currentUserName} .editCommentButton`).removeClass('hidden').on('click', function() {
