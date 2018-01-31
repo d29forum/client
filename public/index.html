@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <title>D29 FORUM</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Saira:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="vendor/styles/reset.css">
     <link rel="stylesheet" href="styles/base/base.css">
     <link rel="stylesheet" href="styles/layout/layout.css">
+    <link rel="stylesheet" href="styles/layout/forum-view.css">
     <link rel="stylesheet" href="styles/modules/modules.css">
     <link rel="stylesheet" href="styles/state/state.css">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -16,8 +19,8 @@
       <section class="forumTableRow">
           <div class="subforumInfo">
             <a href="/subfora/{{subforaid}}">
-              <span class="subforaTitle">{{title}}</span></br>
               <span class="subforaSubtitle">{{subtitle}}</span>
+              <span class="subforaTitle">{{title}}</span></br>
             </a>
           </div>
           <p class="commentCount">{{comment_count}}</p>
@@ -90,7 +93,8 @@
       </div>
     </script>
   </head>
-  <body> 
+  <body>
+    <div class="body-content"></div> 
       <svg display="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="768" height="800" viewBox="0 0 768 800"><defs><g id="icon-close"><path class="path1" d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z"></path></g></defs></svg>
       <header>
           <img src="images/obama.jpg" alt="background login pic" id="login-background">
@@ -104,14 +108,16 @@
         </nav>
       <main>
         <section id="forumView" class="view forumView">
+          <h3 class="bread-crumbs">D29 FORUM LIST <span>></span></h3>
           <header>
-              <p>table title</p>
-              <p>
-                <span class="tcForum">Forum</span>
-                <span class="tcTopics">Comments</span>
-                <span class="txThreads">Threads</span>
-                <span class="tcLatestPost">Latest post</span>
-              </p>
+              <div class="forum-view-headers">
+                <ul>
+                  <li class="forum-view-li1"><span class="tcForum"> CATEGORY</span></li>
+                  <li class="forum-view-li2"><span class="txThreads"> THREADS</span></li>
+                  <li class="forum-view-li3"><span class=""> POSTS</span></li>
+                  <li class="forum-view-li4"><span class="tcLatestPost"> LAST</span></li>
+              </ul>
+              </div>
           </header>
           <div id="subforaContainer" class="subforaContainer">
             <!-- <tbody id="forumTable">
@@ -131,6 +137,7 @@
 
 
         <section id="subforumView" class="view subforumView">
+          <h3 class="bread-crumbs">D29 FORUM LIST <span>></span> SUBFORUM VIEW <span>></span></h3>
           <header>
             <span class="subforum-title"></span>
             <span class="newThreadButton">New Topic</span>
@@ -253,11 +260,11 @@
       <footer>
 
       </footer>
-      <div class="modal">
-        <div class="modal-overlay modal-toggle"></div>
+      <div id="modal1" class="modal">
+        <div class="modal-overlay modal-toggle1"></div>
         <div class="modal-wrapper modal-transition">
           <div class="modal-header">
-            <button class="modal-close modal-toggle"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
+            <button class="modal-close modal-toggle1"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
             <h2 class="modal-heading">Username not found</h2>
           </div>
           
@@ -265,7 +272,24 @@
             <div class="modal-content">
               <p>If you would like to create an account for <span id="userNameEntered"></span>please click the create user button. Or you can click retry to enter a username again.</p>
               <button id="modalCreateUserButton">Create User</button>
-              <button class="modal-toggle">Retry</button>
+              <button class="modal-toggle1">Retry</button>
+            </div>
+          </div>
+        </div>
+       </div>
+
+       <div id="modal2" class="modal">
+        <div class="modal-overlay modal-toggle2"></div>
+        <div class="modal-wrapper modal-transition">
+          <div class="modal-header">
+            <button class="modal-close modal-toggle2"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
+            <h2 class="modal-heading">Username already Exists</h2>
+          </div>
+          
+          <div class="modal-body">
+            <div class="modal-content">
+              <p>Username <span id="userNameEntered"></span>is already taken. Please try again.</p>
+              <button class="modal-toggle2">Retry</button>
             </div>
           </div>
         </div>
@@ -293,5 +317,6 @@
       <script src="scripts/views/errorView.js"></script>
       <script src="scripts/controllers/routes.js"></script>
       <script src="scripts/app.js"></script>
+    </div>  
   </body>
 </html>  

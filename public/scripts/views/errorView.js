@@ -6,7 +6,7 @@
     errorView.init = function(ctx, next) {
         $('.view').addClass('hidden').find('*').off();
         $('.errorView').removeClass('hidden');
-        next();
+        // next();
     }
     
     module.errorView = errorView;

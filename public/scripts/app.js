@@ -1,6 +1,11 @@
 'use strict';
 
-$('.modal-toggle').on('click', function(e) {
+$('.modal-toggle1').on('click', function(e) {
     e.preventDefault();
-    $('.modal').toggleClass('is-visible');
+    $('#modal1').toggleClass('is-visible');
+});
+
+$('.modal-toggle2').on('click', function(e) {
+    e.preventDefault();
+    $('#modal2').toggleClass('is-visible');
 });
