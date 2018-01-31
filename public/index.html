@@ -73,8 +73,8 @@
           <p>Posts: {{num_comments}}</p>
         </div>
         <div>
-          <p class="comment-posted-on"><span>posted on: {{comment_created_on}}</span><span class="editCommentButton hidden">edit</span></p>
-          <p class="comment-content">{{content}}</p>
+          <p class="comment-posted-on"><span class="editCommentButton hidden"> -edit- </span><span>posted: {{comment_created_on}}</span></p>
+          <p class="comment-content"><pre>{{content}}</pre></p>
           <div class="editCommentView hidden">
             <textarea class="editCommentTextArea">{{content}}</textarea>
             <div class="saveCommentButton">Save</div>
@@ -141,11 +141,10 @@
 
 
         <section id="subforumView" class="view subforumView">
-          <h3 class="bread-crumbs">D29 FORUM LIST <span>></span> SUBFORUM VIEW <span>></span></h3>
           <header>
 
             <span class="subforum-title"></span>
-            <span class="newThreadButton">New Topic</span>
+            <span class="newThreadButton">NEW TOPIC</span>
 
           </header>
           <div class="forum-view-headers">
@@ -246,6 +245,7 @@
             </section>
             <a id="editProfileButton" href="">Edit Profile</a>
         </section>
+<<<<<<< HEAD
           <section id="newThreadView" class="view thread newThreadView">
             <header>
               <p>New Thread</p>
@@ -254,8 +254,17 @@
             <textarea class="newThreadContent"></textarea>
             <button class="addThreadButton">Add Topic</button>
           </section>
+=======
+
+        <section id="newThreadView" class="view thread newThreadView">
+          <header></header>
+          <input type="text" class="newThreadTitle" placeholder="Topic Title"></input>
+          <textarea class="newThreadContent"></textarea>
+          <button class="addThreadButton">Add Topic</button>
+        </section>
+
+>>>>>>> d42f778bb3e74a3d466df90a1a83a0391bc30aea
         <section id="threadView" class="view thread threadView">
-            <h3 class="bread-crumbs">D29 FORUM LIST <span>></span> SUBFORUM VIEW <span>></span> THREAD VIEW <span>></span></h3>
           <header></header>
           <div class="commentContainer"></div>
           <div class="addCommentContainer">
