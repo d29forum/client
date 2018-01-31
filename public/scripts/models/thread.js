@@ -37,7 +37,7 @@ var app = app || {};
   Thread.prototype.render = function(ctx,next) {
     let $threadView = $('.threadView');
     $('.threadView header').empty();
-    $('.threadView header').append(`<h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span><a href="/subfora/${ctx.params.subforum_id}">${ctx.results[0].subforum_title.toUpperCase()}</a><span> > </span>${ctx.results[0].thread_title.toUpperCase()}</h3>`);
+    $('.threadView header').append(`<h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span><a href="/subfora/${ctx.params.subforum_id}">${ctx.results[0].subforum_title.toUpperCase()}</a><span> > </span><a href="${window.location}">${ctx.results[0].thread_title.toUpperCase()}</a></h3>`);
     Thread.comments.sort((a,b) => a.comment_id - b.comment_id)
     Thread.comments.forEach(comment => {
       comment.user_created_on = app.Helper.parseDate(comment.user_created_on)
