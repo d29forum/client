@@ -47,9 +47,13 @@ section {
   
 }
 
-#login-background {
+/* #login-background {
+    background-image: url('images/moon.jpg');
     opacity: 0.7;
     position: fixed;
     z-index: -100; 
-}
+} */
 
+.view thread newThreadView {
+  
+}
