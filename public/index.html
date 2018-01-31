@@ -5,7 +5,9 @@
     <title>D29 FORUM</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Saira:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <script src="https://use.fontawesome.com/9fa5931d9f.js"></script>
     <link rel="stylesheet" href="vendor/styles/reset.css">
     <link rel="stylesheet" href="styles/base/base.css">
     <link rel="stylesheet" href="styles/layout/layout.css">
@@ -14,9 +16,10 @@
     <link rel="stylesheet" href="styles/layout/thread-view.css">
     <link rel="stylesheet" href="styles/modules/modules.css">
     <link rel="stylesheet" href="styles/modules/comments.css">
+    <link rel="stylesheet" href="styles/modules/nav.css">
+    <link rel="stylesheet" href="styles/modules/modals.css">
     <link rel="stylesheet" href="styles/state/state.css">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <script src="https://use.fontawesome.com/9fa5931d9f.js"></script>
+    
     
     <script id="forum-template" type="text/x-handlebars-template">
       <section class="forumTableRow">
@@ -101,14 +104,31 @@
       <svg display="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="768" height="800" viewBox="0 0 768 800"><defs><g id="icon-close"><path class="path1" d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z"></path></g></defs></svg>
       <header>
           <!-- <img src="images/obama.jpg" alt="background login pic" id="login-background"> -->
-        <nav>
-            <a href="/">home</a>
-            <a id="login" class="notLoggedIn" href="/login">login</a>
-            <a id="signup" class="notLoggedIn" href="/signup">signup</a>
-            <a id="loggedInUser" class="loggedIn" href=""> </a>
-            <button id="logoutButton" class="loggedIn">Logout</button>
-      </header>
+          <nav>
+            <div class="hamburger">
+                <span class="top buns"></span>
+                <span class="bottom buns"></span>
+            </div>
+            <section id="hamburgerToggle">
+                <ul class="dropDownList">
+                    <li class="dropDownListItem notLoggedIn"><a id="login" class="dropDownLink notLoggedIn" href="/login">Login</a></li>
+                    <li class="dropDownListItem notLoggedIn"><a id="signup" class="dropDownLink notLoggedIn" href="/signup">Signup</a></li>
+                    <li class="dropDownListItem loggedIn"><a id="loggedInUser" class="dropDownLink loggedIn" href="">Edit Profile</a></li>
+                    <li class="dropDownListItem loggedIn"><a id="logoutButton" class="dropDownLink loggedIn" href="">Logout</a></li>
+                </ul>
+            </section>
+    
+            <div class="logoContainer">
+                <a id="logo"href='/'><span class="notFlip">D29-</span><span class="flip flipping">F</span><span class="notFlip">orum</span></a>
+            </div>
+    
+            <div class="userContainer loggedIn">
+              <a id="navatarImageLink" href="">
+                <img id="navatarImage" src="">
+              </a>
+            </div>
         </nav>
+      </header>
       <main>
         <section id="forumView" class="view forumView">
           <h3 class="bread-crumbs">D29 FORUM LIST <span>></span></h3>
