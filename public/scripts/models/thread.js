@@ -49,8 +49,8 @@ var app = app || {};
       });
     }    
 
-    if (localStorage.insertedPost || $('.addCommentTextArea').val()) {
-      delete localStorage.insertedPost;
+    if (localStorage.addedPost || $('.addCommentTextArea').val()) {
+      localStorage.addedPost = false;
       window.scrollTo(0, document.body.scrollHeight);
     }
   }

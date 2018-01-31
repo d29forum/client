@@ -16,7 +16,10 @@ var app = app || {};
         $('.addCommentButton').on('click', () => {
           if (localStorage.currentUserId) {
             let comment = new app.Comment({content: $('.addCommentTextArea').val(), creator: localStorage.currentUserId, thread_parent: ctx.params.thread_id, subforum_parent: ctx.params.subforum_id,});
-            comment.insert(() => page.show(`/subfora/${ctx.params.subforum_id}/threads/${ctx.params.thread_id}`));
+            comment.insert(() => {
+              localStorage.addedPost = true;              
+              page.show(`/subfora/${ctx.params.subforum_id}/threads/${ctx.params.thread_id}`)
+            });
           }
           else {
             localStorage.deferredRoute = `/subfora/${ctx.params.subforum_id}/threads/${ctx.params.thread_id}`;
