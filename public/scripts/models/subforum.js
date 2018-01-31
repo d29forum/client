@@ -38,18 +38,15 @@ var app = app || {};
 
   Subforum.prototype.render = function(ctx,next) {
     $('.subforumView header .subforum-title').empty();
-    $('.subforumView header .subforum-title').text(ctx.results[0].subforum_title);
+    $('.subforumView header .subforum-title').append(`<a href="/">D29Forum</a> > <span>${ctx.results[0].subforum_title}</span>`);
     var sfsort = callback => {
       Subforum.threads.sort((a,b) => b.last_comment - a.last_comment);
       callback();
     }
     sfsort(() => Subforum.threads.forEach(thread => $('.threadsContainer').append(thread.toHtml())));
 
-    $('.thread').on('click','.thread-title', function() {
-      page.show(`/subfora/${ctx.params.subforum_id}/threads/${$(this).parent().data('thread-id')}`)
-    });
     $('.thread').on('click','.username', function() {
-      page.show(`/user/${$(this).text()}`)
+      page.show(`/user/${$(this).text()}`);
     });
   }
 
