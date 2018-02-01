@@ -47,5 +47,6 @@ $('.subforaContainer').on('click', '.accordionToggle', function() {
         $('.subforaContainer').find('.randomClass').removeClass('randomClass').addClass('hidden').slideToggle(500);
         $(this).parent().find('.lastPostRow').addClass('randomClass').slideToggle(500).removeClass('hidden');
     }
-    $(this).text() === '+' ? $(this).text('-') : $(this).text('+');
+    $(this).toggleClass('openAccordion');
+    // $(this).text() === '+' ? $(this).text('x') : $(this).text('+');
 });
