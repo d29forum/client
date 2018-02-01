@@ -38,7 +38,7 @@ var app = app || {};
   Thread.prototype.render = function(ctx,next) {
     let $threadView = $('.threadView');
     $('.threadView header').empty();
-    $('.newCommentsSlideUp').addClass('hidden');
+    $('.newCommentsSlideUp').slideUp();
     $('.threadView header').append(`<h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span><a href="/subfora/${ctx.params.subforum_id}">${ctx.results[0].subforum_title.toUpperCase()}</a><span> > </span><a href="${window.location}">${ctx.results[0].thread_title.toUpperCase()}</a></h3>`);
     Thread.comments.sort((a,b) => a.comment_id - b.comment_id)
     Thread.comments.forEach(comment => {
@@ -64,7 +64,7 @@ var app = app || {};
     var commentCheck = setInterval(()=>{
       if (window.location != localStorage.currentThreadLocation) {
         clearInterval(commentCheck);
-        $('.newCommentsSlideUp').addClass('hidden');
+        $('.newCommentsSlideUp').slideUp();
         delete localStorage.currentThreadLocation;
         return;
       }
@@ -76,7 +76,7 @@ var app = app || {};
           if (status!='notmodified') {
             localStorage.currentCommentsETag = xhr.getResponseHeader('ETag');
             $('.newCommentsSlideUp').html(`<a href="/subfora/${ctx.params.subforum_id}/threads/${ctx.params.thread_id}">New comments - click to refresh</a>`);
-            $('.newCommentsSlideUp').removeClass('hidden');
+            $('.newCommentsSlideUp').slideDown();
             clearInterval(commentCheck);
           }
         },
