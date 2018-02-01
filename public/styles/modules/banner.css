@@ -1,0 +1,50 @@
+.banner {
+  /* color: white;
+  font-size: 1.5em; */
+  text-align: center;
+  background: url(https://mave.me/img/projects/full_placeholder.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding: 30px 20px 20px 20px;
+  max-height: inherit;
+  background-color: rgba(255,255,255,0.1);
+  background-blend-mode: color;
+  min-height: 250px;
+  margin: -20px 0 20px;
+}
+.bannerText {
+  font-size: 20px;
+  color: #FFF;
+  padding-top: 10px;
+}
+.bannerCloseIcon {
+  color: #FFF;
+}
+.bannerCloseIconSpan {
+  font-size: 20px;
+  margin-top: -20px;
+  float: right;
+  cursor: pointer;
+}
+.bannerHeadline {
+  font-size: 32px;
+  line-height: 1.125;
+  font-weight: 600;
+}
+.bannerLinks {
+  text-decoration: underline;
+  line-height: 1.5;
+}
+.bannerSubheader {
+  margin-top: 15px;
+}
+@media (min-width: 363px) {
+  .xsFormatting {
+    display: none;
+  }
+  .bannerSubheader {
+    margin-top: 5px;
+  }
+}

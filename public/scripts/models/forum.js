@@ -8,6 +8,43 @@ var app = app || {};
 
   Forum.all = [];
 
+  Forum.threadAndPostColors = (ctx, next) => {
+    let threadCount =
+      $('.subforaThreadCount').map(function() {
+        return parseInt($(this).data('thread-count'));
+       }).get();
+
+    let avgThreadCount = threadCount.reduce((acc, cur) => {
+        return cur += acc;
+      })/threadCount.length;
+
+    let commentCount =
+      $('.subforaPostCount').map(function() {
+        return parseInt($(this).data('comment-count'));
+      }).get();
+
+    let avgPostCount = commentCount.reduce((acc, cur) => {
+        return cur += acc;
+      })/commentCount.length;
+
+    $('.subforaPostCount[data-comment-count]').each(function() {
+      if(parseInt($(this).data('comment-count')) > avgPostCount) {
+        $(this).addClass('aboveAvg');
+      }
+      else {
+        $(this).addClass('belowAvg');
+      }
+    });
+
+    $('.subforaThreadCount[data-thread-count]').each(function() {
+      if(parseInt($(this).data('thread-count')) > avgThreadCount) {
+        $(this).addClass('aboveAvg');
+      }
+      else {
+        $(this).addClass('belowAvg');
+      }
+    });
+  }
   // handlebars template for user profile
   Forum.prototype.toForumTemplateHtml = function() {
     var template = Handlebars.compile($('#forum-template').text());
@@ -27,7 +64,7 @@ var app = app || {};
         Forum.all.map(forum => $('#subforaContainer').append(forum.toForumTemplateHtml()))
       //});
       // $('#editProfileButton').attr('href', `/user/${ctx.params.username}/edit`)
-      // next();
+      next();
   }
 
   // 2ND - takes the individual result and maps it to  the new User constructor
@@ -42,7 +79,7 @@ var app = app || {};
       url: `${__API_URL__}/api/db/forum`,
       method: 'GET',
       success: results => {
-        console.log(results);
+        // console.log(results);
         ctx.results = results;
         next();
       }
