@@ -19,7 +19,7 @@
           let newThread = new app.Thread({creator: localStorage.currentUserId, title: $('.newThreadTitle').val(), content: $('.newThreadContent').val(), subforum_parent: ctx.params.subforum_id});
           if (localStorage.currentUserId) newThread.insert();
           else {
-            localStorage.deferredRoute = '/subfora/${ctx.params.subfora_id}/threads/new';
+            localStorage.deferredRoute = '/subfora/${ctx.params.subfora_id}/${ctx.params.subforum_title}/threads/new';
             page.show('/login');
           }
         });
