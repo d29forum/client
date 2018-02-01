@@ -8,7 +8,7 @@ var app = app || {};
 const __API_URL__ = 'https://d29forum-sv-staging.herokuapp.com';
 
 //Production API
-const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
+//const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
 
 (function(module) {
   const user = {};
