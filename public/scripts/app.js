@@ -26,3 +26,27 @@ $('#hamburgerToggle a').on('click', function() {
     $('nav').toggleClass('darkNav');
     $('.userContainer').toggleClass('slideOut');
 });
+
+// home accordion
+
+// $('.subforaContainer').on('click', '.accordionToggle', function() {
+//     if($(this).parent().find('.lastPostRow').hasClass('show')) {
+//         $(this).parent().find('.lastPostRow').removeClass('show').addClass('hidden');
+//     }
+//     else {
+//         $('.subforaContainer').find('.show').removeClass('show').addClass('hidden');
+//         $(this).parent().find('.lastPostRow').removeClass('hidden').addClass('show');
+//     }
+// });
+
+$('.subforaContainer').on('click', '.accordionToggle', function() {
+    if($(this).parent().find('.lastPostRow').hasClass('randomClass')) {
+        $(this).parent().find('.lastPostRow').removeClass('randomClass').addClass('hidden').slideToggle(500);
+    }
+    else {
+        $('.subforaContainer').find('.randomClass').removeClass('randomClass').addClass('hidden').slideToggle(500);
+        $(this).parent().find('.lastPostRow').addClass('randomClass').slideToggle(500).removeClass('hidden');
+    }
+    $(this).toggleClass('openAccordion');
+    // $(this).text() === '+' ? $(this).text('x') : $(this).text('+');
+});
