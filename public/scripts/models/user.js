@@ -2,10 +2,12 @@
 var app = app || {};
 
 //Local API
-const __API_URL__ = 'http://localhost:3737';
+
+// const __API_URL__ = 'http://localhost:3737';
+//const __API_URL__ = 'http://localhost:3737';
 
 //Staging API
-//  const __API_URL__ = 'https://d29forum-sv-staging.herokuapp.com';
+const __API_URL__ = 'https://d29forum-sv-staging.herokuapp.com';
 
 //Production API
 // const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
@@ -31,11 +33,14 @@ const __API_URL__ = 'http://localhost:3737';
         console.log(this.username);
         console.log(results);
         if (results[0].username == this.username){
-          console.log(results);
-          localStorage.currentUserId = results[0].id;
-          localStorage.currentUserName = this.username;
-          localStorage.currentUserNavatar = results[0].gravatar_hash;
-          page.show('../'); 
+          var setLS = callback => {
+            $('#modal1').toggleClass('is-visible');
+            localStorage.currentUserId = results[0].id;
+            localStorage.currentUserName = this.username;
+            localStorage.currentUserNavatar = results[0].gravatar_hash;
+            callback();
+          };
+          setLS(() => localStorage.deferredRoute ? page.show(localStorage.deferredRoute) : page.show('../'));
         }
       },
       error: err => {

@@ -26,7 +26,7 @@ var app = app || {};
             page.show('/login');
           }
         });
-
+        
         next();
     }
     
