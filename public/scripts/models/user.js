@@ -19,7 +19,7 @@ var app = app || {};
   function User(obj) {
     for (var prop in obj) obj[prop] ? this[prop] = obj[prop] : this[prop] = null;
   }
-
+  
   // POST
   User.prototype.insert = function() {
     console.log('user. prototype.insert');
