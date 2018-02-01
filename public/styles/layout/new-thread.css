@@ -1,15 +1,28 @@
-/* .new-threadbox {
-    width: 100%;
-    background-color: yellow;
-} */
-<<<<<<< HEAD
+.newThreadView {
+  width: 100%;
+}
 
-/* .view {
-=======
-/*
-#newThreadView {
->>>>>>> bbb8097e6a2ee9711acbc00bf59c4df525ae86c3
-    width: 100%;
-    background-color: gray;
-    display: inline-block;
-} */
+.newThreadView>.smallMargin {
+  float: left;
+  width: 80%;
+}
+
+.newThreadTitle {
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  margin: 50px 0;
+}
+
+.newThreadContent {
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  height: 35vh;
+  resize: none;
+  margin: 50px 0;
+}
+
+.addThreadButton {
+  float: right;
+}
