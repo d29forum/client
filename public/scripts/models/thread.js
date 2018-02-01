@@ -22,7 +22,8 @@ var app = app || {};
     $.ajax({
       url: `${__API_URL__}/api/db/thread/${ctx.params.thread_id}`,
       method: 'GET',
-      success: results => {
+      success: (results, status, xhr) => {
+        localStorage.currentCommentsETag = xhr.getResponseHeader('ETag');
         ctx.results = results;
         next();
       }
@@ -37,6 +38,7 @@ var app = app || {};
   Thread.prototype.render = function(ctx,next) {
     let $threadView = $('.threadView');
     $('.threadView header').empty();
+    $('.newCommentsSlideUp').slideUp();
     $('.threadView header').append(`<h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span><a href="/subfora/${ctx.params.subforum_id}">${ctx.results[0].subforum_title.toUpperCase()}</a><span> > </span><a href="${window.location}">${ctx.results[0].thread_title.toUpperCase()}</a></h3>`);
     Thread.comments.sort((a,b) => a.comment_id - b.comment_id)
     Thread.comments.forEach(comment => {
@@ -54,9 +56,33 @@ var app = app || {};
     }    
 
     if (localStorage.addedPost || $('.addCommentTextArea').val()) {
-      localStorage.addedPost = false;
+      delete localStorage.addedPost;
       window.scrollTo(0, document.body.scrollHeight);
     }
+    
+    localStorage.currentThreadLocation = window.location;
+    var commentCheck = setInterval(()=>{
+      if (window.location != localStorage.currentThreadLocation) {
+        clearInterval(commentCheck);
+        $('.newCommentsSlideUp').slideUp();
+        delete localStorage.currentThreadLocation;
+        return;
+      }
+      $.ajax({
+        url: `${__API_URL__}/api/db/thread/${ctx.params.thread_id}`,
+        method: 'GET',
+        headers: {'If-None-Match': localStorage.currentCommentsETag},
+        success: (data,status,xhr) => {
+          if (status!='notmodified') {
+            localStorage.currentCommentsETag = xhr.getResponseHeader('ETag');
+            $('.newCommentsSlideUp').html(`<a href="/subfora/${ctx.params.subforum_id}/threads/${ctx.params.thread_id}">New comments - click to refresh</a>`);
+            $('.newCommentsSlideUp').slideDown();
+            clearInterval(commentCheck);
+          }
+        },
+      });
+    }, 3000);
+
   }
 
   Thread.prototype.toHtml = function() {

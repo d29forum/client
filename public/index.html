@@ -53,22 +53,6 @@
           </div>
       </section>
     </script>
-          <!-- <section class="forumTableRow">
-          <div class="subforumInfo">
-            <a href="/subfora/{{subforaid}}">
-              <span class="subforaSubtitle">{{subtitle}}</span>
-              <span class="subforaTitle">{{title}}</span></br>
-            </a>
-          </div>
-          <p class="threadCount">{{thread_count}}</p>
-          <p class="commentCount">{{comment_count}}</p>
-          <p class="lastComment">
-              <div class="createdOn">{{created_on}}</div>
-              <div class="username">by <a href="/user/{{username}}">{{username}}</a> 
-                <a href="/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}/#{{commentid}}">view latest post</a>
-              </div>
-          </p>
-      </section> -->
     
     <script id="user-profile-template" type="text/x-handlebars-template">
             <div class="profile-card">
@@ -109,7 +93,34 @@
     </script>
 
     <script id="thread-template" type="text/x-handlebars-template">
-      <div data-thread-id="{{thread_id}}" class="thread">
+      <section data-thread-id="{{thread_id}}" class="subforaThread thread">
+        <span class="subforaAccordionToggle">+</span>
+        <div class="descriptionRow">
+          <a href="/subfora/{{subforum_id}}/threads/{{thread_id}}" class="thread-title">{{title}}</a>
+          <a href="/user/{{thread_creator}}" class="username">{{thread_creator}}</a>
+        </div>
+        <div class="subforaCountRow">
+          <div class="viewCountColumn">
+            <span class="rowTitle">Views  </span>
+            <span class="subforaViewCount" data-view-count="{{view_count}}"> {{view_count}}</span>
+          </div>
+          <div class="postCountColumn">
+            <span class="rowTitle">Posts </span>
+            <span class="subforaPostCount threadsubforaPostCount" data-comment-count="{{comment_count}}">{{comment_count}}</span>
+          </div>
+        </div>
+        <div class="lastCommenterRow hidden">
+            <span class="rowTitle">Last post</span>
+            <div class="borderLeft">
+              <p class="subforaLastCommenter"><a href="/user/{{last_commenter}}" class="username subforaUsernameLink"><img class="lastPostersGravatar" src="https://www.gravatar.com/avatar/{{gravatar_hash}}"> {{last_commenter}}</a><br class="hideSmall">{{last_comment_created_on}}</p>
+             <p class="lastCommentCreatedOnDateP"><a href="/subfora/{{subforum_id}}/threads/{{thread_id}}#comment-{{comment_id}}" class="lastCommentCreatedOnDate">{{content}}</a></p>
+            </div>
+          </div>
+      </section>
+    </script>
+    <!-- <img class="lastPostersGravatar" src="https://www.gravatar.com/avatar/{{gravatar_hash}}"> {{username}}</a><br class="hideSmall"> {{created_on}}</p>
+    <p class="lastPostContent"><a href="/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}comment-{{commentid}}">{{content}}</a></p> -->
+          <!-- <div data-thread-id="{{thread_id}}" class="thread">
         <a href="/subfora/{{subforum_id}}/threads/{{thread_id}}" class="thread-title">{{title}}</a>
         <a href="/user/{{thread_creator}}" class="username">{{thread_creator}}</a>
         <span>{{view_count}}</span>
@@ -118,8 +129,8 @@
           <a href="/user/{{last_commenter}}" class="username">{{last_commenter}}</a>
           <a href="/subfora/{{subforum_id}}/threads/{{thread_id}}#comment-{{comment_id}}">{{last_comment_created_on}}</p>
         </span>
-      </div>
-    </script>
+      </div> -->
+
   </head>
   <body>
     <div class="body-content"></div> 
@@ -150,9 +161,10 @@
               </a>
             </div>
         </nav>
+
       </header>
       <main>
-        <section id="forumView" class="view forumView">
+        <section id="forumView" class="view forumView hidden">
           <div class="banner">
             <span class="bannerCloseIconSpan"><i class="fa fa-times bannerCloseIcon" title="Close this banner"></i></span>
             <div class="bannerText">
@@ -207,27 +219,34 @@
         </section>
 
 
-        <section id="subforumView" class="view subforumView">
+        <section id="subforumView" class="view subforumView hidden">
+          <div class="smallMargin">
           <header>
 
             <span class="subforum-title"></span>
             <span class="newThreadButton">NEW TOPIC</span>
 
           </header>
-          <div class="forum-view-headers">
-              <ul>
-                <li class="sub-forum-view-li1"><span> TOPIC</span></li>
-                <li class="sub-forum-view-li2"><span> CREATOR</span></li>
-                <li class="sub-forum-view-li3"><span> VIEWS</span></li>
-                <li class="sub-forum-view-li4"><span> COMMENTS</span></li>
-                <li class="sub-forum-view-li4"><span> LAST POST</span></li>
-            </ul>
-            </div>
+                <div class="columnHead">
+                  <div class="forumHead">
+                    <p>Topic/Creator</p>
+                  </div>
+                  <div class="threadHead">
+                    <p>Views</p>
+                  </div>
+                  <div class="postHead">
+                    <p>Posts</p>
+                  </div>
+                  <div class="lastPostHead">
+                    <p>Last Post</p>
+                  </div>
+                </div>
           <div class="threadsContainer"></div>
           <span class="newThreadButton">NEW TOPIC</span>
+          <div class="smallMargin">
         </section>
 
-        <section id="editUserView" class="view user editUserView">
+        <section id="editUserView" class="view user editUserView hidden">
             <form action="#" id="editProfileForm">
                 <fieldset>
                         <label for="username">Username: </label>
@@ -266,7 +285,7 @@
 
         </section>
 
-        <section id="loginUserView" class="view user loginUserView">
+        <section id="loginUserView" class="view user loginUserView hidden">
           <section id="userLogin" class="tab-content">
           <div class="container">
           <div class="imgBx">
@@ -293,7 +312,7 @@
           </section>
         </section>
 
-        <section id="newUserView" class="view user newUserView">
+        <section id="newUserView" class="view user newUserView hidden">
             <section id="newUser" class="tab-content">
                 <h1>New User</h1>
                 <form action="#" id="newUserForm">
@@ -307,21 +326,21 @@
             </section>
         </section>
 
-        <section id="userView" class="view user userView">
+        <section id="userView" class="view user userView hidden">
             <section id="userProfile">
 
             </section>
             <a id="editProfileButton" href="">Edit Profile</a>
         </section>
 
-        <section id="newThreadView" class="view thread newThreadView">
+        <section id="newThreadView" class="view thread newThreadView hidden">
           <header></header>
           <input type="text" class="newThreadTitle" placeholder="Topic Title"></input>
           <textarea class="newThreadContent"></textarea>
           <button class="addThreadButton">Add Topic</button>
         </section>
 
-        <section id="threadView" class="view thread threadView">
+        <section id="threadView" class="view thread threadView hidden">
           <header></header>
           <div class="commentContainer"></div>
           <div class="addCommentContainer">
@@ -374,6 +393,8 @@
         </div>
        </div>
 
+      <div class="newCommentsSlideUp hidden"></div>
+      
       <script src="vendor/scripts/jquery.js"></script>
       <script src="vendor/scripts/handlebars.js"></script>
       <script src="vendor/scripts/page.js"></script>

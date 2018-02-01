@@ -4,7 +4,6 @@ nav {
   transition:1s ease;
   -moz-transition:1s ease;
   -webkit-transition:1s ease;
-  position: fixed;
   top: 0;
   width: 100%;
 }
