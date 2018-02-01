@@ -8,7 +8,14 @@ var app = app || {};
         $('.view').addClass('hidden').find('*').off();
         $('.forumView').removeClass('hidden');
         $('.subforaContainer').on('click', '.accordionToggle', forumView.accordionControls);
+        localStorage.banner ? $('.banner').addClass('hidden') : $('.banner').on('click', '.bannerCloseIconSpan', forumView.hideBanner);
         next();
+    }
+
+    forumView.hideBanner = function() {
+        $('.banner').fadeOut(250);
+        localStorage.banner = 'hide';
+        // .hide(2500);
     }
 
     forumView.accordionControls = function() { 
