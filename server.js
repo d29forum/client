@@ -7,7 +7,8 @@ const bodyParser = require('body-parser');
 
 /*********************************CONST DECLARATIONS*****************************/
 const app = express();
-const PORT = process.env.PORT || 3000;
+//const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 /*********************************MIDDLEWARE*************************************/
 app.use(express.static('./public'));
