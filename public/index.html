@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="styles/modules/comments.css">
     <link rel="stylesheet" href="styles/modules/nav.css">
     <link rel="stylesheet" href="styles/modules/modals.css">
+    <link rel="stylesheet" href="styles/modules/banner.css">
     <link rel="stylesheet" href="styles/state/state.css">
     
     
@@ -27,7 +28,6 @@
         <span class="accordionToggle">+</span>
         <div class="descriptionRow">
             <a href="/subfora/{{subforaid}}">
-              <span class="rowTitle">Topic </span>
               <p class="subforaTitle">{{title}}</p>
               <p class="subforaSubtitle">{{subtitle}}</p>
             </a>
@@ -35,18 +35,20 @@
         <div class="countRow">
           <div class="threadCountColumn">
             <span class="rowTitle">Threads  </span>
-            <span class="subforaThreadCount"> {{thread_count}}</span>
+            <span class="subforaThreadCount" data-thread-count="{{thread_count}}"> {{thread_count}}</span>
           </div>
           <div class="postCountColumn">
             <span class="rowTitle">Posts </span>
-            <span class="subforaPostCount">{{comment_count}}</span>
+            <span class="subforaPostCount" data-comment-count="{{comment_count}}">{{comment_count}}</span>
           </div>
         </div>
         <div class="lastPostRow hidden">
             <span class="rowTitle">Last post </span>
-            <p class="lastPostContent">{{content}}</p>
-            <p class="subforaLastPost">By <a href="/user/{{username}}">
-              <img class="lastPostersGravatar" src="https://www.gravatar.com/avatar/{{gravatar_hash}}"> {{username}}</a> on {{created_on}}</p>
+            <div class="borderLeft">
+              <p class="subforaLastPost"><a href="/user/{{username}}">
+              <img class="lastPostersGravatar" src="https://www.gravatar.com/avatar/{{gravatar_hash}}"> {{username}}</a><br class="hideSmall"> {{created_on}}</p>
+             <p class="lastPostContent"><a href="/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}comment-{{commentid}}">{{content}}</a></p>
+            </div>
           </div>
       </section>
     </script>
@@ -142,6 +144,14 @@
       </header>
       <main>
         <section id="forumView" class="view forumView">
+          <div class="banner">
+            <span class="bannerCloseIconSpan"><i class="fa fa-times bannerCloseIcon" title="Close this banner"></i></span>
+            <div class="bannerText">
+                <p class="bannerHeadline">D29 Forum</p>
+                <p class="bannerSubheader">New to D29 Forum? <br class="xsFormatting"><a class="bannerLinks" href="/signup">Create a profile</a></p>
+            </div>
+          </div>
+          <div class="smallMargin">
           <h3 class="bread-crumbs">D29 FORUM LIST <span>></span></h3>
           <!-- <header>
           <h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span></h3>
@@ -156,6 +166,20 @@
               </ul>
               </div>
           </header> -->
+          <div class="columnHead">
+            <div class="forumHead">
+              <p>Forum</p>
+            </div>
+            <div class="threadHead">
+              <p>Threads</p>
+            </div>
+            <div class="postHead">
+              <p>Posts</p>
+            </div>
+            <div class="lastPostHead">
+              <p>Last Post</p>
+            </div>
+          </div>
           <div id="subforaContainer" class="subforaContainer">
             <!-- <tbody id="forumTable">
             <tr>
@@ -169,6 +193,7 @@
             </tr>
             </tbody> -->
 
+          </div>
           </div>
         </section>
 
