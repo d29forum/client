@@ -22,7 +22,8 @@ var app = app || {};
     $.ajax({
       url: `${__API_URL__}/api/db/thread/${ctx.params.thread_id}`,
       method: 'GET',
-      success: results => {
+      success: (results, status, xhr) => {
+        localStorage.newCommentsSlideUpETag = xhr.getResponseHeader('ETag');
         ctx.results = results;
         next();
       }
