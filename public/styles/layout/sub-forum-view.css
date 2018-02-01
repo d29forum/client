@@ -1,0 +1,233 @@
+.bread-crumbs {
+  color: #222;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 21px;
+  line-height: 19px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+}
+#forumView {
+  padding-bottom: 40px;
+}
+.descriptionRow {
+  padding-bottom: 12px;
+}
+.subforaThread {
+  border-collapse: collapse;
+  border-right: 3px solid #e9e9e9;
+  border-left: 3px solid #e9e9e9;
+  border-top: 1.5px solid #e9e9e9;
+  border-bottom: 1.5px solid #e9e9e9;
+  padding: 2px 12px;
+  background-color: #fafafa;
+  position: relative;
+}
+.subforaThread:first-of-type {
+  border-top: 3px solid #e9e9e9;
+}
+.subforaThread:last-of-type {
+  border-bottom: 3px solid #e9e9e9;
+}
+.viewCountColumn {
+  display: inline-block;
+}
+.postCountColumn {
+  display: inline-block;
+}
+.thread-title {
+  padding: 20px 0 0 20px;
+  font-size: 18px;
+  font-weight: 500;
+  display: block;
+}
+.username {
+  padding: 15px 0 0 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #222;
+  display: block;
+}
+.subforaLastCommenter {
+  padding: 0;
+  color: #888;
+  font-size: 14px;
+  font-weight: 400;
+}
+.lastPostContent {
+  font-size: 11px;
+  color: #646464;
+  padding: 15px 10px 0 0;
+  font-weight: 400;
+}
+.lastPostContent a {
+  font-size: 14px;
+  font-weight: 400;
+  color: #222;
+}
+.subforaCountRow .rowTitle, .lastCommenterRow .rowTitle {
+  padding-right: 3px;
+  color: #919191;
+  font-size: 12px;
+}
+.lastPostersGravatar {
+  height: 14px;
+  position: relative;
+  top: 3px;
+}
+.aboveAvg {
+  color: green;
+}
+.belowAvg {
+  color: red;
+}
+#forumView {
+  margin-top: 20px;
+}
+.columnHead {
+  display: none;
+}
+.subforaCountRow {
+  position: absolute;
+  top: 2px;
+}
+.viewCountColumn {
+  margin-right: 20px;
+}
+.subforaLastCommenter a {
+  color: #369;
+}
+.lastCommenterRow .rowTitle {
+  padding-left: 15px;
+}
+.borderLeft {
+  border-left: 1px solid #ccc;
+  margin: 10px 0 15px 20px;
+  padding-left: 15px;
+}
+.smallMargin {
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.hideSmall {
+  display: none;
+}
+.lastCommentCreatedOnDate {
+  font-size: 14px;
+  font-weight: 400;
+  color: #222;
+}
+.lastCommentCreatedOnDateP {
+  padding: 15px 0 0 0;
+}
+.subforaUsernameLink {
+  padding: 0;
+  display: inline-block;
+  margin-right: 5px;
+}
+.subforaAccordionToggle {
+  color: #919191;
+  font-size: 14px;
+  float: right;
+  cursor: pointer;
+  transition: all 0.25s;
+  padding: 5px 7px 7px 7px;
+  margin-top: -5px;
+}
+.openSubforumAccordion {
+  transform: rotate(45deg) translateY(0px);
+  transition: all 0.25s;
+}
+@media (min-width: 768px) {
+  .subforaLastCommenter a {
+    line-height: 30px;
+  }
+  .thread-title {
+    margin-bottom: 5px;
+  }
+  .hideSmall {
+    display: block;
+  }
+  .lastCommenterRow {
+    display: inline-block !important;
+  }
+  .rowTitle {
+    display: none;
+  }
+  .subforaThread {
+    margin: 0;
+    border-top: 1px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;
+    padding: 5px 10px;
+  }
+  .descriptionRow, .thread-title, .username, .lastCommenterRow, .subforaLastCommenter {
+    padding: 0;
+  }
+  .descriptionRow {
+    display: inline-block;
+  }
+  .subforaAccordionToggle, .lastPostContent {
+    display: none;
+  }
+  .subforaCountRow, .viewCountColumn, .postCountColumn {
+    display: inline-block;
+  }
+  .columnHead, .columnHead div {
+    display: inline-block;
+  }
+  .columnHead div {
+    color: #fff;
+    font-size: 0.8125em;
+    font-weight: bold;
+    line-height: 1em;
+    padding: 7px 0 7px 10px;
+  }
+  .forumHead, .descriptionRow {
+    box-sizing: border-box;
+    width: calc((100vw - 149px)*.6);
+  }
+  .threadHead, .viewCountColumn {
+    box-sizing: border-box;
+    width: 72px;
+  }
+  .postCountColumn, .postHead {
+    box-sizing: border-box;
+    width: 57px;
+  }
+  .lastPostHead, .lastCommenterRow {
+    box-sizing: border-box;
+    width: calc((100vw - 149px)*.37);
+  }
+  .columnHead {
+    width: calc((100vw - 20px));
+    background: #9b9ea3;
+  }
+  .viewCountColumn, .postCountColumn, .threadHead, .postHead {
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+  }
+  .descriptionRow, .viewCountColumn, .postCountColumn, .lastCommenterRow, .subforaThread {
+    height: 70px;
+    vertical-align: top;
+  }
+  .viewCountColumn, .postCountColumn {
+    padding-top: 25px;
+  }
+  .borderLeft {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 30px;
+  }
+  .viewCountColumn {
+    margin: 0;
+  }
+  .lastPostHead {
+    right: -95px;
+    position: absolute;
+  }
+  .lastCommentCreatedOnDateP {
+    display: none;
+  }
+}
