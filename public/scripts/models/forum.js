@@ -44,6 +44,7 @@ var app = app || {};
         $(this).addClass('belowAvg');
       }
     });
+    $('.subforaLastPost:contains("Today")').css('margin-right', '35px');
   }
   // handlebars template for user profile
   Forum.prototype.toForumTemplateHtml = function() {
