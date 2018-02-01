@@ -103,11 +103,11 @@
         <div class="subforaCountRow">
           <div class="viewCountColumn">
             <span class="rowTitle">Views  </span>
-            <span class="subforaViewCount" data-thread-count="{{view_count}}"> {{view_count}}</span>
+            <span class="subforaViewCount" data-view-count="{{view_count}}"> {{view_count}}</span>
           </div>
           <div class="postCountColumn">
             <span class="rowTitle">Posts </span>
-            <span class="subforaPostCount" data-comment-count="{{comment_count}}">{{comment_count}}</span>
+            <span class="subforaPostCount threadsubforaPostCount" data-comment-count="{{comment_count}}">{{comment_count}}</span>
           </div>
         </div>
         <div class="lastCommenterRow hidden">
@@ -218,23 +218,30 @@
 
 
         <section id="subforumView" class="view subforumView hidden">
+          <div class="smallMargin">
           <header>
 
             <span class="subforum-title"></span>
             <span class="newThreadButton">NEW TOPIC</span>
 
           </header>
-          <div class="forum-view-headers">
-              <ul>
-                <li class="sub-forum-view-li1"><span> TOPIC</span></li>
-                <li class="sub-forum-view-li2"><span> CREATOR</span></li>
-                <li class="sub-forum-view-li3"><span> VIEWS</span></li>
-                <li class="sub-forum-view-li4"><span> COMMENTS</span></li>
-                <li class="sub-forum-view-li4"><span> LAST POST</span></li>
-            </ul>
-            </div>
+                <div class="columnHead">
+                  <div class="forumHead">
+                    <p>Topic/Creator</p>
+                  </div>
+                  <div class="threadHead">
+                    <p>Views</p>
+                  </div>
+                  <div class="postHead">
+                    <p>Posts</p>
+                  </div>
+                  <div class="lastPostHead">
+                    <p>Last Post</p>
+                  </div>
+                </div>
           <div class="threadsContainer"></div>
           <span class="newThreadButton">NEW TOPIC</span>
+          <div class="smallMargin">
         </section>
 
         <section id="editUserView" class="view user editUserView hidden">
