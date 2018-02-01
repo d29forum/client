@@ -3,26 +3,27 @@
 }
 
 .newThreadView>.smallMargin {
+  position: relative;
   float: left;
   width: 80%;
+  max-width: 700px;
 }
 
 .newThreadTitle {
   display: block;
   width: 100%;
-  max-width: 700px;
   margin: 50px 0;
 }
 
 .newThreadContent {
   display: block;
   width: 100%;
-  max-width: 700px;
   height: 35vh;
   resize: none;
   margin: 50px 0;
 }
 
 .addThreadButton {
+  position: inline-block;
   float: right;
 }
