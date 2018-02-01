@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/layout/forum-view.css">
     <link rel="stylesheet" href="styles/layout/sub-forum-view.css">
     <link rel="stylesheet" href="styles/layout/thread-view.css">
+    <link rel="stylesheet" href="styles/layout/new-thread.css">
     <link rel="stylesheet" href="styles/modules/modules.css">
     <link rel="stylesheet" href="styles/modules/comments.css">
     <link rel="stylesheet" href="styles/modules/nav.css">
@@ -85,8 +86,8 @@
           <p>Posts: {{num_comments}}</p>
         </div>
         <div>
-          <p class="comment-posted-on"><span>posted on: {{comment_created_on}}</span><span class="editCommentButton hidden">edit</span></p>
-          <p class="comment-content">{{content}}</p>
+          <p class="comment-posted-on"><span class="editCommentButton hidden"> -edit- </span><span>posted: {{comment_created_on}}</span></p>
+          <p class="comment-content"><pre>{{content}}</pre></p>
           <div class="editCommentView hidden">
             <textarea class="editCommentTextArea">{{content}}</textarea>
             <div class="saveCommentButton">Save</div>
@@ -143,6 +144,9 @@
         <section id="forumView" class="view forumView">
           <h3 class="bread-crumbs">D29 FORUM LIST <span>></span></h3>
           <!-- <header>
+          <h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span></h3>
+          <header>
+
               <div class="forum-view-headers">
                 <ul>
                   <li class="forum-view-column-headers forum-view-li1"><span class="tcForum"> CATEGORY</span></li>
@@ -170,11 +174,10 @@
 
 
         <section id="subforumView" class="view subforumView">
-          <h3 class="bread-crumbs">D29 FORUM LIST <span>></span> SUBFORUM VIEW <span>></span></h3>
           <header>
 
             <span class="subforum-title"></span>
-            <span class="newThreadButton">New Topic</span>
+            <span class="newThreadButton">NEW TOPIC</span>
 
           </header>
           <div class="forum-view-headers">
@@ -187,6 +190,7 @@
             </ul>
             </div>
           <div class="threadsContainer"></div>
+          <span class="newThreadButton">NEW TOPIC</span>
         </section>
 
         <section id="editUserView" class="view user editUserView">
@@ -277,16 +281,13 @@
         </section>
 
         <section id="newThreadView" class="view thread newThreadView">
-          <header>
-            <p>New Thread</p>
-          </header>
+          <header></header>
           <input type="text" class="newThreadTitle" placeholder="Topic Title"></input>
           <textarea class="newThreadContent"></textarea>
           <button class="addThreadButton">Add Topic</button>
         </section>
 
         <section id="threadView" class="view thread threadView">
-            <h3 class="bread-crumbs">D29 FORUM LIST <span>></span> SUBFORUM VIEW <span>></span> THREAD VIEW <span>></span></h3>
           <header></header>
           <div class="commentContainer"></div>
           <div class="addCommentContainer">
