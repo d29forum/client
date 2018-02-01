@@ -68,7 +68,6 @@ var app = app || {};
         delete localStorage.currentThreadLocation;
         return;
       }
-      console.log('commentCheck');
       $.ajax({
         url: `${__API_URL__}/api/db/thread/${ctx.params.thread_id}`,
         method: 'GET',
