@@ -5,17 +5,22 @@
     <title>D29 FORUM</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Saira:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <script src="https://use.fontawesome.com/9fa5931d9f.js"></script>
     <link rel="stylesheet" href="vendor/styles/reset.css">
     <link rel="stylesheet" href="styles/base/base.css">
     <link rel="stylesheet" href="styles/layout/layout.css">
     <link rel="stylesheet" href="styles/layout/forum-view.css">
     <link rel="stylesheet" href="styles/layout/sub-forum-view.css">
     <link rel="stylesheet" href="styles/layout/thread-view.css">
+    <link rel="stylesheet" href="styles/layout/new-thread.css">
     <link rel="stylesheet" href="styles/modules/modules.css">
+    <link rel="stylesheet" href="styles/modules/comments.css">
+    <link rel="stylesheet" href="styles/modules/nav.css">
+    <link rel="stylesheet" href="styles/modules/modals.css">
     <link rel="stylesheet" href="styles/state/state.css">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <script src="https://use.fontawesome.com/9fa5931d9f.js"></script>
+    
     
     <script id="forum-template" type="text/x-handlebars-template">
       <section class="forumTableRow">
@@ -65,14 +70,14 @@
     <script id="comment-template" type="text/x-handlebars-template">
       <div data-comment-id="{{comment_id}}" id="comment-{{comment_id}}" class="comment-container {{username}}">
         <div>
-          <a href="/user/{{username}}">{{username}}</p>
-          <p>Join Date: {{user_created_on}}</p>
-          <p>Number of posts: {{num_comments}}</p>
+          <a href="/user/{{username}}">{{username}}</a>
           <a href="/user/{{username}}"><img src="https://www.gravatar.com/avatar/{{gravatar_hash}}"></a>
+          <p>Joined: {{user_created_on}}</p>
+          <p>Posts: {{num_comments}}</p>
         </div>
         <div>
-          <p><span>posted on: {{comment_created_on}}</span><span class="editCommentButton hidden">edit</span></p>
-          <p class="comment-content">{{content}}</p>
+          <p class="comment-posted-on"><span class="editCommentButton hidden"> -edit- </span><span>posted: {{comment_created_on}}</span></p>
+          <p class="comment-content"><pre>{{content}}</pre></p>
           <div class="editCommentView hidden">
             <textarea class="editCommentTextArea">{{content}}</textarea>
             <div class="saveCommentButton">Save</div>
@@ -84,7 +89,7 @@
 
     <script id="thread-template" type="text/x-handlebars-template">
       <div data-thread-id="{{thread_id}}" class="thread">
-        <span class="thread-title">{{title}}</span>
+        <a href="/subfora/{{subforum_id}}/threads/{{thread_id}}" class="thread-title">{{title}}</a>
         <a href="/user/{{thread_creator}}" class="username">{{thread_creator}}</a>
         <span>{{view_count}}</span>
         <span>{{comment_count}}</span>
@@ -100,17 +105,34 @@
       <svg display="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="768" height="800" viewBox="0 0 768 800"><defs><g id="icon-close"><path class="path1" d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z"></path></g></defs></svg>
       <header>
           <!-- <img src="images/obama.jpg" alt="background login pic" id="login-background"> -->
-        <nav>
-            <a href="/">home</a>
-            <a id="login" class="notLoggedIn" href="/login">login</a>
-            <a id="signup" class="notLoggedIn" href="/signup">signup</a>
-            <a id="loggedInUser" class="loggedIn" href=""> </a>
-            <button id="logoutButton" class="loggedIn">Logout</button>
-      </header>
+          <nav>
+            <div class="hamburger">
+                <span class="top buns"></span>
+                <span class="bottom buns"></span>
+            </div>
+            <section id="hamburgerToggle">
+                <ul class="dropDownList">
+                    <li class="dropDownListItem notLoggedIn"><a id="login" class="dropDownLink notLoggedIn" href="/login">Login</a></li>
+                    <li class="dropDownListItem notLoggedIn"><a id="signup" class="dropDownLink notLoggedIn" href="/signup">Signup</a></li>
+                    <li class="dropDownListItem loggedIn"><a id="loggedInUser" class="dropDownLink loggedIn" href="">Edit Profile</a></li>
+                    <li class="dropDownListItem loggedIn"><a id="logoutButton" class="dropDownLink loggedIn" href="">Logout</a></li>
+                </ul>
+            </section>
+    
+            <div class="logoContainer">
+                <a id="logo"href='/'><span class="notFlip">D29-</span><span class="flip flipping">F</span><span class="notFlip">orum</span></a>
+            </div>
+    
+            <div class="userContainer loggedIn">
+              <a id="navatarImageLink" href="">
+                <img id="navatarImage" src="">
+              </a>
+            </div>
         </nav>
+      </header>
       <main>
         <section id="forumView" class="view forumView">
-          <h3 class="bread-crumbs">D29 FORUM LIST <span>></span></h3>
+          <h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span></h3>
           <header>
               <div class="forum-view-headers">
                 <ul>
@@ -139,11 +161,10 @@
 
 
         <section id="subforumView" class="view subforumView">
-          <h3 class="bread-crumbs">D29 FORUM LIST <span>></span> SUBFORUM VIEW <span>></span></h3>
           <header>
 
             <span class="subforum-title"></span>
-            <span class="newThreadButton">New Topic</span>
+            <span class="newThreadButton">NEW TOPIC</span>
 
           </header>
           <div class="forum-view-headers">
@@ -156,6 +177,7 @@
             </ul>
             </div>
           <div class="threadsContainer"></div>
+          <span class="newThreadButton">NEW TOPIC</span>
         </section>
 
         <section id="editUserView" class="view user editUserView">
@@ -219,7 +241,7 @@
                 <button type="submit">Login</button>
             </form>
           </div>
-          </div> 
+          </div>
           <div id="clear-box"></div>
           </section>
         </section>
@@ -246,16 +268,13 @@
         </section>
 
         <section id="newThreadView" class="view thread newThreadView">
-          <header>
-            <p>New Thread</p>
-          </header>
+          <header></header>
           <input type="text" class="newThreadTitle" placeholder="Topic Title"></input>
           <textarea class="newThreadContent"></textarea>
           <button class="addThreadButton">Add Topic</button>
         </section>
 
         <section id="threadView" class="view thread threadView">
-            <h3 class="bread-crumbs">D29 FORUM LIST <span>></span> SUBFORUM VIEW <span>></span> THREAD VIEW <span>></span></h3>
           <header></header>
           <div class="commentContainer"></div>
           <div class="addCommentContainer">
@@ -265,7 +284,7 @@
           </div>
         </section>
 
-        <section id="errorView" class="view errorView errorViewContainer">
+        <section id="errorView" class="view errorView errorViewContainer hidden">
             <img src="images/404.jpg" alt="404 error">
         </section>
       </main>
