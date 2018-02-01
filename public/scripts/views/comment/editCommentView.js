@@ -9,19 +9,18 @@ var app = app || {};
         var $editViews = $('.editCommentView');
         $editViews.prev().removeClass('hidden');
         $editViews.addClass('hidden').val($editViews.prev().text());
-      
-        var $comment = $(`div[data-comment-id="${comment.comment_id}"]`);
-        var $content = $comment.find('.comment-content');
-        $content.addClass('hidden');
-        $content.next().removeClass('hidden');
 
+        var $comment = $(`div[data-comment-id="${comment.comment_id}"]`);
+        var $content = $comment.find('.comment-content').next();
+        $content.addClass('hidden');
+        $comment.find('.editCommentView').removeClass('hidden');
         //save button
         $comment.on('click', '.saveCommentButton', function() {
           $(this).off();
           comment.content = $comment.find('.editCommentTextArea').val();
           comment.update();
           $content.text(comment.content);
-          $content.next().addClass('hidden');
+          $comment.find('.editCommentView').addClass('hidden');
           $content.removeClass('hidden');
         });
 

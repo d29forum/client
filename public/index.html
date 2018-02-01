@@ -19,12 +19,41 @@
     <link rel="stylesheet" href="styles/modules/comments.css">
     <link rel="stylesheet" href="styles/modules/nav.css">
     <link rel="stylesheet" href="styles/modules/modals.css">
+    <link rel="stylesheet" href="styles/modules/banner.css">
     <link rel="stylesheet" href="styles/modules/profile.css">
     <link rel="stylesheet" href="styles/state/state.css">
     
     
     <script id="forum-template" type="text/x-handlebars-template">
       <section class="forumTableRow">
+        <span class="accordionToggle">+</span>
+        <div class="descriptionRow">
+            <a href="/subfora/{{subforaid}}">
+              <p class="subforaTitle">{{title}}</p>
+              <p class="subforaSubtitle">{{subtitle}}</p>
+            </a>
+        </div>
+        <div class="countRow">
+          <div class="threadCountColumn">
+            <span class="rowTitle">Threads  </span>
+            <span class="subforaThreadCount" data-thread-count="{{thread_count}}"> {{thread_count}}</span>
+          </div>
+          <div class="postCountColumn">
+            <span class="rowTitle">Posts </span>
+            <span class="subforaPostCount" data-comment-count="{{comment_count}}">{{comment_count}}</span>
+          </div>
+        </div>
+        <div class="lastPostRow hidden">
+            <span class="rowTitle">Last post </span>
+            <div class="borderLeft">
+              <p class="subforaLastPost"><a href="/user/{{username}}">
+              <img class="lastPostersGravatar" src="https://www.gravatar.com/avatar/{{gravatar_hash}}"> {{username}}</a><br class="hideSmall"> {{created_on}}</p>
+             <p class="lastPostContent"><a href="/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}comment-{{commentid}}">{{content}}</a></p>
+            </div>
+          </div>
+      </section>
+    </script>
+          <!-- <section class="forumTableRow">
           <div class="subforumInfo">
             <a href="/subfora/{{subforaid}}">
               <span class="subforaSubtitle">{{subtitle}}</span>
@@ -39,24 +68,7 @@
                 <a href="/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}/#{{commentid}}">view latest post</a>
               </div>
           </p>
-      </section>
-    </script>
-          <!-- <tr class="forumTableRow">
-          <td class="board-info">
-            <a href=`"/subfora/{{subforaid}}"`>
-              <p class="subforaTitle">{{title}}</p>
-              <p class="subforaSubtitle">{{subtitle}}</p>
-            </a>
-          </td>
-          <td class="commentCount">{{comment_count}}</td>
-          <td class="threadCount">{{thread_count}}</td>
-          <td class="lastComment">
-              <div class="createdOn">{{created_on}}</div>
-              <div class="username">by <a href="/user/{{username}}">{{username}}</a> 
-                <a href=`"/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}/#{{commentid}}"`>view latest post</a>
-              </div>
-          </td>
-      </tr> -->
+      </section> -->
     
     <script id="user-profile-template" type="text/x-handlebars-template">
             <div class="profile-card">
@@ -142,17 +154,42 @@
       </header>
       <main>
         <section id="forumView" class="view forumView">
+          <div class="banner">
+            <span class="bannerCloseIconSpan"><i class="fa fa-times bannerCloseIcon" title="Close this banner"></i></span>
+            <div class="bannerText">
+                <p class="bannerHeadline">D29 Forum</p>
+                <p class="bannerSubheader">New to D29 Forum? <br class="xsFormatting"><a class="bannerLinks" href="/signup">Create a profile</a></p>
+            </div>
+          </div>
+          <div class="smallMargin">
+          <h3 class="bread-crumbs">D29 FORUM LIST <span>></span></h3>
+          <!-- <header>
           <h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span></h3>
           <header>
+
               <div class="forum-view-headers">
                 <ul>
-                  <li class="forum-view-li1"><span class="tcForum"> CATEGORY</span></li>
-                  <li class="forum-view-li2"><span class="txThreads"> THREADS</span></li>
-                  <li class="forum-view-li3"><span class=""> POSTS</span></li>
-                  <li class="forum-view-li4"><span class="tcLatestPost"> LAST</span></li>
+                  <li class="forum-view-column-headers forum-view-li1"><span class="tcForum"> CATEGORY</span></li>
+                  <li class="forum-view-column-headers forum-view-li2"><span class="txThreads"> THREADS</span></li>
+                  <li class="forum-view-column-headers forum-view-li3"><span class=""> POSTS</span></li>
+                  <li class="forum-view-column-headers forum-view-li4"><span class="tcLatestPost"> LAST</span></li>
               </ul>
               </div>
-          </header>
+          </header> -->
+          <div class="columnHead">
+            <div class="forumHead">
+              <p>Forum</p>
+            </div>
+            <div class="threadHead">
+              <p>Threads</p>
+            </div>
+            <div class="postHead">
+              <p>Posts</p>
+            </div>
+            <div class="lastPostHead">
+              <p>Last Post</p>
+            </div>
+          </div>
           <div id="subforaContainer" class="subforaContainer">
             <!-- <tbody id="forumTable">
             <tr>
@@ -166,6 +203,7 @@
             </tr>
             </tbody> -->
 
+          </div>
           </div>
         </section>
 

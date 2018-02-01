@@ -178,7 +178,7 @@
       font-weight: bold;
   } */
 
-.addThreadButton, .newThreadButton, .addCommentButton, .deleteCommentButton {
+.addThreadButton, .newThreadButton, .addCommentButton, .saveCommentButton, .deleteCommentButton {
   cursor: pointer;
   display: inline-block;
   text-align: center;
@@ -191,6 +191,12 @@
   color: rgb(255, 216, 62);
   font-weight: bold;
   font-family: 'Saira', sans-serif;
+}
+
+.editCommentTextArea {
+  width: 100%;
+  resize: none;
+  min-height: 100px;
 }
 
 .editCommentButton {
