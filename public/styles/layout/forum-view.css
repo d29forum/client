@@ -73,4 +73,9 @@
 .lastPostersGravatar {
   height: 18px;
 }
-
+.aboveAvg {
+  color: green;
+}
+.belowAvg {
+  color: red;
+}
