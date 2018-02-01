@@ -42,7 +42,7 @@ var app = app || {};
       url: `${__API_URL__}/api/db/forum`,
       method: 'GET',
       success: results => {
-        // console.log(results);
+        console.log(results);
         ctx.results = results;
         next();
       }
