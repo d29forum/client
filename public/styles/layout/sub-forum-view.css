@@ -119,8 +119,10 @@
 .lastCommentCreatedOnDateP {
   padding: 15px 0 0 0;
 }
-.userNameLink {
-  padding: 15px 0 0 0;
+.subforaUsernameLink {
+  padding: 0;
+  display: inline-block;
+  margin-right: 5px;
 }
 .subforaAccordionToggle {
   color: #919191;
@@ -224,5 +226,8 @@
   .lastPostHead {
     right: -95px;
     position: absolute;
+  }
+  .lastCommentCreatedOnDateP {
+    display: none;
   }
 }
