@@ -5,19 +5,29 @@
   font-size: 21px;
   line-height: 19px;
   font-weight: 700;
-  margin: 0 10px 20px 10px;
+  margin: 0 0 20px 0;
+}
+#forumView {
+  padding-bottom: 40px;
 }
 .descriptionRow {
   padding-bottom: 12px;
 }
 .forumTableRow {
   border-collapse: collapse;
-  border-top: 3px solid #e9e9e9;
-  border-bottom: 3px solid #e9e9e9;
+  border-right: 3px solid #e9e9e9;
+  border-left: 3px solid #e9e9e9;
+  border-top: 1.5px solid #e9e9e9;
+  border-bottom: 1.5px solid #e9e9e9;
   padding: 2px 12px;
-  margin-bottom: 10px;
   background-color: #fafafa;
   position: relative;
+}
+.forumTableRow:first-of-type {
+  border-top: 3px solid #e9e9e9;
+}
+.forumTableRow:last-of-type {
+  border-bottom: 3px solid #e9e9e9;
 }
 .threadCountColumn {
   display: inline-block;
@@ -106,21 +116,34 @@
   margin: 10px 0 15px 20px;
   padding-left: 15px;
 }
-@media (min-width: 525px) {
+.smallMargin {
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.hideSmall {
+  display: none;
+}
+@media (min-width: 768px) {
+  .subforaLastPost a {
+    line-height: 30px;
+  }
+  .subforaTitle {
+    margin-bottom: 5px;
+  }
+  .hideSmall {
+    display: block;
+  }
   .lastPostRow {
     display: inline-block !important;
-  }
-  #subforaContainer {
-    margin: 0 10px;
   }
   .rowTitle {
     display: none;
   }
   .forumTableRow {
-    padding: 0;
     margin: 0;
     border-top: 1px solid #e9e9e9;
     border-bottom: 1px solid #e9e9e9;
+    padding: 5px 10px;
   }
   .descriptionRow, .subforaTitle, .subforaSubtitle, .lastPostRow, .subforaLastPost {
     padding: 0;
@@ -162,7 +185,6 @@
   }
   .columnHead {
     width: calc((100vw - 20px));
-    margin: 0 10px;
     background: #9b9ea3;
   }
   .threadCountColumn, .postCountColumn, .threadHead, .postHead {
@@ -176,5 +198,19 @@
   }
   .threadCountColumn, .postCountColumn {
     padding-top: 25px;
+  }
+  .borderLeft {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 30px;
+  }
+  .threadCountColumn {
+    margin: 0;
+  }
+  .lastPostHead {
+    right: -95px;
+    position: absolute;
   }
 }
