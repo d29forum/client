@@ -2,8 +2,8 @@
   font-family: Helvetica,Arial,sans-serif;
 }
 main {
+  min-height: calc(100vh - 70px);
   margin: 68px 0 0 0;
-
 }
 
 footer {
