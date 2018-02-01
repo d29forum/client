@@ -31,11 +31,14 @@ const __API_URL__ = 'https://d29forum-sv-staging.herokuapp.com';
         console.log(this.username);
         console.log(results);
         if (results[0].username == this.username){
-          console.log(results);
-          localStorage.currentUserId = results[0].id;
-          localStorage.currentUserName = this.username;
-          localStorage.currentUserNavatar = results[0].gravatar_hash;
-          page.show('../'); 
+          var setLS = callback => {
+            $('#modal1').toggleClass('is-visible');
+            localStorage.currentUserId = results[0].id;
+            localStorage.currentUserName = this.username;
+            localStorage.currentUserNavatar = results[0].gravatar_hash;
+            callback();
+          };
+          setLS(() => localStorage.deferredRoute ? page.show(localStorage.deferredRoute) : page.show('../'));
         }
       },
       error: err => {
