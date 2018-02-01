@@ -76,12 +76,11 @@
               <img class="gravatar_hash" src="https://www.gravatar.com/avatar/{{gravatar_hash}}" alt="">
             </div>
             <div class="profile-content">
-              <p id="profile-name" class="userName"><span class="first_name">{{first_name}}</span> <span class="last_name">{{last_name}}</span></p>
-              <p class="role">{{role}}</p>
-              <p class="userStats"><span class="created_on">Member Since {{created_on}}</span> | <span class="num_comments">{{num_comments}} Posts</span></p>
-              <p class="username"><span class="userProfileSectionHeader">Username</span><br>{{username}}</p>
-              <p class="email"><span class="userProfileSectionHeader">Email</span><br>{{email}}</p>
-              <p class="interests"><span class="userProfileSectionHeader">Interests</span><br>{{interests}}</p>
+              <p id="profile-name" class="userName"><span class="first_name">{{first_name}}</span> <span class="last_name">{{last_name}}</span><span class="role">  |  {{role}}</span></p>
+              <p class="email"><span class="userProfileSectionHeader">Email</span><span id="email-spacing" class="textbox-spacing">{{email}}</span></p>
+              <p class="username"><span class="userProfileSectionHeader">Username</span><span id="username-spacing" class="textbox-spacing">{{username}}</span></p>              
+              <p class="userStats"><span class="created_on">Member Since</span><span id="userStats-spacing" class="textbox-spacing">{{created_on}}</span> | <span class="num_comments">{{num_comments}} Posts</span></p>
+              <p class="interests"><span class="userProfileSectionHeader">Interests</span><span id="interests-spacing" class="textbox-spacing">{{interests}}</span></p>
             </div>
             <div class="profile-footer">
                 <!-- edit profile -->
