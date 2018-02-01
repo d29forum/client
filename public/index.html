@@ -23,6 +23,31 @@
     
     <script id="forum-template" type="text/x-handlebars-template">
       <section class="forumTableRow">
+        <span class="accordionToggle">+</span>
+        <div class="descriptionRow">
+            <a href="/subfora/{{subforaid}}">
+              <span class="rowTitle">Topic </span>
+              <p class="subforaTitle">{{title}}</p>
+              <p class="subforaSubtitle">{{subtitle}}</p>
+            </a>
+        </div>
+        <div class="countRow">
+          <div class="threadCountColumn">
+            <span class="rowTitle">Threads  </span>
+            <span class="subforaThreadCount"> {{thread_count}}</span>
+          </div>
+          <div class="postCountColumn">
+            <span class="rowTitle">Posts </span>
+            <span class="subforaPostCount">{{comment_count}}</span>
+          </div>
+        </div>
+        <div class="lastPostRow hidden">
+            <span class="rowTitle">Last post </span>
+            <p class="subforaLastPost">{{created_on}} <a href="/user/{{username}}">by {{username}}</a></p>
+          </div>
+      </section>
+    </script>
+          <!-- <section class="forumTableRow">
           <div class="subforumInfo">
             <a href="/subfora/{{subforaid}}">
               <span class="subforaSubtitle">{{subtitle}}</span>
@@ -37,24 +62,7 @@
                 <a href="/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}/#{{commentid}}">view latest post</a>
               </div>
           </p>
-      </section>
-    </script>
-          <!-- <tr class="forumTableRow">
-          <td class="board-info">
-            <a href=`"/subfora/{{subforaid}}"`>
-              <p class="subforaTitle">{{title}}</p>
-              <p class="subforaSubtitle">{{subtitle}}</p>
-            </a>
-          </td>
-          <td class="commentCount">{{comment_count}}</td>
-          <td class="threadCount">{{thread_count}}</td>
-          <td class="lastComment">
-              <div class="createdOn">{{created_on}}</div>
-              <div class="username">by <a href="/user/{{username}}">{{username}}</a> 
-                <a href=`"/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}/#{{commentid}}"`>view latest post</a>
-              </div>
-          </td>
-      </tr> -->
+      </section> -->
     
     <script id="user-profile-template" type="text/x-handlebars-template">
             <p class="userName"><span class="first_name">{{first_name}}</span> <span class="last_name">{{last_name}}</span></p>
@@ -132,16 +140,16 @@
       <main>
         <section id="forumView" class="view forumView">
           <h3 class="bread-crumbs">D29 FORUM LIST <span>></span></h3>
-          <header>
+          <!-- <header>
               <div class="forum-view-headers">
                 <ul>
-                  <li class="forum-view-li1"><span class="tcForum"> CATEGORY</span></li>
-                  <li class="forum-view-li2"><span class="txThreads"> THREADS</span></li>
-                  <li class="forum-view-li3"><span class=""> POSTS</span></li>
-                  <li class="forum-view-li4"><span class="tcLatestPost"> LAST</span></li>
+                  <li class="forum-view-column-headers forum-view-li1"><span class="tcForum"> CATEGORY</span></li>
+                  <li class="forum-view-column-headers forum-view-li2"><span class="txThreads"> THREADS</span></li>
+                  <li class="forum-view-column-headers forum-view-li3"><span class=""> POSTS</span></li>
+                  <li class="forum-view-column-headers forum-view-li4"><span class="tcLatestPost"> LAST</span></li>
               </ul>
               </div>
-          </header>
+          </header> -->
           <div id="subforaContainer" class="subforaContainer">
             <!-- <tbody id="forumTable">
             <tr>

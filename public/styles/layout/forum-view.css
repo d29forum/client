@@ -1,91 +1,64 @@
-
-.forum-view-headers {
-  width: 100%;
-  margin-top: 20px;
-  
+/* even .forumTableRow {background-color: #fafafa;} */
+.bread-crumbs {
+  color: #222;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 21px;
+  line-height: 19px;
+  font-weight: 700;
+  margin: 0 10px 20px 10px;
 }
-
-.forum-view-headers ul {
-  background-color: rgb(255, 216, 62);
-  font-family: 'Saira', sans-serif;
-  color: rgb(208, 107, 0);
-  font-size: 1.2em;
-  font-weight: 600;
+.descriptionRow {
+  /* border-bottom: 1px solid #e9e9e9; */
+  padding-bottom: 12px;
 }
-
-.forum-view-headers li{
-  /* display: inline-block; */
+.forumTableRow {
+  border-top: 3px solid #e9e9e9;
+  border-bottom: 3px solid #e9e9e9;
+  padding: 2px 12px;
+  margin-bottom: 10px;
+  background-color: #fafafa;
+}
+.threadCountColumn {
+  width: 50%;
+  display: inline-block;
+  /* border-right: 1px solid #e9e9e9; */
+}
+.postCountColumn {
+  /* width: 50%; */
+  display: inline-block;
+}
+.rowTitle {
+  color: #919191;
+  font-size: 14px;
   float: left;
-  padding: 10px;
 }
-
-.forum-view-li1 {
-
-  width: 40%;
-  border: 1px #777 solid;
-  background-color: rgb(255, 216, 62);
+.subforaTitle {
+  padding: 20px 0 0 20px;
+  font-size: 18px;
+  font-weight: 500;
 }
-
-.forum-view-li2 {
-  width: 15%;
-  border: 1px #777 solid;
-  background-color: rgb(255, 216, 62);
-}
-
-.forum-view-li3 {
-  width: 15%;
-  border: 1px #777 solid;
-  background-color: rgb(255, 216, 62);
-}
-
-.forum-view-li4 {
-  width: 15%;
-  border: 1px #777 solid;
-  background-color: rgb(255, 216, 62);
-}
-
-.subforaContainer {
-  width: 100%;
-  position: relative;
-}
-
-.subforumInfo {
-  float: left;
-  width: 40%;
-  border: 1px #777 solid;
-  background-color: rgb(255, 249, 231);
-  padding: 10px;
-}
-
-.threadCount {
-  float: left;
-  width: 15%;
-  padding: 10px;
-  border: 1px #777 solid;
-  background-color: rgb(255, 249, 231);
-}
-
-.commentCount {
-  float: left;
-  width: 15%;
-  padding: 10px;
-  border: 1px #777 solid;
-  background-color: rgb(255, 249, 231);
-}
-
-.createdOn {
-  float: left;
-  width: 15%;
-  padding: 10px;
-  border: 1px #777 solid;
-  background-color: rgb(255, 249, 231);
-}
-
 .subforaSubtitle {
-  display: none;
+  padding: 5px 0 0 20px;
+  font-size: 11px;
+  font-weight: 400;
+  color: #646464;
 }
-
-.username {
-  display: none;
+.subforaLastPost {
+  padding: 20px 0 0 20px;
+}
+.lastPostRow {
+  padding-top: 12px;
+}
+/* .show, .hidden {
+  transition: all 5s;
+} */
+.countRow .rowTitle {
+  padding-right: 3px;
+}
+.accordionToggle {
+  color: #919191;
+  font-size: 14px;
+  float: right;
+  cursor: pointer;
 }
 
