@@ -9,10 +9,19 @@ var app = app || {};
   const monthNum = [99,'01','02','03','04','05','06','07','08','09','10','11','12'];
 
   Helper.parseDate = function (timestamp) {
+    //Get Current Date
+    var dateNow = new Date();
+    var dateNowStr = dateNow.toString().slice(4,15);
+    var dateNowArr = dateNowStr.split(' ');
+
     timestamp = timestamp.slice(0, 10);
     var dateString = timestamp.split('-');
     timestamp = [dateString[1], dateString[2], dateString[0]];
     var monthIndex = monthNum.indexOf(timestamp[0]);
+    var dateCheck = [months[monthIndex], timestamp[1], timestamp[2]];
+  
+    if (dateNowArr.toString() == dateCheck.toString()){ return('Today at')};
+
     return `${months[monthIndex]} ${timestamp[1]}, ${timestamp[2]}`;
   } 
  
@@ -25,6 +34,11 @@ var app = app || {};
       var item = parseInt(x);
       timeArr.push(item);
     })
+
+    //Accounts for TimeZone Difference
+    var offset = (new Date().getTimezoneOffset()/60);
+    timeArr[0] = timeArr[0] - offset;
+
     if (timeArr[0] < 12) {
       if(timeArr[1] === 0) {
         timeArr[1] = '00';
