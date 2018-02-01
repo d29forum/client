@@ -28,7 +28,6 @@
         <span class="accordionToggle">+</span>
         <div class="descriptionRow">
             <a href="/subfora/{{subforaid}}">
-              <span class="rowTitle">Topic </span>
               <p class="subforaTitle">{{title}}</p>
               <p class="subforaSubtitle">{{subtitle}}</p>
             </a>
@@ -45,9 +44,11 @@
         </div>
         <div class="lastPostRow hidden">
             <span class="rowTitle">Last post </span>
-            <p class="lastPostContent"><a href="/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}comment-{{commentid}}">{{content}}</a></p>
-            <p class="subforaLastPost">By <a href="/user/{{username}}">
-              <img class="lastPostersGravatar" src="https://www.gravatar.com/avatar/{{gravatar_hash}}"> {{username}}</a> on {{created_on}}</p>
+            <div class="borderLeft">
+              <p class="subforaLastPost"><a href="/user/{{username}}">
+              <img class="lastPostersGravatar" src="https://www.gravatar.com/avatar/{{gravatar_hash}}"> {{username}}</a> {{created_on}}</p>
+             <p class="lastPostContent"><a href="/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}comment-{{commentid}}">{{content}}</a></p>
+            </div>
           </div>
       </section>
     </script>
@@ -147,7 +148,7 @@
             <span class="bannerCloseIconSpan"><i class="fa fa-times bannerCloseIcon" title="Close this banner"></i></span>
             <div class="bannerText">
                 <p class="bannerHeadline">D29 Forum</p>
-                <p class="bannerSubheader">New to D29 Forum? <a class="bannerLinks" href="/signup">Create a profile</a></p>
+                <p class="bannerSubheader">New to D29 Forum? <br class="xsFormatting"><a class="bannerLinks" href="/signup">Create a profile</a></p>
             </div>
           </div>
           <h3 class="bread-crumbs">D29 FORUM LIST <span>></span></h3>
@@ -164,6 +165,20 @@
               </ul>
               </div>
           </header> -->
+          <div class="columnHead">
+            <div class="forumHead">
+              <p>Forum</p>
+            </div>
+            <div class="threadHead">
+              <p>Threads</p>
+            </div>
+            <div class="postHead">
+              <p>Posts</p>
+            </div>
+            <div class="lastPostHead">
+              <p>Last Post</p>
+            </div>
+          </div>
           <div id="subforaContainer" class="subforaContainer">
             <!-- <tbody id="forumTable">
             <tr>

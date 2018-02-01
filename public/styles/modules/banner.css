@@ -35,7 +35,16 @@
 }
 .bannerLinks {
   text-decoration: underline;
+  line-height: 1.5;
 }
 .bannerSubheader {
-  margin-top: 5px;
+  margin-top: 15px;
+}
+@media (min-width: 363px) {
+  .xsFormatting {
+    display: none;
+  }
+  .bannerSubheader {
+    margin-top: 5px;
+  }
 }
