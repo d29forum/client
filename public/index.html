@@ -111,14 +111,16 @@
           </div>
         </div>
         <div class="lastCommenterRow hidden">
-            <span class="rowTitle">Last commenter </span>
+            <span class="rowTitle">Last post</span>
             <div class="borderLeft">
-              <p class="subforaLastCommenter"><a href="/user/{{last_commenter}}" class="username userNameLink">{{last_commenter}}</a></p>
-             <p class="lastCommentCreatedOnDateP"><a href="/subfora/{{subforum_id}}/threads/{{thread_id}}#comment-{{comment_id}}" class="lastCommentCreatedOnDate">{{last_comment_created_on}}</a></p>
+              <p class="subforaLastCommenter"><a href="/user/{{last_commenter}}" class="username subforaUsernameLink"><img class="lastPostersGravatar" src="https://www.gravatar.com/avatar/{{gravatar_hash}}"> {{last_commenter}}</a><br class="hideSmall">{{last_comment_created_on}}</p>
+             <p class="lastCommentCreatedOnDateP"><a href="/subfora/{{subforum_id}}/threads/{{thread_id}}#comment-{{comment_id}}" class="lastCommentCreatedOnDate">{{content}}</a></p>
             </div>
           </div>
       </section>
     </script>
+    <!-- <img class="lastPostersGravatar" src="https://www.gravatar.com/avatar/{{gravatar_hash}}"> {{username}}</a><br class="hideSmall"> {{created_on}}</p>
+    <p class="lastPostContent"><a href="/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}comment-{{commentid}}">{{content}}</a></p> -->
           <!-- <div data-thread-id="{{thread_id}}" class="thread">
         <a href="/subfora/{{subforum_id}}/threads/{{thread_id}}" class="thread-title">{{title}}</a>
         <a href="/user/{{thread_creator}}" class="username">{{thread_creator}}</a>
