@@ -8,6 +8,13 @@ body {
 main {
   margin: 20px 0;
 }
+
+footer {
+  width: 100%;
+  height: 48px;
+  background-color: rgba(0,0,0,0.8);
+}
+
 a {
   color: inherit;
   text-decoration: none;
