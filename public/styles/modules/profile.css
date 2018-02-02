@@ -78,7 +78,7 @@
 }
 
 #email-spacing {
-    margin-left: 140px;
+    margin-left: 138px;
     padding-bottom: 5px;
 }
 
@@ -93,15 +93,32 @@
 }
 
 #interests-spacing {
-    margin-left: 118px;
+    margin-left: 116px;
     padding-bottom: 5px;
 }
 
 .textbox-spacing {
     text-align: left;
-    margin-left: 120px
+    margin-left: 120px;
 }
 
 .email, .interests, .userStats, .username {
     padding-bottom: 8px;
+    font-size: 16px;
 }
+
+/* #email-spacing, #username-spacing, #userStats-spacing, #interests-spacin g {
+    width: 100px;
+  display: block;
+  float: left;
+} 
+ */
+
+ .userProfileSectionHeader, .created_on {
+     font-size: 15px;
+     font-weight: bold;
+ }
+ #userProfile {
+    min-height: 640px;
+    background: #FAFAFA;
+  }

@@ -105,8 +105,35 @@ margin-bottom: 0;
 
 .newCommentsSlideUp {
   position: fixed;
-  top: 48px;
-  right: 0px;
+  padding: 5px;
+  top: 0px;
+  right: 120px;
   background: rgba(0,0,0,0.8);
   color: #fff;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 0 0 7px 7px;
+}
+#modal3 .modal-header {
+  display: none;
+}
+#modal3 .modal-wrapper{
+  width: auto;
+  left: calc((50vw - 185px));
+  margin-left: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#modal3 .modal-overlay {
+  background: hsla(0, 0%, 0%, 0.8);
+}
+#modal3 .modal-close {
+  top: 23px;
+  z-index: 3;
+  color: #aaa;
+  background: #f7f7f7;
+  border-radius: 50%;
+  border: 1px solid #aaa;
+  right: -5px;
 }

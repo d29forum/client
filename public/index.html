@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/layout/forum-view.css">
     <link rel="stylesheet" href="styles/layout/sub-forum-view.css">
     <link rel="stylesheet" href="styles/layout/thread-view.css">
+    <link rel="stylesheet" href="styles/layout/new-user-view.css">
     <link rel="stylesheet" href="styles/modules/modules.css">
     <link rel="stylesheet" href="styles/layout/new-thread.css">
     <link rel="stylesheet" href="styles/modules/comments.css">
@@ -21,6 +22,8 @@
     <link rel="stylesheet" href="styles/modules/modals.css">
     <link rel="stylesheet" href="styles/modules/banner.css">
     <link rel="stylesheet" href="styles/modules/profile.css">
+    <link rel="stylesheet" href="styles/modules/editprofile.css">
+    <link rel="stylesheet" href="styles/modules/signup.css">
     <link rel="stylesheet" href="styles/state/state.css">
     
     
@@ -137,7 +140,7 @@
 
   </head>
   <body>
-    <div class="body-content"></div> 
+    <div class="body-content">
       <svg display="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="768" height="800" viewBox="0 0 768 800"><defs><g id="icon-close"><path class="path1" d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z"></path></g></defs></svg>
       <header>
           <!-- <img src="images/obama.jpg" alt="background login pic" id="login-background"> -->
@@ -149,7 +152,7 @@
             <section id="hamburgerToggle">
                 <ul class="dropDownList">
                     <li class="dropDownListItem notLoggedIn"><a id="login" class="dropDownLink notLoggedIn" href="/login">Login</a></li>
-                    <li class="dropDownListItem notLoggedIn"><a id="signup" class="dropDownLink notLoggedIn" href="/signup">Signup</a></li>
+                    <li class="dropDownListItem notLoggedIn"><a id="signup" class="dropDownLink notLoggedIn" href="">Signup</a></li>
                     <li class="dropDownListItem loggedIn"><a id="loggedInUser" class="dropDownLink loggedIn" href="">Edit Profile</a></li>
                     <li class="dropDownListItem loggedIn"><a id="logoutButton" class="dropDownLink loggedIn" href="">Logout</a></li>
                 </ul>
@@ -224,7 +227,14 @@
 
 
         <section id="subforumView" class="view subforumView hidden">
-          <div class="smallMargin">
+            <div class="banner">
+                <span class="bannerCloseIconSpan"><i class="fa fa-times bannerCloseIcon" title="Close this banner"></i></span>
+                <div class="bannerText">
+                    <p class="bannerHeadline">D29 Forum</p>
+                    <p class="bannerSubheader">New to D29 Forum? <br class="xsFormatting"><a class="bannerLinks" href="/signup">Create a profile</a></p>
+                </div>
+              </div>
+              <div class="smallMargin">
           <header>
 
             <span class="subforum-title"></span>
@@ -250,7 +260,7 @@
           <div class="smallMargin">
         </section>
 
-        <section id="editUserView" class="view user editUserView hidden">
+        <section id="editUserView" class="view user editUserView editForm hidden">
             <form action="#" id="editProfileForm">
                 <fieldset>
                         <label for="username">Username: </label>
@@ -259,7 +269,7 @@
 
                 <fieldset>
                     <label for="Email">Email: </label>
-                    <textarea rows="10" id="editEmail" name="Email"></textarea>
+                    <input type="text" id="editEmail" name="Email"></textarea>
                 </fieldset>
 
                 <fieldset>
@@ -272,14 +282,14 @@
                     <input type="text" id="editLast_name" name="last_name">
                 </fieldset>
                     
-                <fieldset>
+                <fieldset class="hidden">
                     <label for="gravatar_hash">Gravatar: </label>
                     <input type="text" id="editGravatar_hash" name="gravatar_hash">
                 </fieldset>
 
                 <fieldset>
                     <label for="interests">Interests: </label>
-                    <input type="text" id="editInterests" name="interests">
+                    <textarea rows="6" id="editInterests" name="interests"></textarea>
                 </fieldset>
 
                 <button id="editButton" type="submit">update and return to the home page</button>
@@ -318,15 +328,19 @@
 
         <section id="newUserView" class="view user newUserView hidden">
             <section id="newUser" class="tab-content">
-                <h1>New User</h1>
-                <form action="#" id="newUserForm">
+                <!-- <form action="#" id="newUserForm">
                     <fieldset>
-                        <label for="username">UserName: </label>
+                        <label for="username">Choose a user name: </label>
                         <input type="text" id="username" name="username" placeholder="ex. crazyCoder">
                     </fieldset>
 
-                    <button type="submit">Submit and return to the home page</button>
-                </form>
+                    <button class="signUpButton" type="submit">Sign Up</button>
+                </form> -->
+                <!-- <form action="#" id="newUserForm">
+                  <h1 class="newUserFormTitle">Sign up in seconds</h1>
+                  <input type="text" id="username" class="newUserFormInput" name="username" placeholder="ex. crazyCoder">
+                  <button class="signUpButton" type="submit">Sign Up</button>
+                </form> -->
             </section>
         </section>
 
@@ -338,6 +352,7 @@
         </section>
 
         <section id="newThreadView" class="view thread newThreadView hidden">
+          
           <div class="smallMargin">
             <header></header>
             <input type="text" class="newThreadTitle" placeholder="Topic Title"></input>
@@ -347,36 +362,29 @@
         </section>
 
         <section id="threadView" class="view thread threadView hidden">
-          <div class="banner">
-            <span class="bannerCloseIconSpan"><i class="fa fa-times bannerCloseIcon" title="Close this banner"></i></span>
-            <div class="bannerText">
-                <p class="bannerHeadline">D29 Forum</p>
-                <p class="bannerSubheader">New to D29 Forum? <br class="xsFormatting"><a class="bannerLinks" href="/signup">Create a profile</a></p>
+            <div class="banner">
+              <span class="bannerCloseIconSpan"><i class="fa fa-times bannerCloseIcon" title="Close this banner"></i></span>
+              <div class="bannerText">
+                  <p class="bannerHeadline">D29 Forum</p>
+                  <p class="bannerSubheader">New to D29 Forum? <br class="xsFormatting"><a class="bannerLinks" href="/signup">Create a profile</a></p>
+              </div>
             </div>
-          </div>
-<!-- ================================================= -->
-          <div class="smallMargin">
-            <header></header>
-            <div class="commentContainer"></div>
-            <div class="addCommentContainer">
-              <p>Contribute to the discussion!</p>
-              <textarea class="addCommentTextArea"></textarea>
-              <div class="addCommentButton">Add Comment</div>
+            <div class="smallMargin">
+              <header></header>
+              <div class="commentContainer"></div>
+              <div class="addCommentContainer">
+                <p>Contribute to the discussion!</p>
+                <textarea class="addCommentTextArea"></textarea>
+                <div class="addCommentButton">Add Comment</div>
+              </div>
             </div>
-          </div>
-
-<!-- ================================================= -->
-          
         </section>
 
         <section id="errorView" class="view errorView errorViewContainer hidden">
             <img src="images/404.jpg" alt="404 error">
         </section>
+        <div class="push"></div>
       </main>
-
-      <footer>
-
-      </footer>
       <div id="modal1" class="modal">
         <div class="modal-overlay modal-toggle1"></div>
         <div class="modal-wrapper modal-transition">
@@ -412,31 +420,69 @@
         </div>
        </div>
 
+       <div id="modal3" class="modal">
+          <div class="modal-overlay modal-toggle3"></div>
+          <div class="modal-wrapper modal-transition">
+            <div class="modal-header">
+              <button class="modal-close modal-toggle3"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
+            </div>
+            
+            <div class="modal-body">
+              <div class="modal-content">
+                  <button class="modal-close modal-toggle3"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
+                  <form action="#" id="newUserForm">
+                    <h1 class="newUserFormTitle">Sign up in seconds</h1>
+                    <input type="text" id="username" class="newUserFormInput" name="username" placeholder="ex. crazyCoder">
+                    <button class="signUpButton" type="submit">Sign Up</button>
+                  </form>
+              </div>
+            </div>
+          </div>
+         </div>
+
       <div class="newCommentsSlideUp hidden"></div>
-      
-      <script src="vendor/scripts/jquery.js"></script>
-      <script src="vendor/scripts/handlebars.js"></script>
-      <script src="vendor/scripts/page.js"></script>
-      <script src="vendor/scripts/md5.js"></script>
-      <script src="scripts/helpers.js"></script>
-      <script src="scripts/models/user.js"></script>
-      <script src="scripts/models/comment.js"></script>
-      <script src="scripts/models/thread.js"></script>
-      <script src="scripts/models/subforum.js"></script>
-      <script src="scripts/models/forum.js"></script>
-      <script src="scripts/views/user/editUserView.js"></script>
-      <script src="scripts/views/user/userView.js"></script>
-      <script src="scripts/views/user/loginUserView.js"></script>
-      <script src="scripts/views/user/newUserView.js"></script>
-      <script src="scripts/views/thread/threadView.js"></script>
-      <script src="scripts/views/thread/newThreadView.js"></script>
-      <script src="scripts/views/comment/commentView.js"></script>
-      <script src="scripts/views/comment/editCommentView.js"></script>
-      <script src="scripts/views/subforum/subforumView.js"></script>
-      <script src="scripts/views/forum/forumView.js"></script>
-      <script src="scripts/views/errorView.js"></script>
-      <script src="scripts/controllers/routes.js"></script>
-      <script src="scripts/app.js"></script>
-    </div>  
+      <div class="spacerBottom"></div>
+    </div>
+
+    <footer class="footer">
+      <p id="contactFooter">Contact Us 
+        <span id="hiddenContact">      
+          : <a class="contactLinksHidden" href="https://github.com/dsnowb" target="_blank">Dave</a>, 
+          <a class="contactLinksHidden" href="https://github.com/brianbixby" target="_blank">Brian</a>, 
+          <a  class="contactLinksHidden" href="https://github.com/captain-c00keys" target="_blank">Gene</a>, 
+          <a class="contactLinksHidden" href="https://github.com/keitheck" target="_blank">Keith</a> 
+        </span>
+    </p>
+
+      <div class="contactLinksDiv">
+        <a id="keith" class="contactLinks" href="https://github.com/keitheck" target="_blank">Keith</a>
+        <a id="gene" class="contactLinks" href="https://github.com/captain-c00keys" target="_blank">Gene</a>
+        <a id="brian" class="contactLinks" href="https://github.com/brianbixby" target="_blank">Brian</a>
+        <a id="dave" class="contactLinks" href="https://github.com/dsnowb" target="_blank">Dave</a>
+      </div>
+    </footer>
+    <script src="vendor/scripts/jquery.js"></script>
+    <script src="vendor/scripts/handlebars.js"></script>
+    <script src="vendor/scripts/page.js"></script>
+    <script src="vendor/scripts/md5.js"></script>
+    <script src="scripts/helpers.js"></script>
+    <script src="scripts/models/user.js"></script>
+    <script src="scripts/models/comment.js"></script>
+    <script src="scripts/models/thread.js"></script>
+    <script src="scripts/models/subforum.js"></script>
+    <script src="scripts/models/forum.js"></script>
+    <script src="scripts/views/user/editUserView.js"></script>
+    <script src="scripts/views/user/userView.js"></script>
+    <script src="scripts/views/user/loginUserView.js"></script>
+    <script src="scripts/views/user/newUserView.js"></script>
+    <script src="scripts/views/thread/threadView.js"></script>
+    <script src="scripts/views/thread/newThreadView.js"></script>
+    <script src="scripts/views/comment/commentView.js"></script>
+    <script src="scripts/views/comment/editCommentView.js"></script>
+    <script src="scripts/views/subforum/subforumView.js"></script>
+    <script src="scripts/views/forum/forumView.js"></script>
+    <script src="scripts/views/errorView.js"></script>
+    <script src="scripts/controllers/routes.js"></script>
+    <script src="scripts/app.js"></script>  
   </body>
 </html>  

@@ -1,16 +1,5 @@
 'use strict';
 
-// MODALS
-$('.modal-toggle1').on('click', function(e) {
-    e.preventDefault();
-    $('#modal1').toggleClass('is-visible');
-});
-
-$('.modal-toggle2').on('click', function(e) {
-    e.preventDefault();
-    $('#modal2').toggleClass('is-visible');
-});
-
 // NAV
 $('.hamburger').on('click', function(){
     $('.flipping').toggleClass('flip');
@@ -37,3 +26,20 @@ $('#logo').on('click', function() {
         $('.userContainer').toggleClass('slideOut');
     }
 });
+
+// MODALS
+$('.modal-toggle1').on('click', function(e) {
+    e.preventDefault();
+    $('#modal1').toggleClass('is-visible');
+});
+
+$('.modal-toggle2').on('click', function(e) {
+    e.preventDefault();
+    $('#modal2').toggleClass('is-visible');
+});
+
+$('.modal-toggle3').on('click', function(e) {
+    e.preventDefault();
+    $('#modal3').toggleClass('is-visible');
+});
+

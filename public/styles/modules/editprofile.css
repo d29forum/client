@@ -1,0 +1,70 @@
+.editForm {
+    background: #f0f0f0;
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 68px;
+  margin-bottom: 2%;
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  border-radius: 10%;
+  border: 5px outset;
+}
+
+fieldset input [type="text"] {
+    width: 92%;
+  background: #fff;
+  margin-bottom: 4%;
+  border: 1px solid #ccc;
+  padding: 4%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 95%;
+  color: #555;
+}
+
+
+#editUserView {
+  padding: 20px;
+}
+
+#editProfileForm fieldset {
+  margin-bottom: 8px;
+}
+
+#editProfileForm fieldset input[type="text"] {
+  padding: 1% 2%;
+  border: solid 1px black;
+  width: 50%;
+  border-radius: 3px;
+}
+
+#editProfileForm fieldset textarea {
+  width: 50%;
+  border: solid 1px #000;
+  border-radius: 3px;
+}
+
+#editProfileForm fieldset label {
+  width: 100px;
+  display: block;
+  float: left;
+}
+
+#editProfileForm button, #deleteProfileButton {
+    padding: 2% 4%;
+    background: #444;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background .3s;
+    -webkit-transition: background .3s;
+}
+#userProfile {
+  min-height: 640px;
+  background: #FAFAFA;
+}
+#editProfileButton {
+  top: 45px;
+}
