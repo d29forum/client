@@ -140,7 +140,7 @@
   }
   #subforumView header .newThreadButton {
     float: right;
-    margin: 30px;
+    margin: 20px 30px 30px 30px;
   }
 }
 @media only screen and (min-width: 768px) {

@@ -22,8 +22,9 @@
     <link rel="stylesheet" href="styles/modules/modals.css">
     <link rel="stylesheet" href="styles/modules/banner.css">
     <link rel="stylesheet" href="styles/modules/profile.css">
-    <link rel="stylesheet" href="styles/state/state.css">
     <link rel="stylesheet" href="styles/modules/editprofile.css">
+    <link rel="stylesheet" href="styles/modules/signup.css">
+    <link rel="stylesheet" href="styles/state/state.css">
     
     
     <script id="forum-template" type="text/x-handlebars-template">
@@ -151,7 +152,7 @@
             <section id="hamburgerToggle">
                 <ul class="dropDownList">
                     <li class="dropDownListItem notLoggedIn"><a id="login" class="dropDownLink notLoggedIn" href="/login">Login</a></li>
-                    <li class="dropDownListItem notLoggedIn"><a id="signup" class="dropDownLink notLoggedIn" href="/signup">Signup</a></li>
+                    <li class="dropDownListItem notLoggedIn"><a id="signup" class="dropDownLink notLoggedIn" href="">Signup</a></li>
                     <li class="dropDownListItem loggedIn"><a id="loggedInUser" class="dropDownLink loggedIn" href="">Edit Profile</a></li>
                     <li class="dropDownListItem loggedIn"><a id="logoutButton" class="dropDownLink loggedIn" href="">Logout</a></li>
                 </ul>
@@ -226,7 +227,14 @@
 
 
         <section id="subforumView" class="view subforumView hidden">
-          <div class="smallMargin">
+            <div class="banner">
+                <span class="bannerCloseIconSpan"><i class="fa fa-times bannerCloseIcon" title="Close this banner"></i></span>
+                <div class="bannerText">
+                    <p class="bannerHeadline">D29 Forum</p>
+                    <p class="bannerSubheader">New to D29 Forum? <br class="xsFormatting"><a class="bannerLinks" href="/signup">Create a profile</a></p>
+                </div>
+              </div>
+              <div class="smallMargin">
           <header>
 
             <span class="subforum-title"></span>
@@ -320,14 +328,19 @@
 
         <section id="newUserView" class="view user newUserView hidden">
             <section id="newUser" class="tab-content">
-                <form action="#" id="newUserForm">
+                <!-- <form action="#" id="newUserForm">
                     <fieldset>
                         <label for="username">Choose a user name: </label>
                         <input type="text" id="username" name="username" placeholder="ex. crazyCoder">
                     </fieldset>
 
                     <button class="signUpButton" type="submit">Sign Up</button>
-                </form>
+                </form> -->
+                <!-- <form action="#" id="newUserForm">
+                  <h1 class="newUserFormTitle">Sign up in seconds</h1>
+                  <input type="text" id="username" class="newUserFormInput" name="username" placeholder="ex. crazyCoder">
+                  <button class="signUpButton" type="submit">Sign Up</button>
+                </form> -->
             </section>
         </section>
 
@@ -339,6 +352,7 @@
         </section>
 
         <section id="newThreadView" class="view thread newThreadView hidden">
+          
           <div class="smallMargin">
             <header></header>
             <input type="text" class="newThreadTitle" placeholder="Topic Title"></input>
@@ -348,26 +362,22 @@
         </section>
 
         <section id="threadView" class="view thread threadView hidden">
-          <div class="banner">
-            <span class="bannerCloseIconSpan"><i class="fa fa-times bannerCloseIcon" title="Close this banner"></i></span>
-            <div class="bannerText">
-                <p class="bannerHeadline">D29 Forum</p>
-                <p class="bannerSubheader">New to D29 Forum? <br class="xsFormatting"><a class="bannerLinks" href="/signup">Create a profile</a></p>
+            <div class="banner">
+              <span class="bannerCloseIconSpan"><i class="fa fa-times bannerCloseIcon" title="Close this banner"></i></span>
+              <div class="bannerText">
+                  <p class="bannerHeadline">D29 Forum</p>
+                  <p class="bannerSubheader">New to D29 Forum? <br class="xsFormatting"><a class="bannerLinks" href="/signup">Create a profile</a></p>
+              </div>
             </div>
-          </div>
-<!-- ================================================= -->
-          <div class="smallMargin">
-            <header></header>
-            <div class="commentContainer"></div>
-            <div class="addCommentContainer">
-              <p>Contribute to the discussion!</p>
-              <textarea class="addCommentTextArea"></textarea>
-              <div class="addCommentButton">Add Comment</div>
+            <div class="smallMargin">
+              <header></header>
+              <div class="commentContainer"></div>
+              <div class="addCommentContainer">
+                <p>Contribute to the discussion!</p>
+                <textarea class="addCommentTextArea"></textarea>
+                <div class="addCommentButton">Add Comment</div>
+              </div>
             </div>
-          </div>
-
-<!-- ================================================= -->
-          
         </section>
 
         <section id="errorView" class="view errorView errorViewContainer hidden">
@@ -409,6 +419,26 @@
           </div>
         </div>
        </div>
+
+       <div id="modal3" class="modal">
+          <div class="modal-overlay modal-toggle3"></div>
+          <div class="modal-wrapper modal-transition">
+            <div class="modal-header">
+              <button class="modal-close modal-toggle3"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
+            </div>
+            
+            <div class="modal-body">
+              <div class="modal-content">
+                  <button class="modal-close modal-toggle3"><svg class="icon-close icon" viewBox="0 0 32 32"><use xlink:href="#icon-close"></use></svg></button>
+                  <form action="#" id="newUserForm">
+                    <h1 class="newUserFormTitle">Sign up in seconds</h1>
+                    <input type="text" id="username" class="newUserFormInput" name="username" placeholder="ex. crazyCoder">
+                    <button class="signUpButton" type="submit">Sign Up</button>
+                  </form>
+              </div>
+            </div>
+          </div>
+         </div>
 
       <div class="newCommentsSlideUp hidden"></div>
       <div class="spacerBottom"></div>

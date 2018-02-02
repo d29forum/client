@@ -6,6 +6,12 @@
     commentView.init = function(ctx, next) {
         $('.view').addClass('hidden');
         $('.commentView').removeClass('hidden');
+        $('#signup').off();
+        $('#signup').on('click', function(e) {
+            e.preventDefault();
+            $('#modal3').toggleClass('is-visible');
+            $('#newUserForm').on('submit', app.newUserView.submit);
+        });
         next();
     }
     

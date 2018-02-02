@@ -7,7 +7,14 @@
         $('.view').addClass('hidden').find('*').off();
         $('.threadsContainer').empty();
         $('.subforumView').removeClass('hidden');
+        $('#signup').off();
+        $('#signup').on('click', function(e) {
+            e.preventDefault();
+            $('#modal3').toggleClass('is-visible');
+            $('#newUserForm').on('submit', app.newUserView.submit);
+        });
         $('.threadsContainer').on('click', '.subforaAccordionToggle', subforumView.accordionControls);
+        localStorage.banner ? $('.banner').addClass('hidden') : $('.banner').on('click', '.bannerCloseIconSpan', app.forumView.hideBanner);
         next();
     }
 

@@ -6,8 +6,15 @@ var app = app || {};
 
     threadView.init = function(ctx, next) {
         $('.view').addClass('hidden').find('*').off();
+        $('#signup').off();
+        $('#signup').on('click', function(e) {
+            e.preventDefault();
+            $('#modal3').toggleClass('is-visible');
+            $('#newUserForm').on('submit', app.newUserView.submit);
+        });
         $('.threadView').removeClass('hidden');
         $('.commentContainer').empty();
+        localStorage.banner ? $('.banner').addClass('hidden') : $('.banner').on('click', '.bannerCloseIconSpan', app.forumView.hideBanner);
         if (localStorage.deferredRoute) {
           delete localStorage.deferredRoute;
         } else {

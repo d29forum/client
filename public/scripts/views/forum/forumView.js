@@ -6,9 +6,15 @@ var app = app || {};
 
     forumView.init = function(ctx, next) {
         $('.view').addClass('hidden').find('*').off();
+        $('#signup').off();
         $('.forumView').removeClass('hidden');
         $('.subforaContainer').on('click', '.accordionToggle', forumView.accordionControls);
         localStorage.banner ? $('.banner').addClass('hidden') : $('.banner').on('click', '.bannerCloseIconSpan', forumView.hideBanner);
+        $('#signup').on('click', function(e) {
+            e.preventDefault();
+            $('#modal3').toggleClass('is-visible');
+            $('#newUserForm').on('submit', app.newUserView.submit);
+        });
         next();
     }
 
