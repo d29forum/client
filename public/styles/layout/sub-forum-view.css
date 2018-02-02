@@ -140,6 +140,9 @@
   top: 2px;
   right: 12px;
 }
+#subforumView .lastPostersGravatar {
+  display: none;
+}
 @media only screen and (min-width: 550px) {
   #subforumView .bread-crumbs {
     display: inline-block;

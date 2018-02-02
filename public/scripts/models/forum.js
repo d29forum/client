@@ -43,10 +43,11 @@ var app = app || {};
       else {
         $(this).addClass('belowAvg');
       }
-      $('.subforaLastPost:contains("Today")').css('margin-right', '35px');
     });
-    $('.subforaLastPost:contains("Today")').css('margin-right', '35px');
+    $('.subforaLastPost:contains("Today")').css('margin-right', '45px');
   }
+
+
   // handlebars template for user profile
   Forum.prototype.toForumTemplateHtml = function() {
     var template = Handlebars.compile($('#forum-template').text());
