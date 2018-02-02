@@ -14,9 +14,13 @@
     <link rel="stylesheet" href="styles/layout/forum-view.css">
     <link rel="stylesheet" href="styles/layout/sub-forum-view.css">
     <link rel="stylesheet" href="styles/layout/thread-view.css">
-    <link rel="stylesheet" href="styles/layout/new-thread.css">
     <link rel="stylesheet" href="styles/modules/modules.css">
+<<<<<<< HEAD
     <!-- <link rel="stylesheet" href="styles/modules/comments.css"> -->
+=======
+    <link rel="stylesheet" href="styles/layout/new-thread.css">
+    <link rel="stylesheet" href="styles/modules/comments.css">
+>>>>>>> 7edd2a8bef920b358afab9f76ed5f62e11313a71
     <link rel="stylesheet" href="styles/modules/nav.css">
     <link rel="stylesheet" href="styles/modules/modals.css">
     <link rel="stylesheet" href="styles/modules/banner.css">
@@ -53,22 +57,6 @@
           </div>
       </section>
     </script>
-          <!-- <section class="forumTableRow">
-          <div class="subforumInfo">
-            <a href="/subfora/{{subforaid}}">
-              <span class="subforaSubtitle">{{subtitle}}</span>
-              <span class="subforaTitle">{{title}}</span></br>
-            </a>
-          </div>
-          <p class="threadCount">{{thread_count}}</p>
-          <p class="commentCount">{{comment_count}}</p>
-          <p class="lastComment">
-              <div class="createdOn">{{created_on}}</div>
-              <div class="username">by <a href="/user/{{username}}">{{username}}</a> 
-                <a href="/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}/#{{commentid}}">view latest post</a>
-              </div>
-          </p>
-      </section> -->
     
     <script id="user-profile-template" type="text/x-handlebars-template">
             <div class="profile-card">
@@ -76,12 +64,11 @@
               <img class="gravatar_hash" src="https://www.gravatar.com/avatar/{{gravatar_hash}}" alt="">
             </div>
             <div class="profile-content">
-              <p id="profile-name" class="userName"><span class="first_name">{{first_name}}</span> <span class="last_name">{{last_name}}</span></p>
-              <p class="role">{{role}}</p>
-              <p class="userStats"><span class="created_on">Member Since {{created_on}}</span> | <span class="num_comments">{{num_comments}} Posts</span></p>
-              <p class="username"><span class="userProfileSectionHeader">Username</span><br>{{username}}</p>
-              <p class="email"><span class="userProfileSectionHeader">Email</span><br>{{email}}</p>
-              <p class="interests"><span class="userProfileSectionHeader">Interests</span><br>{{interests}}</p>
+              <p id="profile-name" class="userName"><span class="first_name">{{first_name}}</span> <span class="last_name">{{last_name}}</span><span class="role">  |  {{role}}</span></p>
+              <p class="email"><span class="userProfileSectionHeader">Email</span><span id="email-spacing" class="textbox-spacing">{{email}}</span></p>
+              <p class="username"><span class="userProfileSectionHeader">Username</span><span id="username-spacing" class="textbox-spacing">{{username}}</span></p>              
+              <p class="userStats"><span class="created_on">Member Since</span><span id="userStats-spacing" class="textbox-spacing">{{created_on}}</span> | <span class="num_comments">{{num_comments}} Posts</span></p>
+              <p class="interests"><span class="userProfileSectionHeader">Interests</span><span id="interests-spacing" class="textbox-spacing">{{interests}}</span></p>
             </div>
             <div class="profile-footer">
                 <!-- edit profile -->
@@ -113,7 +100,34 @@
     </script>
 <!-- ================================================================ -->
     <script id="thread-template" type="text/x-handlebars-template">
-      <div data-thread-id="{{thread_id}}" class="thread">
+      <section data-thread-id="{{thread_id}}" class="subforaThread thread">
+        <span class="subforaAccordionToggle">+</span>
+        <div class="descriptionRow">
+          <a href="/subfora/{{subforum_id}}/threads/{{thread_id}}" class="thread-title">{{title}}</a>
+          <a href="/user/{{thread_creator}}" class="username">{{thread_creator}}</a>
+        </div>
+        <div class="subforaCountRow">
+          <div class="viewCountColumn">
+            <span class="rowTitle">Views  </span>
+            <span class="subforaViewCount" data-view-count="{{view_count}}"> {{view_count}}</span>
+          </div>
+          <div class="postCountColumn">
+            <span class="rowTitle">Posts </span>
+            <span class="subforaPostCount threadsubforaPostCount" data-comment-count="{{comment_count}}">{{comment_count}}</span>
+          </div>
+        </div>
+        <div class="lastCommenterRow hidden">
+            <span class="rowTitle">Last post</span>
+            <div class="borderLeft">
+              <p class="subforaLastCommenter"><a href="/user/{{last_commenter}}" class="username subforaUsernameLink"><img class="lastPostersGravatar" src="https://www.gravatar.com/avatar/{{gravatar_hash}}"> {{last_commenter}}</a><br class="hideSmall">{{last_comment_created_on}}</p>
+             <p class="lastCommentCreatedOnDateP"><a href="/subfora/{{subforum_id}}/threads/{{thread_id}}#comment-{{comment_id}}" class="lastCommentCreatedOnDate">{{content}}</a></p>
+            </div>
+          </div>
+      </section>
+    </script>
+    <!-- <img class="lastPostersGravatar" src="https://www.gravatar.com/avatar/{{gravatar_hash}}"> {{username}}</a><br class="hideSmall"> {{created_on}}</p>
+    <p class="lastPostContent"><a href="/subfora/{{commentsubforumparent}}/threads/{{commentthreadparent}}comment-{{commentid}}">{{content}}</a></p> -->
+          <!-- <div data-thread-id="{{thread_id}}" class="thread">
         <a href="/subfora/{{subforum_id}}/threads/{{thread_id}}" class="thread-title">{{title}}</a>
         <a href="/user/{{thread_creator}}" class="username">{{thread_creator}}</a>
         <span>{{view_count}}</span>
@@ -123,21 +137,7 @@
           <a href="/subfora/{{subforum_id}}/threads/{{thread_id}}#comment-{{comment_id}}">{{last_comment_created_on}}</p>
         </span>
       </div>
-    </script>
-
-    <!-- <script id="thread-template" type="text/x-handlebars-template">
-      <div data-thread-id="{{thread_id}}" class="thread">
-        <a href="/subfora/{{subforum_id}}/threads/{{thread_id}}" class="thread-title">{{title}}</a>
-        <a href="/user/{{thread_creator}}" class="username">{{thread_creator}}</a>
-        <span class="thread-view-count">thread-view-count {{view_count}}</span>
-        <span class="thread-comment-count">{{comment_count}}</span>
-        <span>
-          <a href="/user/{{last_commenter}}" class="username">{{last_commenter}}</a>
-          <a href="/subfora/{{subforum_id}}/threads/{{thread_id}}#comment-{{comment_id}}">{{last_comment_created_on}}</p>
-        </span>
-      </div>
     </script> -->
-
 
   </head>
   <body>
@@ -169,6 +169,7 @@
               </a>
             </div>
         </nav>
+
       </header>
       <main>
         <section id="forumView" class="view forumView hidden">
@@ -227,12 +228,14 @@
 
 
         <section id="subforumView" class="view subforumView hidden">
+          <div class="smallMargin">
           <header>
 
             <span class="subforum-title"></span>
             <span class="newThreadButton">NEW TOPIC</span>
 
           </header>
+<<<<<<< HEAD
           <div class="forum-view-headers">
               <ul>
                 <li class="sub-forum-view-li1"><span> TOPIC</span></li>
@@ -242,8 +245,25 @@
                 <li class="sub-forum-view-li4"><span> LAST POST</span></li>
             </ul>
           </div>
+=======
+                <div class="columnHead">
+                  <div class="forumHead">
+                    <p>Topic/Creator</p>
+                  </div>
+                  <div class="threadHead">
+                    <p>Views</p>
+                  </div>
+                  <div class="postHead">
+                    <p>Posts</p>
+                  </div>
+                  <div class="lastPostHead">
+                    <p>Last Post</p>
+                  </div>
+                </div>
+>>>>>>> 7edd2a8bef920b358afab9f76ed5f62e11313a71
           <div class="threadsContainer"></div>
           <span class="newThreadButton">NEW TOPIC</span>
+          <div class="smallMargin">
         </section>
 
         <section id="editUserView" class="view user editUserView hidden">
@@ -334,10 +354,12 @@
         </section>
 
         <section id="newThreadView" class="view thread newThreadView hidden">
-          <header></header>
-          <input type="text" class="newThreadTitle" placeholder="Topic Title"></input>
-          <textarea class="newThreadContent"></textarea>
-          <button class="addThreadButton">Add Topic</button>
+          <div class="smallMargin">
+            <header></header>
+            <input type="text" class="newThreadTitle" placeholder="Topic Title"></input>
+            <textarea class="newThreadContent" placeholder="Your Comment"></textarea>
+            <div class="addThreadButton">Add Topic</div>
+          </div>
         </section>
 
         <section id="threadView" class="view thread threadView hidden">
@@ -406,6 +428,8 @@
         </div>
        </div>
 
+      <div class="newCommentsSlideUp hidden"></div>
+      
       <script src="vendor/scripts/jquery.js"></script>
       <script src="vendor/scripts/handlebars.js"></script>
       <script src="vendor/scripts/page.js"></script>

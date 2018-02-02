@@ -45,6 +45,7 @@ var app = app || {};
       }
       $('.subforaLastPost:contains("Today")').css('margin-right', '35px');
     });
+    $('.subforaLastPost:contains("Today")').css('margin-right', '35px');
   }
   // handlebars template for user profile
   Forum.prototype.toForumTemplateHtml = function() {
