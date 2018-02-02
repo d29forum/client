@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="styles/modules/banner.css">
     <link rel="stylesheet" href="styles/modules/profile.css">
     <link rel="stylesheet" href="styles/state/state.css">
+    <link rel="stylesheet" href="styles/modules/editprofile.css">
     
     
     <script id="forum-template" type="text/x-handlebars-template">
@@ -246,7 +247,7 @@
           <div class="smallMargin">
         </section>
 
-        <section id="editUserView" class="view user editUserView hidden">
+        <section id="editUserView" class="view user editUserView editForm hidden">
             <form action="#" id="editProfileForm">
                 <fieldset>
                         <label for="username">Username: </label>
@@ -255,7 +256,7 @@
 
                 <fieldset>
                     <label for="Email">Email: </label>
-                    <textarea rows="10" id="editEmail" name="Email"></textarea>
+                    <input type="text" id="editEmail" name="Email"></textarea>
                 </fieldset>
 
                 <fieldset>
@@ -275,7 +276,7 @@
 
                 <fieldset>
                     <label for="interests">Interests: </label>
-                    <input type="text" id="editInterests" name="interests">
+                    <textarea rows="6" id="editInterests" name="interests"></textarea>
                 </fieldset>
 
                 <button id="editButton" type="submit">update and return to the home page</button>
