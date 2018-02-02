@@ -178,7 +178,7 @@
       font-weight: bold;
   } */
 
-.addThreadButton, .newThreadButton, .addCommentButton, .saveCommentButton, .deleteCommentButton {
+#editProfileButton, .addThreadButton, .newThreadButton, .addCommentButton, .saveCommentButton, .deleteCommentButton {
   cursor: pointer;
   display: inline-block;
   text-align: center;
@@ -190,6 +190,11 @@
   color: #fff;
   padding: 5px;
   font-family: 'Saira', sans-serif;
+}
+
+#editProfileButton {
+  position: absolute;
+  left: calc(50% - 75px);
 }
 
 .editCommentTextArea {
