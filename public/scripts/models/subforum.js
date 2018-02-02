@@ -82,7 +82,7 @@ var app = app || {};
       page.show(`/subfora/${ctx.params.subforum_id}/${ctx.results[0].subforum_title}/threads/new`);
     });
     var sfsort = callback => {
-      Subforum.threads.sort((a,b) => b.last_comment - a.last_comment);
+      Subforum.threads.sort((a,b) => b.comment_id - a.comment_id);
       callback();
     }
     //Subforum.threads.forEach(thread => $('.threadsContainer').append(thread.toHtml()));
