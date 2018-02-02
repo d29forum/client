@@ -122,3 +122,7 @@
     min-height: 640px;
     background: #FAFAFA;
   }
+
+  .move {
+      width: 110px;
+  }
