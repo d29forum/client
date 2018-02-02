@@ -11,6 +11,12 @@
           $('.newThreadTitle').empty();
           $('.newThreadContent').empty();
         }
+        $('#signup').off();
+        $('#signup').on('click', function(e) {
+            e.preventDefault();
+            $('#modal3').toggleClass('is-visible');
+            $('#newUserForm').on('submit', app.newUserView.submit);
+        });
         $('.newThreadView header').empty();
         $('.newThreadView header').append(`<h3 class="bread-crumbs"><a href="/">D29 FORUM</a><span> > </span><a href="${window.location}">${ctx.params.subforum_title.toUpperCase()}</a><span> > </span><a href="${window.location}">NEW TOPIC</a></h3>`);
         $('.newThreadView').removeClass('hidden');

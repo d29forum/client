@@ -1,13 +1,5 @@
-/* .bread-crumbs {
-  color: #222;
-  font-family: Helvetica,Arial,sans-serif;
-  font-size: 21px;
-  line-height: 19px;
-  font-weight: 700;
-  margin: 0 0 20px 0;
-} */
-#forumView {
-  padding-bottom: 40px;
+#subforumView {
+  margin-top: 20px;
 }
 .descriptionRow {
   padding-bottom: 12px;
@@ -35,7 +27,7 @@
   display: inline-block;
 }
 .thread-title {
-  padding: 20px 0 0 20px;
+  padding: 30px 0 0 20px;
   font-size: 18px;
   font-weight: 500;
   display: block;
@@ -137,7 +129,21 @@
   transform: rotate(45deg) translateY(0px);
   transition: all 0.25s;
 }
-@media (min-width: 768px) {
+#subforumView header .newThreadButton {
+  margin: 0px 0 30px 0px;
+}
+@media only screen and (min-width: 550px) {
+  #subforumView .bread-crumbs {
+    display: inline-block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  #subforumView header .newThreadButton {
+    float: right;
+    margin: 20px 30px 30px 30px;
+  }
+}
+@media only screen and (min-width: 768px) {
   .subforaLastCommenter a {
     line-height: 30px;
   }

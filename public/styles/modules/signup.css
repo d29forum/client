@@ -1,0 +1,173 @@
+#newUserForm, #editProfileForm {
+  position: relative;
+  margin: 20px auto;
+  width: 280px;
+  padding: 33px 25px 29px;
+  background: white;
+  border-bottom: 1px solid #c4c4c4;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+.newUserFormTitle, .editProfileFormTitle {
+  margin: -25px -25px 25px;
+  padding: 15px 25px;
+  line-height: 35px;
+  font-size: 26px;
+  font-weight: 300;
+  color: #aaa;
+  text-align: center;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.75);
+  background: #f7f7f7;
+}
+#newUserForm:before, #newUserForm:after, #editProfileForm:before, #editProfileForm:after {
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: inherit;
+  border-bottom: 1px solid #d2d2d2;
+  border-radius: 4px;
+}
+#newUserForm:after, #editProfileForm:after {
+  bottom: 3px;
+  border-color: #dcdcdc;
+}
+.newUserFormTitle:before, .editProfileFormTitle:before {
+  content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   height: 8px;
+   background: #c4e17f;
+   border-radius: 5px 5px 0 0;
+   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+ }
+ .newUserFormInput, .editProfileFormInput {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 25px;
+  padding: 0 15px 2px;
+  font-size: 17px;
+  background: white;
+  border: 2px solid #ebebeb;
+  border-radius: 4px;
+  box-shadow: inset 0 -2px #ebebeb;
+  font-family: inherit;
+  color: inherit;
+  box-sizing: border-box;
+ }
+ 
+.signUpButton, #editUserView .editButton {
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  height: 54px;
+  padding: 0;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #e45735;
+  border: 0;
+  border-bottom: #f0776c;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: inset 0 -2px #f0776c;
+  margin: 0;
+}
+
+.signUpButton:active {
+  top: 1px;
+  outline: none;
+  box-shadow: none;
+}
+
+/* #newUserForm {
+  position: relative;
+  margin: 20px auto;
+  width: 280px;
+  padding: 33px 25px 29px;
+  background: white;
+  border-bottom: 1px solid #c4c4c4;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+.newUserFormTitle {
+  margin: -25px -25px 25px;
+  padding: 15px 25px;
+  line-height: 35px;
+  font-size: 26px;
+  font-weight: 300;
+  color: #aaa;
+  text-align: center;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.75);
+  background: #f7f7f7;
+}
+#newUserForm:before, #newUserForm:after {
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: inherit;
+  border-bottom: 1px solid #d2d2d2;
+  border-radius: 4px;
+}
+#newUserForm:after {
+  bottom: 3px;
+  border-color: #dcdcdc;
+}
+.newUserFormTitle:before {
+  content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   height: 8px;
+   background: #c4e17f;
+   border-radius: 5px 5px 0 0;
+   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+ }
+ .newUserFormInput {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 25px;
+  padding: 0 15px 2px;
+  font-size: 17px;
+  background: white;
+  border: 2px solid #ebebeb;
+  border-radius: 4px;
+  box-shadow: inset 0 -2px #ebebeb;
+  font-family: inherit;
+  color: inherit;
+  box-sizing: border-box;
+ }
+ 
+.signUpButton {
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  height: 54px;
+  padding: 0;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #e45735;
+  border: 0;
+  border-bottom: #f0776c;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: inset 0 -2px #f0776c;
+  margin: 0;
+}
+
+.signUpButton:active {
+  top: 1px;
+  outline: none;
+  box-shadow: none;
+} */

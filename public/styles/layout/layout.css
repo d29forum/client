@@ -4,4 +4,9 @@
 .show {
     display: block;
 } 
-
+.spacerBottom {
+    padding-bottom: 50px;
+}
+.body-content {
+    height: calc((100vh - 48px));
+  }

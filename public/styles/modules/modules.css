@@ -179,30 +179,30 @@
   } */
 
 .signUpButton, #editProfileButton, .addThreadButton, .newThreadButton, .addCommentButton, .saveCommentButton, .deleteCommentButton {
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  /*margin: 3px 0 0 20px;*/
-  margin: 30px 0px 30px 30px;
-
-  border-radius: 3px;
-  background-color: #e45735;
-  color: #fff;
-  padding: 5px;
-  font-family: 'Saira', sans-serif;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    margin: 30px 0px 30px 30px;
+    background-color: #e45735;
+    color: #fff;
+    font-family: 'Saira', sans-serif;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    border: 0;
+    border-bottom: #f0776c;
+    border-radius: 5px;
+    padding: 11px 20px;
+    box-shadow: inset 0 -2px #f0776c;
 }
 
-.signUpButton {
-  margin: 0;
-  background: rgba(50,0,0,.8);
-  padding: 3px 40px;
-  font-weight: bold;
-  font-size: 24px;
+.signUpButton:hover, #editProfileButton:hover, .addThreadButton:hover, .newThreadButton:hover, .addCommentButton:hover, .saveCommentButton:hover, .deleteCommentButton:hover {
+    background-color: rgba(228, 87, 53, .8);
+    border-bottom: rgba(240, 119, 108, .8);
+    box-shadow: inset 0 -2px rgba(240, 119, 108, .8);
 }
 
 #editProfileButton {
   position: absolute;
-  left: calc(50% - 75px);
+  left: calc(50% - 86px);
 }
 
 .editCommentTextArea {
@@ -232,4 +232,65 @@
 .addCommentContainer p {
   font-family: 'Saira', sans-serif;
   margin: 10px;
+}
+
+/* FOOTER */
+.contactLinksDiv {
+    height: 48px;
+}
+.contactLinks {
+line-height: 48px;
+color: #FFF;
+}
+#brian {
+    background: #6dcd9a;
+}
+#dave {
+    background: #1E83AE;
+}
+#keith {
+    background: #3DACDD;
+}
+#gene {
+    background: #3D5B94;
+}
+#brian:hover, #dave:hover, #gene:hover, #keith:hover {
+    background: #000;
+}
+#contactFooter {
+    display: block;
+    line-height: 48px;
+    height: 48px;
+    color: #FFF;
+    float: right;
+    margin-right: 50px;
+}
+.contactLinks {
+display: none;
+}
+@media (min-width: 768px) {
+    #hiddenContact {
+        display: none;
+    }
+    .hiddenContact {
+        display: none;
+    }
+    #contactFooter {
+        float: none;
+        display: inline-block;
+        line-height: 48px;
+        color: #FFF;
+        padding-left: 50px;
+    }
+    .contactLinksDiv {
+        width: 50%;
+        float: right;
+    }
+    .contactLinks {
+        display: block;
+        width: 25%;
+        float: right;
+        text-align: center;
+        line-height: 48px;
+    }
 }

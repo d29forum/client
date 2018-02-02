@@ -7,6 +7,12 @@
         if (localStorage.waitingComment) page.show(localStorage.waitingThread)
         $('.view').addClass('hidden').find('*').off();
         $('.loginUserView').removeClass('hidden');
+        $('#signup').off();
+        $('#signup').on('click', function(e) {
+            e.preventDefault();
+            $('#modal3').toggleClass('is-visible');
+            $('#newUserForm').on('submit', app.newUserView.submit);
+        });
         $('#userLoginForm').on('submit', loginUserView.submit);
     }
 
