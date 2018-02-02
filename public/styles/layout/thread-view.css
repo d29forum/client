@@ -1,6 +1,8 @@
-
 .comment-container {
+  display: inline-block;
   position: relative;
+  width: 100%;
+  float: left;
   clear: both;
 }
 
@@ -16,8 +18,9 @@
 .user-info-block {
   font-family: 'Saira', sans-serif;
   display: inline-block;
-  width:18%;
+  width:130px;
   padding: 10px;
+  float: left;
  
 }
 
@@ -43,16 +46,18 @@
 .comment-info-block {
   display: block;
   vertical-align: top;
-  width:78%;
-  float:right;
-  background-color: #eeeeee;
+  width: calc(100% - 150px);
+  float:left;
 }
 
 .addCommentContainer {
+  padding-top: 50px;
   clear: both;
 }
 
 .comment-posted-on {
+  width: calc(100%-10);
+  padding-right: 0;
   background-color:#9b9ea3;
   color: #fff;
   font-size: 0.8125em;
@@ -76,6 +81,6 @@
 
 .comment-text {
   margin: 10px 10px;
-  width: 90%;
+  width: calc(100% - 150px);
   white-space: pre-wrap;
 }
