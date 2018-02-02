@@ -231,9 +231,9 @@
     margin-right: 220px;
   }
 }
-/* @media only screen and (min-width: 950px) {
-  .lastPostHead p {
-    float: right;
-    margin-right: 220px;
+  @media only screen and (min-width: 1000px) {
+    #subforumView .lastPostHead p {
+      float: right;
+      margin-right: 240px;
+    }
   }
-} */

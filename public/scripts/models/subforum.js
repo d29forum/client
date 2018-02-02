@@ -43,7 +43,7 @@ var app = app || {};
         $(this).addClass('belowAvg');
       }
     });
-    $('.lastCommentCreatedOnDateP a:contains("Today")').css('margin-right', '35px');
+    $('.lastCommentCreatedOnDateP a:contains("Today")').css('margin-right', '55px');
   }
 
   Subforum.prototype.insert = function(ctx,next) {
@@ -81,6 +81,7 @@ var app = app || {};
     $('.newThreadButton').on('click', ()=> {
       page.show(`/subfora/${ctx.params.subforum_id}/${ctx.results[0].subforum_title}/threads/new`);
     });
+
     var sfsort = callback => {
       Subforum.threads.sort((a,b) => b.comment_id - a.comment_id);
       callback();
