@@ -43,6 +43,7 @@ var app = app || {};
       else {
         $(this).addClass('belowAvg');
       }
+      $('.subforaLastPost:contains("Today")').css('margin-right', '35px');
     });
   }
   // handlebars template for user profile

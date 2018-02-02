@@ -1,0 +1,79 @@
+
+.comment-container {
+  margin-bottom: 5px;
+  position: relative;
+  clear: both;
+}
+
+.comment-container:nth-child(odd) {
+  background-color: #eeeeee;
+}
+
+.comment-container:nth-child(even) {
+  background-color: #fff;
+}
+
+.user-info-block {
+  font-family: 'Saira', sans-serif;
+  display: inline-block;
+  width:18%;
+  padding: 10px;
+  /* min-width:180px; */
+}
+
+.user-info-block img {
+  display: block;
+  margin: 10px auto;
+}
+
+.user-info-block a {
+  margin: 10px auto;
+  display: block;
+  text-align: center;
+  color: #369;
+}
+
+.user-info-block p {
+  margin: 10px auto;
+  display: block;
+  text-align: center;
+
+}
+
+.comment-info-block {
+  display: inline-block;
+  vertical-align: top;
+  width:78%;
+}
+
+.addCommentContainer {
+  clear: both;
+}
+
+.comment-posted-on {
+  background-color:#9b9ea3;
+  color: #fff;
+  font-size: 0.8125em;
+  line-height: 1em;
+  letter-spacing: 0.04em;
+  height: 29px;
+}
+
+.comment-posted-on .editCommentButton {
+  margin-top: 4px;
+}
+.comment-posted-on span {
+  float:right;
+  vertical-align: bottom;
+  margin: 8px 10px;
+}
+
+.comment-posted-on {
+  padding-right:10px;
+}
+
+.comment-text {
+  margin: 10px 10px;
+  width: 90%;
+  white-space: pre-wrap;
+}
