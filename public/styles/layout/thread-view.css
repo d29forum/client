@@ -1,6 +1,5 @@
 
 .comment-container {
-  margin-bottom: 5px;
   position: relative;
   clear: both;
 }
@@ -8,6 +7,7 @@
 .comment-container:nth-child(odd) {
   background-color: #eeeeee;
 }
+
 
 .comment-container:nth-child(even) {
   background-color: #fff;
@@ -18,7 +18,7 @@
   display: inline-block;
   width:18%;
   padding: 10px;
-  /* min-width:180px; */
+ 
 }
 
 .user-info-block img {
@@ -41,9 +41,11 @@
 }
 
 .comment-info-block {
-  display: inline-block;
+  display: block;
   vertical-align: top;
   width:78%;
+  float:right;
+  background-color: #eeeeee;
 }
 
 .addCommentContainer {

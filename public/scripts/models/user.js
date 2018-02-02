@@ -5,7 +5,7 @@ var app = app || {};
 //for local: http://localhost:3737
 //for staging: https://d29forum-sv-staging.herokuapp.com
 //for prod: https://d29forum-sv.herokuapp.com
-const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
+const __API_URL__ = 'https://d29forum-sv-staging.herokuapp.com';
 
 (function(module) {
   const user = {};
