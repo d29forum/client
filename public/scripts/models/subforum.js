@@ -43,7 +43,7 @@ var app = app || {};
         $(this).addClass('belowAvg');
       }
     });
-    $('.lastCommentCreatedOnDateP a:contains("Today")').css('margin-right', '35px');
+    $('.lastCommentCreatedOnDateP a:contains("Today")').css('margin-right', '55px');
   }
 
   Subforum.prototype.insert = function(ctx,next) {
