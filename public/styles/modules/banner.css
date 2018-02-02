@@ -2,7 +2,7 @@
   /* color: white;
   font-size: 1.5em; */
   text-align: center;
-  background: url(https://mave.me/img/projects/full_placeholder.png) no-repeat center center fixed; 
+  background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, 0.2)), url(https://mave.me/img/projects/full_placeholder.png) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -45,11 +45,27 @@
 .bannerSubheader {
   margin-top: 15px;
 }
-@media (min-width: 363px) {
+@media only screen and (min-width: 363px) {
   .xsFormatting {
     display: none;
   }
   .bannerSubheader {
     margin-top: 5px;
+  }
+}
+@media only screen and (max-width: 1068px) {
+  .bannerHeadline {
+    font-size: 44px;
+  }
+  .bannerSubheader {
+    font-size: 25px;
+  }
+}
+@media only screen and (min-width: 1069px) {
+  .bannerHeadline {
+    font-size: 56px;
+  }
+  .bannerSubheader {
+    font-size: 31px;
   }
 }

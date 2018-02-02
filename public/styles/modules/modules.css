@@ -233,3 +233,64 @@
   font-family: 'Saira', sans-serif;
   margin: 10px;
 }
+
+/* FOOTER */
+.contactLinksDiv {
+    height: 48px;
+}
+.contactLinks {
+line-height: 48px;
+color: #FFF;
+}
+#brian {
+    background: #6dcd9a;
+}
+#dave {
+    background: #1E83AE;
+}
+#keith {
+    background: #3DACDD;
+}
+#gene {
+    background: #3D5B94;
+}
+#brian:hover, #dave:hover, #gene:hover, #keith:hover {
+    background: #000;
+}
+#contactFooter {
+    display: block;
+    line-height: 48px;
+    height: 48px;
+    color: #FFF;
+    float: right;
+    margin-right: 50px;
+}
+.contactLinks {
+display: none;
+}
+@media (min-width: 768px) {
+    #hiddenContact {
+        display: none;
+    }
+    .hiddenContact {
+        display: none;
+    }
+    #contactFooter {
+        float: none;
+        display: inline-block;
+        line-height: 48px;
+        color: #FFF;
+        padding-left: 50px;
+    }
+    .contactLinksDiv {
+        width: 50%;
+        float: right;
+    }
+    .contactLinks {
+        display: block;
+        width: 25%;
+        float: right;
+        text-align: center;
+        line-height: 48px;
+    }
+}
