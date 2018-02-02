@@ -49,7 +49,6 @@ var app = app || {};
    
     if (localStorage.currentUserId) {
       $(`.${localStorage.currentUserName} .editCommentButton`).removeClass('hidden').on('click', function() {
-        if(commentCheck) clearInterval(commentCheck);
         Thread.comments.forEach(comment => {
           if (comment.comment_id === $(this).parent().parent().parent().data('comment-id')) app.editCommentView.init(comment);
         });
@@ -60,9 +59,9 @@ var app = app || {};
       delete localStorage.addedPost;
       window.scrollTo(0, document.body.scrollHeight);
     }
-/*    
+    
     localStorage.currentThreadLocation = window.location;
-    var commentCheck = setInterval(()=>{
+/*    var commentCheck = setInterval(()=>{
       let check = callback => {
         if (window.location != localStorage.currentThreadLocation) {
           clearInterval(commentCheck);
