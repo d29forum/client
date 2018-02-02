@@ -81,10 +81,11 @@ var app = app || {};
     $('.newThreadButton').on('click', ()=> {
       page.show(`/subfora/${ctx.params.subforum_id}/${ctx.results[0].subforum_title}/threads/new`);
     });
-    var sfsort = callback => {
+//    var sfsort = callback => {
       Subforum.threads.sort((a,b) => b.last_comment - a.last_comment);
-      callback();
-    }
+//      callback();
+//    }
+    Subforum.threads.forEach(thread => $('.threadsContainer').append(thread.toHtml()));
     sfsort(() => Subforum.threads.forEach(thread => $('.threadsContainer').append(thread.toHtml())));
 
     $('.thread').on('click','.username', function() {
