@@ -83,6 +83,10 @@ var app = app || {};
     });
     var sfsort = callback => {
       Subforum.threads.sort((a,b) => b.last_comment - a.last_comment);
+      //render date
+      Subforum.threads.forEach(thread => {
+        thread.last_comment_created_on = `${app.Helper.parseDate(thread.last_comment_created_on)} ${app.Helper.parseTime(thread.last_comment_created_on)}`;
+      });
       callback();
     }
     sfsort(() => Subforum.threads.forEach(thread => $('.threadsContainer').append(thread.toHtml())));
