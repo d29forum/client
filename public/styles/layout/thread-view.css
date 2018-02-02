@@ -81,6 +81,5 @@
 
 .comment-text {
   margin: 10px 10px;
-  width: calc(100% - 150px);
   white-space: pre-wrap;
 }
