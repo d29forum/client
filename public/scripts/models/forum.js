@@ -44,7 +44,7 @@ var app = app || {};
         $(this).addClass('belowAvg');
       }
     });
-    $('.subforaLastPost:contains("Today")').css('margin-right', '45px');
+    $('.subforaLastPost:contains("Today")').css('margin-right', '25px');
   }
 
 

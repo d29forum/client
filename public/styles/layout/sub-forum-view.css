@@ -44,6 +44,7 @@
   color: #888;
   font-size: 14px;
   font-weight: 400;
+  margin-right: 30px;
 }
 .lastPostContent {
   font-size: 11px;
@@ -246,5 +247,10 @@
   }
   .lastCommentCreatedOnDateP {
     display: none;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  #subforumView .subforaLastCommenter {
+    margin-right: 45px;
   }
 }
