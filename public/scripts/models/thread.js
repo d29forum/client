@@ -60,7 +60,7 @@ var app = app || {};
       delete localStorage.addedPost;
       window.scrollTo(0, document.body.scrollHeight);
     }
-    
+/*    
     localStorage.currentThreadLocation = window.location;
     var commentCheck = setInterval(()=>{
       let check = callback => {
@@ -88,7 +88,7 @@ var app = app || {};
         });
       });
     }, 100);
-
+*/
   }
 
   Thread.prototype.toHtml = function() {
