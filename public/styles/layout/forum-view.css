@@ -2,9 +2,9 @@
 .bread-crumbs {
   color: #222;
   font-family: Helvetica,Arial,sans-serif;
-  font-size: 21px;
+  /* font-size: 21px; */
   line-height: 19px;
-  font-weight: 700;
+  font-weight: 500;
   margin: 0 0 20px 0;
 }
 #forumView {
@@ -184,8 +184,9 @@
     width: calc((100vw - 149px)*.37);
   }
   .columnHead {
-    width: calc((100vw - 20px));
+    width: calc((100vw - 35px));
     background: #9b9ea3;
+    letter-spacing: 0.04em;
   }
   .threadCountColumn, .postCountColumn, .threadHead, .postHead {
     padding-right: 0;

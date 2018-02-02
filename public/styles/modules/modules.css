@@ -182,21 +182,20 @@
   cursor: pointer;
   display: inline-block;
   text-align: center;
-  margin: 40px 0;
-  width: 200px;
-  height: 30px;
-  padding-top: 15px;
+  margin: 3px 0 0 20px;
+
   border-radius: 3px;
-  background-color: rgb(208,107,0);
-  color: rgb(255, 216, 62);
-  font-weight: bold;
+  background-color: #e45735;
+  color: #fff;
+  padding: 5px;
   font-family: 'Saira', sans-serif;
 }
 
 .editCommentTextArea {
-  width: 100%;
+  width: 96%;
   resize: none;
   min-height: 100px;
+  margin:10px 0 0 2%;
 }
 
 .editCommentButton {
@@ -205,9 +204,18 @@
 }
 
 .addCommentTextArea {
-  width: 100%;
+  width: 98%;
   height: 10%;
   min-height: 100px;
   max-height: 300px;
   resize: none;
+}
+
+.addCommentContainer {
+    margin: 10px;
+}
+
+.addCommentContainer p {
+  font-family: 'Saira', sans-serif;
+  margin: 10px;
 }
