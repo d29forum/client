@@ -2,10 +2,12 @@
 var app = app || {};
 
 //API URL
-//for local: http://localhost:3737
-//for staging: https://d29forum-sv-staging.herokuapp.com
+// for local: 
+// const __API_URL__ = 'http://localhost:3737';
+// for staging: 
+const __API_URL__ = 'https://d29forum-sv-staging.herokuapp.com';
 //for prod: https://d29forum-sv.herokuapp.com
-const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
+// const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
 
 (function(module) {
   const user = {};
@@ -19,7 +21,7 @@ const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
   
   // POST
   User.prototype.insert = function() {
-    console.log('user. prototype.insert');
+    // console.log('user. prototype.insert');
     $.ajax({
       url: `${__API_URL__}/api/db/users`,
       method: 'POST',
@@ -28,14 +30,17 @@ const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
         console.log(this.username);
         console.log(results);
         if (results[0].username == this.username){
+          console.log('success');
           var setLS = callback => {
             $('#modal1').toggleClass('is-visible');
+            $('#modal3').toggleClass('is-visible');
             localStorage.currentUserId = results[0].id;
             localStorage.currentUserName = this.username;
             localStorage.currentUserNavatar = results[0].gravatar_hash;
             callback();
           };
           setLS(() => localStorage.deferredRoute ? page.show(localStorage.deferredRoute) : page.show('../'));
+          // setLS(() => localStorage.deferredRoute ? page.show(localStorage.deferredRoute) : page.show('/'));
         }
       },
       error: err => {

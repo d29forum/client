@@ -118,3 +118,7 @@
      font-size: 15px;
      font-weight: bold;
  }
+ #userProfile {
+    min-height: 640px;
+    background: #FAFAFA;
+  }

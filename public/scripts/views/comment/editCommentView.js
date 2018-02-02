@@ -14,6 +14,12 @@ var app = app || {};
         var $content = $comment.find('.comment-content').next();
         $content.addClass('hidden');
         $comment.find('.editCommentView').removeClass('hidden');
+        $('#signup').off();
+        $('#signup').on('click', function(e) {
+            e.preventDefault();
+            $('#modal3').toggleClass('is-visible');
+            $('#newUserForm').on('submit', app.newUserView.submit);
+        });
         //save button
         $comment.on('click', '.saveCommentButton', function() {
           $(this).off();

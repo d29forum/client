@@ -13,7 +13,9 @@
 #newUserView input {
   margin: 50px auto;
   display: block;
-  width: 300px;
 } 
+#newUser {
+  margin-top: 20px;
+}
 
 /*Button is located with the other buttons in modules.css*/
