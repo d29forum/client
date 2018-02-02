@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="styles/modules/banner.css">
     <link rel="stylesheet" href="styles/modules/profile.css">
     <link rel="stylesheet" href="styles/state/state.css">
+    <link rel="stylesheet" href="styles/modules/editprofile.css">
     
     
     <script id="forum-template" type="text/x-handlebars-template">
@@ -71,18 +72,21 @@
             </div>
             </div>
     </script>
-
+<!-- ================================================================ -->
     <script id="comment-template" type="text/x-handlebars-template">
       <div data-comment-id="{{comment_id}}" id="comment-{{comment_id}}" class="comment-container {{username}}">
-        <div>
+        <div class="user-info-block">
           <a href="/user/{{username}}">{{username}}</a>
           <a href="/user/{{username}}"><img src="https://www.gravatar.com/avatar/{{gravatar_hash}}"></a>
           <p>Joined: {{user_created_on}}</p>
           <p>Posts: {{num_comments}}</p>
         </div>
-        <div>
-          <p class="comment-posted-on"><span class="editCommentButton hidden"> -edit- </span><span>posted: {{comment_created_on}}</span></p>
-          <p class="comment-content"><pre>{{content}}</pre></p>
+        <!-- <div class="thread-middle-block">.</div> -->
+        <div class="comment-info-block">
+          <p class="comment-posted-on">
+            <span class="editCommentButton hidden"><img src="/images/edit-pencil.png"></span>
+            <span class="comment-posted-on-span">Posted: {{comment_created_on}}</span></p>
+          <p class="comment-content"><pre class="comment-text">{{content}}</pre></p>
           <div class="editCommentView hidden">
             <textarea class="editCommentTextArea">{{content}}</textarea>
             <div class="saveCommentButton">Save</div>
@@ -91,7 +95,7 @@
         </div>
       </div>
     </script>
-
+<!-- ================================================================ -->
     <script id="thread-template" type="text/x-handlebars-template">
       <section data-thread-id="{{thread_id}}" class="subforaThread thread">
         <span class="subforaAccordionToggle">+</span>
@@ -129,7 +133,8 @@
           <a href="/user/{{last_commenter}}" class="username">{{last_commenter}}</a>
           <a href="/subfora/{{subforum_id}}/threads/{{thread_id}}#comment-{{comment_id}}">{{last_comment_created_on}}</p>
         </span>
-      </div> -->
+      </div>
+    </script> -->
 
   </head>
   <body>
@@ -246,7 +251,7 @@
           <div class="smallMargin">
         </section>
 
-        <section id="editUserView" class="view user editUserView hidden">
+        <section id="editUserView" class="view user editUserView editForm hidden">
             <form action="#" id="editProfileForm">
                 <fieldset>
                         <label for="username">Username: </label>
@@ -255,7 +260,7 @@
 
                 <fieldset>
                     <label for="Email">Email: </label>
-                    <textarea rows="10" id="editEmail" name="Email"></textarea>
+                    <input type="text" id="editEmail" name="Email"></textarea>
                 </fieldset>
 
                 <fieldset>
@@ -275,7 +280,7 @@
 
                 <fieldset>
                     <label for="interests">Interests: </label>
-                    <input type="text" id="editInterests" name="interests">
+                    <textarea rows="6" id="editInterests" name="interests"></textarea>
                 </fieldset>
 
                 <button id="editButton" type="submit">update and return to the home page</button>
@@ -343,13 +348,26 @@
         </section>
 
         <section id="threadView" class="view thread threadView hidden">
-          <header></header>
-          <div class="commentContainer"></div>
-          <div class="addCommentContainer">
-            <p>Contribute to the discussion!</p>
-            <textarea class="addCommentTextArea"></textarea>
-            <div class="addCommentButton">Add Comment</div>
+          <div class="banner">
+            <span class="bannerCloseIconSpan"><i class="fa fa-times bannerCloseIcon" title="Close this banner"></i></span>
+            <div class="bannerText">
+                <p class="bannerHeadline">D29 Forum</p>
+                <p class="bannerSubheader">New to D29 Forum? <br class="xsFormatting"><a class="bannerLinks" href="/signup">Create a profile</a></p>
+            </div>
           </div>
+<!-- ================================================= -->
+          <div class="smallMargin">
+            <header></header>
+            <div class="commentContainer"></div>
+            <div class="addCommentContainer">
+              <p>Contribute to the discussion!</p>
+              <textarea class="addCommentTextArea"></textarea>
+              <div class="addCommentButton">Add Comment</div>
+            </div>
+          </div>
+
+<!-- ================================================= -->
+          
         </section>
 
         <section id="errorView" class="view errorView errorViewContainer hidden">
