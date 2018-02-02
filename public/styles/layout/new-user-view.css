@@ -1,0 +1,19 @@
+#newUserView {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#newUserView label {
+  margin: 0 auto;
+  font-size: 26px;
+  font-family: 'Saira', sans-serif;
+  font-weight: bold;
+}
+
+#newUserView input {
+  margin: 50px auto;
+  display: block;
+  width: 300px;
+} 
+
+/*Button is located with the other buttons in modules.css*/

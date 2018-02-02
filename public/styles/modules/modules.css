@@ -178,7 +178,7 @@
       font-weight: bold;
   } */
 
-#editProfileButton, .addThreadButton, .newThreadButton, .addCommentButton, .saveCommentButton, .deleteCommentButton {
+.signUpButton, #editProfileButton, .addThreadButton, .newThreadButton, .addCommentButton, .saveCommentButton, .deleteCommentButton {
   cursor: pointer;
   display: inline-block;
   text-align: center;
@@ -190,6 +190,14 @@
   color: #fff;
   padding: 5px;
   font-family: 'Saira', sans-serif;
+}
+
+.signUpButton {
+  margin: 0;
+  background: rgba(50,0,0,.8);
+  padding: 3px 40px;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 #editProfileButton {
