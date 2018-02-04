@@ -44,6 +44,7 @@
   color: #888;
   font-size: 14px;
   font-weight: 400;
+  margin-right: 30px;
 }
 .lastPostContent {
   font-size: 11px;
@@ -131,6 +132,17 @@
 }
 #subforumView header .newThreadButton {
   margin: 0px 0 30px 0px;
+}
+.subforaThread{
+  position: relative;
+}
+.subforaThread .subforaAccordionToggle {
+  position: absolute;
+  top: 2px;
+  right: 12px;
+}
+#subforumView .lastPostersGravatar {
+  display: none;
 }
 @media only screen and (min-width: 550px) {
   #subforumView .bread-crumbs {
@@ -235,5 +247,10 @@
   }
   .lastCommentCreatedOnDateP {
     display: none;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  #subforumView .subforaLastCommenter {
+    margin-right: 45px;
   }
 }
