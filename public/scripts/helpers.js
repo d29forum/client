@@ -18,18 +18,29 @@ var app = app || {};
 
     timestamp = timestamp.slice(0, 10);
     var dateString = timestamp.split('-');
+    
+    
+    ///DATE OFFSET CHANGES BETWEEN +++++++++++++++++++++++++++++++++++++++++++++
+    var offsetZulu = (new Date().getTimezoneOffset()/60).toString().padStart(2,0);
+      //console.log('zulu offset', offsetZulu);
+      //console.log('dateNow', dateNow);
+    var dbOffset = dateNow.toString().slice(29,31);
+      //console.log('dbOffset', dbOffset);
+    var storedHour = new Date();
+    storedHour = storedHour.toString().slice(16,18);
+      //console.log('storedHour', storedHour);
+    var todayCheck = 24 - offsetZulu - storedHour;
+      // console.log('datestring[2]', dateString[2]);
+      // console.log(dateString[2] = (parseInt(dateString[2]) - 1).toString().padStart(2,0));
+    if (todayCheck < 0) { dateString[2] = (parseInt(dateString[2]) - 1).toString().padStart(2,0) };
+      // console.log('todaycheck', todayCheck);
+    //+++++++++++++++++++++++++++++++++++++++++++++
+    
     timestamp = [dateString[1], dateString[2], dateString[0]];
     var monthIndex = monthNum.indexOf(timestamp[0]);
     var dateCheck = [months[monthIndex], timestamp[1], timestamp[2]];
-    // console.log('dateCheck', dateCheck);
-    // var intTimeStamp1 = parseInt(timestamp[1]);
-    // console.log('timestamp[1]int',intTimeStamp1);
-    // console.log(dateNow.getHours());
-    // if (dateNow.getHours() < intTimeStamp1) {
-    //   console.log('yes');
-    //   timestamp[1] = parseInt(timestamp[1] - 1);
-    //   console.log(timestamp[1]);
-    // }
+
+
     if (dateNowArr.toString() == dateCheck.toString()){ return('Today')};
 
     return `${months[monthIndex]} ${timestamp[1]}, ${timestamp[2]}`;
@@ -68,7 +79,7 @@ var app = app || {};
    var timeAtPost = `${currentTimeH}:${currentTimeM}`;
    var timeInDb = `${dbHour}:${timeArr[1]}`;
 
-   if (timeAtPost == timeInDb) { return ' less than a minute ago.' }
+   if (timeAtPost == timeInDb) { return ' just now.' }
 
    //=======================
 

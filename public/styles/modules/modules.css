@@ -223,6 +223,8 @@
   min-height: 100px;
   max-height: 300px;
   resize: none;
+  font-size: 1.4em;
+  font-family: monospace;
 }
 
 .addCommentContainer {
